@@ -1,4 +1,4 @@
-![image](https://github.com/CDHANSOO/nervermind/assets/136785138/5e6f0584-2760-4d04-97f9-ae7fde88e604)# NEVERMIND
+# NEVERMIND
 20231020~20231204
 ai를 이용한 콘텐츠 속 코디 인식 및 자연어를 통한 코디 추천 서비스
 
