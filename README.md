@@ -13,7 +13,9 @@ mz세대는 자신의 취향이 확고하지만 코디 하는것에 어려워하
 
 ---
 [참고링크]
-[Github로 프로젝트 관리하기 Part3](https://cheese10yun.github.io/github-project-part3/)
+- [Github로 프로젝트 관리하기 Part3](https://cheese10yun.github.io/github-project-part3/)
+- [github 칸반, Epic 참고](https://zakelstorm.tistory.com/32)
+  - 이건 들어가서 한번 읽어보길 추천!
 # git 협업룰
 - issue발행 -> 이슈 기반 브랜치 생성 -> 깃 커밋 -> 깃 푸쉬 -> PR(풀리퀘스트작성)
 - 칸반보드, Epic 사용
