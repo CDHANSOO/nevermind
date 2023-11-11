@@ -1,4 +1,4 @@
-# NEVERMIND
+![image](https://github.com/CDHANSOO/nervermind/assets/136785138/5e6f0584-2760-4d04-97f9-ae7fde88e604)# NEVERMIND
 20231020~20231204
 ai를 이용한 콘텐츠 속 코디 인식 및 자연어를 통한 코디 추천 서비스
 
@@ -74,6 +74,14 @@ feature 브랜치는 작은 기능 단위로 쪼개어 최대 10개 미만의 �
 - feature 브랜치 생성하기
 
 ```git checkout -b feature/feature1-main```
+
+## PR 발행 후
+![image](https://github.com/CDHANSOO/nervermind/assets/136785138/4adae474-30a1-46e1-9bef-437d72ee0979)
+- reveiwer : Jung-eunwoo
+- Assignee : Assign your self
+- Projects : [CDHANSOO] NEVER MIND 선택
+  - Status : (기본) Todo, (프로젝트 진행 중이면) In progress, (완료 시, Close PR) Done
+    - 해당 PR 진행상황에 따라 유동적으로 변경
 
 ### 칸반보드란?
 ![image](https://github.com/CDHANSOO/nervermind/assets/136785138/2cfca363-1117-434d-91e5-0fa31575b8ce)
