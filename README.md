@@ -34,12 +34,10 @@ mz세대는 자신의 취향이 확고하지만 코디 하는것에 어려워하
 ![image](https://github.com/CDHANSOO/nervermind/assets/136785138/8e387c16-c984-4514-8321-fd80230a7af2)
 ### component
 ![image](https://github.com/CDHANSOO/nervermind/assets/136785138/7b839866-5166-4497-8936-a074466d503e)
-- CamelCase
-  - 첫글자는 소문자, 두번째 단어부터는 대문자
-  - phoneNumber, mainSubPage
-### 함수명
 - Pascal case
   - 카멜식이랑 비슷하지만, 첫단어를 대문자로 시작
+  - PhoneNumber, MainSubPage
+
 ### HTML/CSS (클래스 명 등)
 ![image](https://github.com/CDHANSOO/nervermind/assets/136785138/2ee9be08-4c98-4f99-905a-0a75ee3a216a)
 - kebab-case
