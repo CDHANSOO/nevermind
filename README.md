@@ -15,7 +15,7 @@ mz세대는 자신의 취향이 확고하지만 코디 하는것에 어려워하
 [참고링크]
 [Github로 프로젝트 관리하기 Part3](https://cheese10yun.github.io/github-project-part3/)
 # git 협업룰
-- issue발행 -> 브랜치 생성 -> 깃 커밋 -> 깃 푸쉬 -> PR(풀리퀘스트작성)
+- issue발행 -> 이슈 기반 브랜치 생성 -> 깃 커밋 -> 깃 푸쉬 -> PR(풀리퀘스트작성)
 - 칸반보드, Epic
 
 ## Issue 발행
