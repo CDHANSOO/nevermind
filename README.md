@@ -39,6 +39,10 @@ feature 브랜치는 작은 기능 단위로 쪼개어 최대 10개 미만의 �
 
 ```git checkout -b feature/feature1-main```
 
+### 칸반보드란?
+![image](https://github.com/CDHANSOO/nervermind/assets/136785138/2cfca363-1117-434d-91e5-0fa31575b8ce)
+
+https://velog.io/@youa7878/Github-Project-%EC%B9%B8%EB%B0%98
 
 ## 사용 기술
 - React
