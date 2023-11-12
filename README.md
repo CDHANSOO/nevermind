@@ -8,7 +8,7 @@ mz세대는 자신의 취향이 확고하지만 코디 하는것에 어려워하
 - [프로젝트 소개](#NEVERMIND)
 - [사용 기술](#사용-기술)
 - [getting start](#Getting-start)
-- [프로젝트 규칙](#docs/projectRules.md)
+- [프로젝트 규칙](docs/projectRules.md)
 
 ---
 ## 사용 기술
