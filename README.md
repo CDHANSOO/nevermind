@@ -7,10 +7,10 @@ mz세대는 자신의 취향이 확고하지만 코디 하는것에 어려워하
 # 목차 
 - [프로젝트 소개](#NEVERMIND)
 - [사용 기술](#사용-기술)
-- [getting start](#Getting-start)
-- [프로젝트 규칙](docs/projectRules.md)
+- [git 협업룰](docs/projectRules.md)
 
 ---
+
 ## 사용 기술
 - React
   - 컴포넌트 기반언어로써, 각자 맡을 기능을 구분하고 합치기 용이함. 또한 Single Page Application을 구현하여 사용자가 페이지를 이용할 때 보다 좋은 경험을 제공할 수 있어 사용하기로 함.
@@ -27,7 +27,11 @@ mz세대는 자신의 취향이 확고하지만 코디 하는것에 어려워하
 - ElasticSearch
   - 추가 예정
 
-## Getting start
-- git clone 하여 프로젝트를 받은 뒤
-- /nevermind/ < 해당 경로에서 `npm install`
-- vite를 사용하기 때문에 dev로 실행 ` npm run dev `
+## getting start
+- 프로젝트 다운 후 /nevermind/ 경로 안에서 아래 코드를 터미널에 순서대로 입력하기
+```
+npm install
+```
+```
+npm run dev
+```

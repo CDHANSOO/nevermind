@@ -1,23 +1,42 @@
-.slider-container {
-  position: relative;
-}
-
-.slider-item {
-  position: absolute;
-  left: 2px;
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
   text-align: center;
-  font-family: 'Inter';
-  font-weight: bold;
-  font-size: 2xl;
-  color: rgb(129, 227, 227);
-  opacity: 0; /* 초기에는 모든 요소를 투명하게 설정 */
-  transition: opacity 1s ease; /* 투명도를 변경하는 애니메이션 설정 */
 }
 
-.slider-item.visible {
-  opacity: 1; /* visible 클래스가 추가되면 투명도를 1로 설정하여 보이도록 함 */
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-.font{
-  font-size: 30px;
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
 }
