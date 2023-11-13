@@ -13,7 +13,7 @@ const TPO = () => {
     // 자동으로 슬라이드 변경을 위한 타이머 설정
     const intervalId = setInterval(() => {
       // 여기서 1은 각 슬라이드의 인덱스
-      // 231113 정은우 테스트
+      // 231113 정은우 테스
       setCurrentSlide((currentSlide + 1) % 5);
     }, 3000); // 3초마다 슬라이드 변경
 
