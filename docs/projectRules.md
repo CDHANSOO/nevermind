@@ -40,6 +40,8 @@ feature 브랜치는 작은 기능 단위로 쪼개어 최대 10개 미만의 �
 - feature 브랜치 생성하기
 
 ```git checkout -b feature/feature1-main```
+예시
+```feature/5-login-signin-page``` 
 
 ## PR 발행 후
 ![image](https://github.com/CDHANSOO/nervermind/assets/136785138/4adae474-30a1-46e1-9bef-437d72ee0979)
