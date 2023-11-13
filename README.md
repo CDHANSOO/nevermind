@@ -6,45 +6,10 @@ mz세대는 자신의 취향이 확고하지만 코디 하는것에 어려워하
 
 # 목차 
 - [프로젝트 소개](#NEVERMIND)
-- [git 협업룰](#git-협업룰)
-  - [issue 발생](#Issue-발행)
-  - [Feature 브랜치](#Feature-브랜치)
 - [사용 기술](#사용-기술)
+- [git 협업룰](docs/projectRules.md)
 
 ---
-[참고링크]
-- [Github로 프로젝트 관리하기 Part3](https://cheese10yun.github.io/github-project-part3/)
-- [github 칸반, Epic 참고](https://zakelstorm.tistory.com/32)
-  - 이건 들어가서 한번 읽어보길 추천!
-# git 협업룰
-- issue발행 -> 이슈 기반 브랜치 생성 -> 깃 커밋 -> 깃 푸쉬 -> PR(풀리퀘스트작성)
-- 칸반보드, Epic 사용
-
-## Issue 발행
-Issue란?
-모든것이 이슈라고 볼 수 있습니다. 새로운 추가될 가능, 개선 해야할 가능, 버그 등등 모든것이 이슈라고 볼 수 있습니다. 모든 활동 내역에 대해서 이슈를 등록하고 그 이슈기반으로 작업을 진행하게 됩니다.
-
-이슈를 등록할 때 자주 사용하는 템플릿을 등록해서 사용하는 방법이 효율적입니다. 이슈 템플릿을 등록하는 방법을 소개해드리겠습니다.
-- Assignees : 해당 작업의 담당자(본인 및 해당 파트 같이 작업하는 팀원)
-- Labels: 해당 작업의 성격
-- Milestone: 해당 작업이 속한 파트
-- Reviwer: 해당 PR Merge 승인권자, 코드리뷰 담당자(깃담당자, Jung-eunwoo 지정)
-
-
-## Feature 브랜치
-새로운 기능 개발을 위한 feature 브랜치를 생성할 때 브랜치 이름은 다음과 같은 규칙으로 생성합니다. feature 브랜치는 마지막 develop 브랜치로부터 생성합니다. 꼭 브랜치를 생성하기 전에 develop 브랜치를 pull 받습니다.
-
-`feature/{기능}`
-feature 브랜치는 작은 기능 단위로 쪼개어 최대 10개 미만의 커밋으로 구성되도록 합니다. feature 브랜치가 develop 브랜치에 성공적으로 병합되었다면 feature 브랜치는 로컬과 원격에서 삭제합니다.
-
-- feature 브랜치 생성하기
-
-```git checkout -b feature/feature1-main```
-
-### 칸반보드란?
-![image](https://github.com/CDHANSOO/nervermind/assets/136785138/2cfca363-1117-434d-91e5-0fa31575b8ce)
-
-https://velog.io/@youa7878/Github-Project-%EC%B9%B8%EB%B0%98
 
 ## 사용 기술
 - React
@@ -62,36 +27,11 @@ https://velog.io/@youa7878/Github-Project-%EC%B9%B8%EB%B0%98
 - ElasticSearch
   - 추가 예정
 
-
-
-
-
----
-
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+## getting start
+- 프로젝트 다운 후 /nevermind/ 경로 안에서 아래 코드를 터미널에 순서대로 입력하기
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+npm install
+```
+```
+npm run dev
+```
