@@ -1,0 +1,5 @@
+/* 로그인 페이지 */
+
+*{margin: 0; padding: 0;}
+
+.login .login-wrap{ width: 400px; height: 450px; border: 1px solid black;}
