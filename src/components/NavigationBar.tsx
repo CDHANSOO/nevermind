@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const NavigationBar = () => {
     return (
-        <div className="w-full h-[70px] relative fixed flex justify-items-center items-center px-8">
+        <div className="w-full h-[70px] relative fixed flex justify-items-center items-center px-8 /">
             <div className="w-auto h-auto text-neutral-800 text-2xl font-extrabold grow basis-0">
                 <Link to='/'>NEVERMIND</Link>
             </div>
