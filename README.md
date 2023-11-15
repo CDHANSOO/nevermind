@@ -8,6 +8,7 @@ mz세대는 자신의 취향이 확고하지만 코디 하는것에 어려워하
 - [프로젝트 소개](#NEVERMIND)
 - [사용 기술](#사용-기술)
 - [git 협업룰](docs/projectRules.md)
+- [getting start](#getting-start)
 
 ---
 

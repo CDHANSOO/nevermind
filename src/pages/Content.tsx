@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Content = () => {
+const Content:React.FC = () => {
     //배경 이미지 정의
     const bgimg: React.CSSProperties = {
         backgroundImage: "url('src/assets/Rectangle.png')",
@@ -48,5 +48,6 @@ const Content = () => {
         </>
     );
 };
+
 
 export default Content;

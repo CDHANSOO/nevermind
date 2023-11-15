@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Tpo = () => {
+const Tpo:React.FC = () => {
   return (
     <div>Tpo</div>
   )
