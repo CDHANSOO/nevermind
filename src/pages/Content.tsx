@@ -6,7 +6,7 @@ const Content: React.FC = () => {
         backgroundImage: "url('src/assets/Rectangle.png')",
     };
     return (
-        <>
+        <div>
             <div className="w-[full] h-screen bg-white">
                 {/* 배경이미지 */}
                 <div className="w-[full] h-full bg-cover bg-no-repeat flex justify-center items-center" style={bgimg}>
@@ -44,6 +44,8 @@ const Content: React.FC = () => {
                     </div>
                     {/* 원모양 아이콘 */}
                 </div>
+            </div>
+        </div>
 
     )
 }
