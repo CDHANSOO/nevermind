@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const dotenv = require('dotenv');
 const multer = require('multer')
+const fs = require('fs')
+
 
 dotenv.config()
 const app = express()
@@ -66,6 +68,15 @@ app.use((req, res, next)=>{
     }
 })
 
+// multer로 받아온 이미지를 업로드할 폴더 
+try{
+    fs.readdirSync('uploads');
+} catch(error){
+    console.error('uploads 폴더가 없어서 생성합니다')
+    fs.mkdirSync('uploads')
+}
+
+// 이미지 업로드를 가능하게 해주는 툴
 const upload = multer({
     storage : multer.diskStorage({
         destination(req, file, done){
@@ -91,8 +102,15 @@ app.get('/', (req, res) => {
  
 });
 
+// 이미지 업로드 미들웨어
+// upload.single (1개), upload.array(하나의 form에 여러개 파일), upload.fields(업로드하는 곳이 여러개)
+// upload.none(이미지는 없지만 enctype이 multipart/form-data일 때)
 app.get('/upload', (req,res)=>{
     res.sendFile(path.join(__dirname, './multipart.html'))
+})
+app.post('/upload', upload.fields([{name : 'image1'}, {name : 'image2'}]), (req, res)=>{
+    console.log(req.files , req.body);
+    res.send('ok')
 })
 
 app.get('/abc', (req, res) => {
