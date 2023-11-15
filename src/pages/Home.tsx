@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Home = () => {
+const Home: React.FC = () => {
   return (
     <div>
       <div className='w-[529px] h-[792px] left-[30px] top-[72px] absolute bg-[url("src/assets/main1.png")]'></div>

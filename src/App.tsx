@@ -1,16 +1,16 @@
 import React from 'react';
 import './App.css'
-import Home from './pages/Home';
 import { Route, Routes } from 'react-router-dom';
 import NavigationBar from './components/NavigationBar';
+import Home from './pages/Home';
+import Content from './pages/Content';
 import Style from './pages/Style';
 import Tpo from './pages/Tpo';
 import Sign from './pages/Sign';
-import Content from './pages/Content';
 import SignUp from './components/SignUp';
 
-function App() {
 
+const App: React.FC = () => {
   return (
     <div className='relative'>
       <NavigationBar/>
