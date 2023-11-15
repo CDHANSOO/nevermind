@@ -25,7 +25,7 @@ const Content = () => {
                     </div>
                 </div>
                 {/* 드래그 앤 드롭 영역 */}
-                <div className="absolute left-[400px] top-[100px]">
+                <div className="absolute left-[400px] top-[100px] ">
                     <div className="w-[600px] h-[600px] left-[463px] top-[132px] absolute">
                         <div className="w-[600px] h-[600px] left-0 top-0  bg-zinc-100 rounded-[19px] border border-stone-300" />
                         <div className="left-[247px] top-[323px] absolute text-center text-black text-base font-semibold font-['Pretendard Variable']">Drag and Drop</div>
@@ -43,6 +43,7 @@ const Content = () => {
                         <div className="w-[72px] h-[72px] left-0 top-0 absolute rounded-full border-2 border-purple-400" />
                     </div>
                 </div>
+                
             </div>
         </>
     );
