@@ -1,0 +1,8 @@
+.style-banner:hover .style-banner>div{
+    transition: 1s ease-out;
+    grid-column-end: 4;
+}
+.style-banner:not(:hover) {
+    transition: 1s ease-out;
+    grid-column-end: 3;
+}

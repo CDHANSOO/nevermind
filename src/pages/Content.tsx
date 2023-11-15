@@ -1,9 +1,14 @@
 import React from 'react'
 
-const Content = () => {
-  return (
-    <div>Content</div>
-  )
+const Content: React.FC = () => {
+    return (
+        <div>
+            <div>
+                <div></div>
+            </div>
+            
+        </div>
+    )
 }
 
 export default Content
