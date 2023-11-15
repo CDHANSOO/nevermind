@@ -3,15 +3,24 @@ import './App.css'
 import Home from './pages/Home';
 import { Route, Routes } from 'react-router-dom';
 import NavigationBar from './components/NavigationBar';
+import Style from './pages/Style';
+import Tpo from './pages/Tpo';
+import Sign from './pages/Sign';
+import Content from './pages/Content';
+import SignUp from './components/SignUp';
 
 function App() {
 
   return (
-    <div>
+    <div className='relative'>
       <NavigationBar/>
       <Routes>
-        <Route path='/' element={<Home />} >
-        </Route>
+        <Route path='/' element={<Home />} />
+        <Route path='/content' element={<Content />} />
+        <Route path='/style' element={<Style />} />
+        <Route path='/tpo' element={<Tpo />} />
+        <Route path='/sign' element={<Sign />} />
+        <Route path='/signUp' element={<SignUp />} />
       </Routes>
     </div>
   )
