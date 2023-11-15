@@ -1,13 +1,13 @@
 import React from 'react'
 import '../styles/Style.css'
 
-const Style = () => {
+const Style: React.FC = () => {
     return (
         <div className='px-20'>
             <div>
                 <div className='mt-8'>
                     <h2 className='text-2xl font-extrabold'>NEVERMIND</h2>
-                    <p>트렌드를 따라가는 것, 멋있는 일이지만 동시에 번거로운 일이죠.<br />
+                    <p className='text-gray-600'>트렌드를 따라가는 것, 멋있는 일이지만 동시에 번거로운 일이죠.<br />
                         놀랍도록 간단하게 실시간 인기 있는 패션들을 살펴보세요</p>
                 </div>
                 <div className='w-full h-[500px] bg-gray-300'>
@@ -15,7 +15,7 @@ const Style = () => {
             </div>
             <div className='mt-24'>
                 <h2 className='text-2xl font-extrabold mb-4'>지금 핫한 바로 그 코디</h2>
-                <div className='pr-4 flex overflow-hidden'>
+                <div className='pr-4 flex w-full overflow-auto'>
                     <div className='min-w-[25%] h-auto pr-3'>
                         <div className='aspect-[4/3] bg-gray-300 rounded-xl'></div>
                     </div>
@@ -43,7 +43,7 @@ const Style = () => {
                     <h2 className='text-2xl font-extrabold'>크리스마스에 입기 좋은 바로 그 코디</h2>
                 </div>
             </div>
-            <div className='mt-24'>
+            <div className='my-24'>
                 <div>
                     <h2 className='text-2xl font-extrabold mb-4'>셀럽들의 코디</h2>
                     <div className='mb-3 w-fit'>
@@ -67,25 +67,21 @@ const Style = () => {
                         <div className='w-full h-[2px] bg-gray-300'></div>
                     </div>
                 </div>
-                <div>
-                    <div className='w-full overflow-x'>
-                        <div className='pr-4 flex w-full overflow-auto'>
-                            <div className='min-w-[25%] h-auto pr-3'>
-                                <div className='aspect-[3/4] bg-gray-300 rounded-xl'></div>
-                            </div>
-                            <div className='min-w-[25%] h-full pr-3'>
-                                <div className='aspect-[3/4] bg-gray-300 rounded-xl'></div>
-                            </div>
-                            <div className='min-w-[25%] h-full pr-3'>
-                                <div className='aspect-[3/4] bg-gray-300 rounded-xl'></div>
-                            </div>
-                            <div className='min-w-[25%] h-full pr-3'>
-                                <div className='aspect-[3/4] bg-gray-300 rounded-xl'></div>
-                            </div>
-                            <div className='min-w-[25%] h-full pr-3'>
-                                <div className='aspect-[3/4] bg-gray-300 rounded-xl'></div>
-                            </div>
-                        </div>
+                <div className='pr-4 flex w-full overflow-auto'>
+                    <div className='min-w-[25%] h-auto pr-3'>
+                        <div className='aspect-[3/4] bg-gray-300 rounded-xl'></div>
+                    </div>
+                    <div className='min-w-[25%] h-full pr-3'>
+                        <div className='aspect-[3/4] bg-gray-300 rounded-xl'></div>
+                    </div>
+                    <div className='min-w-[25%] h-full pr-3'>
+                        <div className='aspect-[3/4] bg-gray-300 rounded-xl'></div>
+                    </div>
+                    <div className='min-w-[25%] h-full pr-3'>
+                        <div className='aspect-[3/4] bg-gray-300 rounded-xl'></div>
+                    </div>
+                    <div className='min-w-[25%] h-full pr-3'>
+                        <div className='aspect-[3/4] bg-gray-300 rounded-xl'></div>
                     </div>
                 </div>
             </div>

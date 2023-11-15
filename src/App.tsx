@@ -8,15 +8,15 @@ import Style from './pages/Style';
 import Tpo from './pages/Tpo';
 
 
-function App() {
+const App: React.FC = () => {
   return (
     <div>
-      <NavigationBar/>
+      <NavigationBar />
       <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/content' element={<Content />} />
-          <Route path='/tpo' element={<Tpo />} />
-          <Route path='/style' element={<Style />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/content' element={<Content />} />
+        <Route path='/tpo' element={<Tpo />} />
+        <Route path='/style' element={<Style />} />
       </Routes>
     </div>
   )

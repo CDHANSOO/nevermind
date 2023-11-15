@@ -1,8 +1,13 @@
 import React from 'react'
 
-const Content = () => {
+const Content: React.FC = () => {
     return (
-        <div>Content</div>
+        <div>
+            <div>
+                <div></div>
+            </div>
+            
+        </div>
     )
 }
 
