@@ -38,7 +38,7 @@ const SignUp = () => {
 
     // 이 함수를 추가하여 폼 제출을 처리합니다.
     const handleSubmit = (e :React.ChangeEvent<HTMLFormElement>) => {
-      e.preventDefault();
+      e.preventDefault(); // e.preventDefault()을 호출하면 브라우저가 폼을 제출하려고 할 때 일어나는 새로고침 등의 기본 동작이 막히게 됨
   };
 
   console.log('이메일:', email);
@@ -63,7 +63,7 @@ const SignUp = () => {
             {/* 이메일 작성 부분 */}
             <div className="ml-8 mr-8">* 이메일</div>
             <input type="email" value={email} onChange={handleEmailChange} className="w-[250px] ml-8 mb-5 border-b-2 focus:outline-none focus:border-[#b980ff]" placeholder="   E-mail" />
-            <button className="w-[80px] h-[30px] rounded-[3px] mr-8 bg-[#b980ff] text-white hover:scale-103">중복확인</button>
+            <button className="w-[80px] h-[30px] rounded-[3px] mr-8 bg-[#b980ff] text-white hover:bg-violet-400">중복확인</button>
 
             {/* 이름 작성 부분 */}
             <div className="ml-8 mr-8">* 이름</div>
