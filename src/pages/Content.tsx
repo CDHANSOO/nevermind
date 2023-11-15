@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const Content: React.FC = () => {
     //배경 이미지 정의
@@ -44,10 +44,8 @@ const Content: React.FC = () => {
                     </div>
                     {/* 원모양 아이콘 */}
                 </div>
-            </div>
-        </>
-    );
-};
 
+    )
+}
 
-export default Content;
+export default Content
