@@ -12,6 +12,12 @@ const indexRouter = require('./routes');
 const userRouter = require('./routes/user');
 const app = express();
 
+// 동적요청에 대한 응답을 보낼때 etag 를 생성하지 않도록
+app.set('etag', false);
+
+// 정적요청에 대한 응답을 보낼때 etag 생성을 하지 않도록
+const options = { etag: false };
+
 // process.env => 현재 port 아니면 3000
 app.set('port', process.env.PORT || 3000);
 
@@ -35,7 +41,7 @@ app.use(
     session({
         resave: false, // 세션에 수정사항이 없어도 저장할거야?
         saveUninitialized: false, // 세션에 저장할 내역이 없어도 생성할거야?
-        secret: process.env.COOKIE_SECRET,
+        secret: 'process.env.COOKIE_SECRET',
         cookie: {
             httpOnly: true,
             secure: false,
@@ -55,6 +61,8 @@ app.use(
         }
     })
  */
+
+// index.js
 
 app.use(
     (req, res, next) => {
@@ -107,10 +115,18 @@ app.use((req, res, next) => {
 });
 
 // error 미들 웨어
-app.use((err, req, res, next) => {
-    console.error(err);
-    res.send('error가 발생했다!!!!!');
-});
+app.use(
+    (err, req, res, next) => {
+        console.error(err);
+
+        // 에러가 발생한 경우에도 상태 코드 500을 보내기 전에 next(err)로 에러를 다음 미들웨어로 전달
+        next(err);
+    },
+    (err, req, res, next) => {
+        // 실제로 클라이언트에게 전송되는 응답
+        res.status(500).send('에러가 발생했다!!!!!');
+    },
+);
 
 app.listen(app.get('port'), () => {
     console.log(app.get('port'), '번 포트에서 대기중');
