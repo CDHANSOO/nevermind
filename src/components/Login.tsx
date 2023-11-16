@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
+
 //이메일 포멧
 // const emailRegEx = /^A-Za-z0-9@A-Za-z0-9.[A-Za-z]{2,3}$/;
 
@@ -8,11 +10,12 @@ import { Link } from 'react-router-dom';
 // const passwordRegex = /^(?=.[A-Za-z])(?=.\d)(?=.[@!%#?&])[A-Za-z\d@!%*#?&]{8,16}$/;
 
 const Login = () => {
+
   return (
     <>
       <div className='h-screen w-screen bg-[url("/src/assets/loginImg.png")] bg-cover fixed'></div>
       <div className="flex justify-center items-center h-screen relative">
-        <div className="w-[450px] h-[480px] border-2 rounded-[10px] bg-white">
+        <div className="min-w-[400px] min-h-[50%] border-2 rounded-[10px] bg-white">
           <h1 className="font-bold flex justify-center mt-8">NM</h1>
           <div className="flex justify-center ">
             <div className="m-3 text-[13px]">로그인</div>
