@@ -8,7 +8,7 @@ import CodyCristmas from '@/assets/style/cody/크리스마스-cody.jpg'
 
 const Style: React.FC = () => {
     return (
-        <div className='px-20'>
+        <div className='relative top-[70px] px-20'>
             <div>
                 <div className='mt-8'>
                     <h2 className='text-2xl font-extrabold'>NEVERMIND</h2>

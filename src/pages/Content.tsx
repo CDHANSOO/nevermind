@@ -1,4 +1,5 @@
 import React from 'react';
+// import ContentBackgoundImage from '@/assets/Rectangle.png'
 
 const Content: React.FC = () => {
     // 배경 이미지 정의
@@ -8,7 +9,9 @@ const Content: React.FC = () => {
 
     return (
         <div>
-            <div className="w-[full] h-screen bg-white">
+            {/* 배경이미지는 똑같고, 안에 컴포넌트만 달라지는 거니까, 
+            이 부분은 배경이미지를 새로 불러오는 것 vs 컴포넌트를 새로 불러오는 것 중에 나은 쪽으로 골라서 하면 될 듯 */}
+            <div className="w-[full] h-[calc(100vh+70px)] bg-white">
                 {/* 배경이미지 */}
                 <div className="w-[full] h-full bg-cover bg-no-repeat flex justify-center items-center" style={bgimg}>
                     {/* GET Trend 영역 */}
