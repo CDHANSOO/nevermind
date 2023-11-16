@@ -99,24 +99,24 @@ const SignUp = () => {
 
           <form onSubmit={handleSubmit}>
             {/* 이메일 작성 부분 */}
-            <div className="ml-8 mr-8">* 이메일</div>
+            <div className="ml-10 mr-8">이메일</div>
             <input type="email" value={email} onChange={handleEmailChange} className="w-[250px] ml-8 mb-5 border-b-2 focus:outline-none focus:border-[#b980ff]" placeholder="   E-mail" />
             <button className="w-[80px] h-[30px] rounded-[3px] mr-8 bg-[#b980ff] text-white hover:bg-violet-400">중복확인</button>
 
             {/* 이름 작성 부분 */}
-            <div className="ml-8 mr-8">* 이름</div>
+            <div className="ml-10 mr-8">이름</div>
             <input type="text" value={name} onChange={handleNameChange} className="w-[250px] ml-8 mr-8 mb-5 border-b-2 focus:outline-none focus:border-[#b980ff]" placeholder="   Name" />
 
             {/* 생년월일 작성 부분 */}
-            <div className="ml-8 mr-8">* 생년월일</div>
+            <div className="ml-10 mr-8">생년월일</div>
             <input type="date" value={birth} onChange={handleBirthChange} className="w-[250px] ml-8 mr-8 mb-5 border-b-2 focus:outline-none focus:border-[#b980ff]" placeholder="Birth" />
 
             {/* 비밀번호 작성 부분 */}
-            <div className="ml-8 mr-8">* 비밀번호</div>
+            <div className="ml-10 mr-8">비밀번호</div>
             <input type="password" value={password} onChange={handlePasswordChange} className="w-[250px] ml-8 mb-5 border-b-2 focus:outline-none focus:border-[#b980ff]" placeholder="   Password" />
 
             {/* 비밀번호 확인 작성 부분 */}
-            <div className="ml-8 mr-8">* 비밀번호 확인</div>
+            <div className="ml-10 mr-8">비밀번호 확인</div>
             <input
               type="password"
               value={passwordCheck}

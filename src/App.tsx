@@ -8,7 +8,7 @@ import Style from './pages/Style';
 import Tpo from './pages/Tpo';
 import Sign from './pages/Sign';
 import SignUp from './components/SignUp';
-import Footer from '@components/footer';
+import Footer from './components/Footer';
 
 
 const App: React.FC = () => {
