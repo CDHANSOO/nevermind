@@ -13,6 +13,7 @@ export default defineConfig({
         find: '@',
         replacement: new URL('./src', import.meta.url).pathname,
       },
+      
     ],
   },
 });
