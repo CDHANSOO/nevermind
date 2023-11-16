@@ -1,0 +1,13 @@
+// 231116
+// 작업자 : 정은우
+// 특정기호를 이용해 파일 경로를 단축하여 작성할 수 있는 내용들 추가 
+{
+    "compilerOptions": {
+      "baseUrl": "src",
+      "paths": {
+        "@assets/*": ["assets/*"],
+        "@styles/*": ["styles/*"],
+        "@components/*": ["components/*"]
+      }
+    }
+  }

@@ -7,11 +7,7 @@ const Content: React.FC = () => {
     };
 
     return (
-<<<<<<< HEAD
-        <React.Fragment>
-=======
         <div>
->>>>>>> efedfa443a56e68cc34bd893ea310fdf1596b9bd
             <div className="w-[full] h-screen bg-white">
                 {/* 배경이미지 */}
                 <div className="w-[full] h-full bg-cover bg-no-repeat flex justify-center items-center" style={bgimg}>
@@ -50,14 +46,9 @@ const Content: React.FC = () => {
                     {/* 원모양 아이콘 */}
                 </div>
             </div>
-<<<<<<< HEAD
-        </React.Fragment>
-    );
-=======
         </div>
 
     )
->>>>>>> efedfa443a56e68cc34bd893ea310fdf1596b9bd
 }
 
 export default Content;
