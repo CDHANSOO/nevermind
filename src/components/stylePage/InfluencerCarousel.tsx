@@ -79,7 +79,6 @@ const InfluencerCarousel: React.FC = () => {
                 outsideChevron
                 chevronWidth={chevronWidth}
             >
-                {/* 이 부분은 나중에 이미지 배열로 받아서 map으로 반복시키면 될 듯  */}
                 {images.map((image, index) => (
                     <div className='flex w-full overflow-auto '>
                         <div className='w-full h-auto rounded-xl'>
@@ -89,27 +88,6 @@ const InfluencerCarousel: React.FC = () => {
                         </div>
                     </div>
                 ))}
-                {/* <div className='flex w-full overflow-auto'>
-                    <div className='w-full h-auto'>
-                        <div className='aspect-[3/4] bg-gray-300 rounded-xl'></div>
-                    </div>
-                </div>
-                <div className='flex w-full overflow-auto'>
-                    <div className='w-full h-auto'>
-                        <div className='aspect-[3/4] bg-gray-300 rounded-xl'></div>
-                    </div>
-                </div>
-                <div className='flex w-full overflow-auto'>
-                    <div className='w-full h-auto'>
-                        <div className='aspect-[3/4] bg-gray-300 rounded-xl'></div>
-                    </div>
-                </div>
-                <div className='flex w-full overflow-auto'>
-                    <div className='w-full h-auto'>
-                        <div className='aspect-[3/4] bg-gray-300 rounded-xl'></div>
-                    </div>
-                </div> */}
-
             </ItemsCarousel>
         </div>
     );
