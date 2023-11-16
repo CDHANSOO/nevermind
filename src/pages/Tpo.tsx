@@ -12,7 +12,9 @@ const TPO = () => {
 
     const handleKeyEnter = e => {
         if (e.key === 'Enter') {
-            console.log('Enter Key pressed');
+            console.log('검색어:',input);
+            setInput('')
+            
         }
     };
 
@@ -71,14 +73,14 @@ const TPO = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col w-96 mt-4 space-x-4">
+                <div className="flex flex-col w-[400px] mt-4 space-x-4">
                     <input
                         className="placeholder:italic
                         placeholder:text-slate-400
                         border border-slate-300
                         block bg-white
                         w-full
-                        rounded-md py-2 pl-9 pr-3 shadow-sm
+                        rounded-full py-2 pl-9 pr-3 shadow-sm
                         focus:outline-none
                         focus:border-gray-500
                         focus:ring-gray-500 
