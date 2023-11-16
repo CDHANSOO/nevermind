@@ -10,10 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@svgr/webpack": "^8.1.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
+    "pkg": "^5.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-items-carousel": "^2.8.0",
     "react-router-dom": "^6.18.0",
     "sort-by": "^1.2.0"
   },
@@ -30,6 +33,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "nodemon": "^3.0.1",
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.5",
     "typescript": "^5.0.2",

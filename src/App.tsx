@@ -8,6 +8,7 @@ import Style from './pages/Style';
 import Tpo from './pages/Tpo';
 import Sign from './pages/Sign';
 import SignUp from './components/SignUp';
+import Footer from '@components/footer';
 
 
 const App: React.FC = () => {
@@ -22,6 +23,7 @@ const App: React.FC = () => {
         <Route path='/sign' element={<Sign />} />
         <Route path='/signUp' element={<SignUp />} />
       </Routes>
+      <Footer/>
     </div>
   )
 }

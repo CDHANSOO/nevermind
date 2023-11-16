@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 const Content: React.FC = () => {
-    //배경 이미지 정의
+    // 배경 이미지 정의
     const bgimg: React.CSSProperties = {
-        backgroundImage: "url('src/assets/Rectangle.png')",
+        backgroundImage: "url(\"src/assets/Rectangle.png\")",
     };
+
     return (
         <div>
             <div className="w-[full] h-screen bg-white">
@@ -25,7 +26,7 @@ const Content: React.FC = () => {
                         </div>
                     </div>
                     {/* 드래그 앤 드롭 영역 */}
-                    <div className=" w-[600px] h-[600px]">
+                    <div className="w-[600px] h-[600px]">
                         <div className="w-[600px] h-[600px] left-0 top-0  bg-zinc-100 rounded-[19px] border border-stone-300 p-8" >
                             <div className="w-full h-full">
                                 <div className="w-full h-full bg-purple-400 bg-opacity-10 rounded-[19px] flex flex-col justify-center items-center">
@@ -50,4 +51,4 @@ const Content: React.FC = () => {
     )
 }
 
-export default Content
+export default Content;
