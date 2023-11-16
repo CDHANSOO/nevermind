@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css';
+import { useNavigate } from 'react-router-dom';
 
 
-const TPO = () => {
+const TPO = ({ onSearch }) => {
     const [input, setInput] = useState('');
     const [currentSlide, setCurrentSlide] = useState(0);
+    const navigate = useNavigate();
 
-    const handleInput = e => {
-        setInput(e.target.value);
-    };
 
     const handleKeyEnter = e => {
         if (e.key === 'Enter') {
             console.log('검색어:',input);
             setInput('')
+            navigate('/Detail')
+            onSearch(input)
             
         }
     };
-
+    
     useEffect(() => {
         // 자동으로 슬라이드 변경을 위한 타이머 설정
         const intervalId = setInterval(() => {
@@ -64,7 +65,7 @@ const TPO = () => {
                                 {item}
                             </div>
                         ))}
-                        <div className="flex flex-col mt-4"
+                        <div className="flex flex-col mt-8"
                         style={{ color: 'white',
                         textAlign: 'center',
                         fontSize: '26px',
@@ -73,7 +74,7 @@ const TPO = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col w-[400px] mt-4 space-x-4">
+                <div className="flex flex-col w-[420px] mt-4 space-x-4">
                     <input
                         className="placeholder:italic
                         placeholder:text-slate-400
@@ -84,18 +85,19 @@ const TPO = () => {
                         focus:outline-none
                         focus:border-gray-500
                         focus:ring-gray-500 
-                        focus:ring-1 sm:text-sm"
+                        focus:ring-1 sm:text-sm
+                        font-sans"
                         placeholder="추천받고 싶은 코디 검색"
                         type="text"
                         name="search"
                         id="tpoinput"
                         value={input}
-                        onChange={handleInput}
-                        onKeyDown={handleKeyEnter}
+                        onChange={e => setInput(e.target.value)}
+                        onKeyPress={handleKeyEnter}
                     />
                 </div>
                 <div className="flex space-x-1 mt-2">
-                    <div className="flex space-x-1 mt-2">
+                    <div className="flex space-x-1 mt-1">
                         <button
                             className="w-20 h-[30px] rounded-xl flex items-center justify-center transition duration-300 ease-in-out transform hover:opacity-50"
                             style={{

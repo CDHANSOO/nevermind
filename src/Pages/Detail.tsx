@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 
-const Detail = () => {
+const Detail = ({ userInput, setUserInput  }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearch = () => {
     console.log('검색어:', searchQuery);
     setSearchQuery('');
+    setUserInput(searchQuery);
   };
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -35,11 +36,12 @@ const Detail = () => {
           </div>
           <div className="flex justify-center relative w-full">
             <img className="w-full max-w-[496px] max-h-[746px] rounded-xl" src="https://via.placeholder.com/496x746" alt="placeholder" />
+            
           </div>
         </div>
         <div className="flex items-left flex-col md:ml-10 mt-6 md:mt-0">
           <div className="mb-1 text-center md:text-left">
-            <div className="text-2xl font-extrabold font-['Pretendard']">사용자가 입력한 검색어를 여기에</div>
+            <div className="text-2xl font-extrabold font-['Pretendard']"> {userInput}</div>
             <div className="text-2xl font-normal font-['Pretendard']">에 대한 코디 추천은 다음과 같습니다.</div>
           </div>
           <div className="mt-2 mb-10 w-full md:w-[348px]">
