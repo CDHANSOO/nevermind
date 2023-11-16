@@ -82,8 +82,8 @@ const InfluencerCarousel: React.FC = () => {
                 {images.map((image, index) => (
                     <div className='flex w-full overflow-auto '>
                         <div className='w-full h-auto rounded-xl'>
-                            <div className='aspect-[3/4] bg-gray-300 rounded-xl relative'>
-                                <img src={image} alt={`Slide ${index}`} className=' absolute top-[50%] left-[50%] w-full h-full object-cover rounded-xl' style={{ transform: 'translate(-50%, -50%)' }} />
+                            <div className='aspect-[3/4] bg-gray-300 rounded-xl relative overflow-hidden'>
+                                <img src={image} alt={`Slide ${index}`} className='w-full h-full object-cover' />
                             </div>
                         </div>
                     </div>

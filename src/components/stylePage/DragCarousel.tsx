@@ -1,7 +1,27 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import ItemsCarousel from 'react-items-carousel';
+import StyleInfluencerImage01 from '@/assets/style/cody/KakaoTalk_20231115_144323229.jpg'
+import StyleInfluencerImage02 from '@/assets/style/cody/KakaoTalk_20231115_144323229_01.jpg'
+import StyleInfluencerImage03 from '@/assets/style/cody/KakaoTalk_20231115_144323229_02.jpg'
+import StyleInfluencerImage04 from '@/assets/style/cody/KakaoTalk_20231115_144323229_03.jpg'
+import StyleInfluencerImage05 from '@/assets/style/cody/KakaoTalk_20231115_144323229_04.jpg'
+import StyleInfluencerImage06 from '@/assets/style/cody/KakaoTalk_20231115_144323229_05.jpg'
+import StyleInfluencerImage07 from '@/assets/style/cody/KakaoTalk_20231115_144323229_06.jpg'
+import StyleInfluencerImage08 from '@/assets/style/cody/KakaoTalk_20231115_144323229_07.jpg'
+import StyleInfluencerImage09 from '@/assets/style/cody/KakaoTalk_20231115_144323229_08.jpg'
 
 const DragCarousel: React.FC = () => {
+  const images: string[] = [
+    StyleInfluencerImage01,
+    StyleInfluencerImage02,
+    StyleInfluencerImage03,
+    StyleInfluencerImage04,
+    StyleInfluencerImage05,
+    StyleInfluencerImage06,
+    StyleInfluencerImage07,
+    StyleInfluencerImage08,
+    StyleInfluencerImage09,
+  ];
   const [activeItemIndex, setActiveItemIndex] = useState<number>(0);
   const chevronWidth: number = 0;
 
@@ -58,33 +78,15 @@ const DragCarousel: React.FC = () => {
         outsideChevron
         chevronWidth={chevronWidth}
       >
-        {/* 이 부분은 나중에 이미지 배열로 받아서 map으로 반복시키면 될 듯  */}
-        <div className='flex w-full overflow-auto'>
-          <div className='w-full h-auto'>
-            <div className='aspect-[3/3] bg-gray-300 rounded-xl'></div>
+        {images.map((image, index) => (
+          <div className='flex w-full overflow-auto '>
+            <div className='w-full h-auto rounded-xl'>
+              <div className='aspect-[3/3] bg-gray-300 rounded-xl relative overflow-hidden'>
+                <img src={image} alt={`Slide ${index}`} className='absolute h-fit object-contain' />
+              </div>
+            </div>
           </div>
-        </div>
-        <div className='flex w-full overflow-auto'>
-          <div className='w-full h-auto'>
-            <div className='aspect-[3/3] bg-gray-300 rounded-xl'></div>
-          </div>
-        </div>
-        <div className='flex w-full overflow-auto'>
-          <div className='w-full h-auto'>
-            <div className='aspect-[3/3] bg-gray-300 rounded-xl'></div>
-          </div>
-        </div>
-        <div className='flex w-full overflow-auto'>
-          <div className='w-full h-auto'>
-            <div className='aspect-[3/3] bg-gray-300 rounded-xl'></div>
-          </div>
-        </div>
-        <div className='flex w-full overflow-auto'>
-          <div className='w-full h-auto'>
-            <div className='aspect-[3/3] bg-gray-300 rounded-xl'></div>
-          </div>
-        </div>
-
+        ))}
       </ItemsCarousel>
     </div>
   );
