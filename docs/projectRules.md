@@ -102,5 +102,5 @@ feature 브랜치는 작은 기능 단위로 쪼개어 최대 10개 미만의 �
 ## ai 코드리뷰
 - OPENAI API를 활용한 AI 코드리뷰 기능 추가
 - 사람이 일일히 코드를 확인해야 했던 기존에 비해 시간 절약 가능하여 추가함
-
+https://github.com/anc95/ChatGPT-CodeReview/blob/main/README.ko.md
 https://velog.io/@youa7878/Github-Project-%EC%B9%B8%EB%B0%98
