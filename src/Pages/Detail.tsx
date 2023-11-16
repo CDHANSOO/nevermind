@@ -4,9 +4,11 @@ const Detail = ({ userInput, setUserInput  }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearch = () => {
-    console.log('검색어:', searchQuery);
-    setSearchQuery('');
-    setUserInput(searchQuery);
+    if (searchQuery.trim() !== '') {
+      console.log('검색어:', searchQuery);
+      setSearchQuery('');
+      setUserInput(searchQuery);
+    }
   };
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {

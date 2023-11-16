@@ -2,23 +2,22 @@ import React, { useState, useEffect } from 'react';
 import '../App.css';
 import { useNavigate } from 'react-router-dom';
 
-
 const TPO = ({ onSearch }) => {
     const [input, setInput] = useState('');
     const [currentSlide, setCurrentSlide] = useState(0);
     const navigate = useNavigate();
 
-
     const handleKeyEnter = e => {
         if (e.key === 'Enter') {
-            console.log('검색어:',input);
-            setInput('')
-            navigate('/Detail')
-            onSearch(input)
-            
+            if (input.trim() !== '') {
+                console.log('검색어:', input);
+                setInput('');
+                navigate('/Detail');
+                onSearch(input);
+            }
         }
     };
-    
+
     useEffect(() => {
         // 자동으로 슬라이드 변경을 위한 타이머 설정
         const intervalId = setInterval(() => {
@@ -65,11 +64,7 @@ const TPO = ({ onSearch }) => {
                                 {item}
                             </div>
                         ))}
-                        <div className="flex flex-col mt-8"
-                        style={{ color: 'white',
-                        textAlign: 'center',
-                        fontSize: '26px',
-                        fontWeight: 'bold' }} >
+                        <div className="flex flex-col mt-8" style={{ color: 'white', textAlign: 'center', fontSize: '26px', fontWeight: 'bold' }}>
                             에 맞는 옷
                         </div>
                     </div>
