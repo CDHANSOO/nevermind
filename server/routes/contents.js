@@ -2,6 +2,7 @@ const express = require('express');
 const multer = require('multer');
 const router = express.Router();
 const dbConnector = require('../config/dbConnector');
+const path = require('path')
 /**
  * 라우트 매개변수
  * :id를 넣으면 req.params.id로 받을 수 있음
@@ -52,10 +53,10 @@ router.get('/', (req, res) => {
 // 이미지 업로드 미들웨어
 // upload.single (1개), upload.array(하나의 form에 여러개 파일), upload.fields(업로드하는 곳이 여러개)
 // upload.none(이미지는 없지만 enctype이 multipart/form-data일 때)
-router.get('/upload', (req, res) => {
-    res.sendFile(path.join(__dirname, './multipart.html'));
+router.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../multipart.html'));
 });
-router.post('/upload', upload.fields([{ name: 'image1' }, { name: 'image2' }]), (req, res) => {
+router.post('/', upload.fields([{ name: 'image1' }, { name: 'image2' }]), (req, res) => {
     console.log(req.files, req.body);
     res.send('ok');
 });
