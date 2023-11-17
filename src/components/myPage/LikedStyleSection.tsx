@@ -6,7 +6,7 @@ interface LikedSectionProps {
   likedOutfits: { category: string; date: string; }[];
   settings: Settings;
 }
-
+// 사용자가 찜한 코디
 const LikedStyleSection: React.FC<LikedSectionProps> = ({ likedOutfits, settings })=> {
   return (
     <div className="liked-clothes ">

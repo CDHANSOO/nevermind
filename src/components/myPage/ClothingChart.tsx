@@ -1,6 +1,7 @@
 import React from 'react'
 
 const ClothingChart: React.FC = () => (
+  //사용자들의 자주 찾는 스타일 표시하는 차트
     <div className="container flex flex-col items-center m-5">
     <div className="text-2xl font-bold m-5">무슨 옷을 많이 입었을까?</div>
     <div className="flex flex-row justify-center items-center">

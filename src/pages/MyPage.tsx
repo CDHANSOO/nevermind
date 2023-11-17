@@ -7,6 +7,7 @@ import LikedStyleSection from '@components/myPage/LikedStyleSection';
 import ClothingChart from '@components/myPage/ClothingChart';
 
 const MyPage: React.FC = () => {
+    //슬라이드 설정
     const settings = {
         dots: false,
         infinite: false,
@@ -16,6 +17,7 @@ const MyPage: React.FC = () => {
     };
 
     const likedOutfits = [
+        //임시적
         { category: '댄디·캐주얼', date: '2023.10.28' },
         { category: '댄디·캐주얼', date: '2023.10.28' },
         { category: '댄디·캐주얼', date: '2023.10.28' },
@@ -29,7 +31,7 @@ const MyPage: React.FC = () => {
         { category: '댄디·캐주얼', date: '2023.10.28' },
         { category: '댄디·캐주얼', date: '2023.10.28' },
         { category: '댄디·캐주얼', date: '2023.10.28' },
-        // 여기에 추가적인 데이터를 포함합니다.
+      
     ];
 
     return (
