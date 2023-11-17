@@ -46,7 +46,7 @@ const SignUp = () => {
       }
       try {
         // 서버로 POST 요청 수행
-        const response = await fetch('YOUR_SERVER_ENDPOINT', { //YOUR_SERVER_ENDPOINT에 서버로 POST 요청을 보냅니다. 이 부분은 실제 서버의 엔드포인트 주소로 대체되어야 합니다.
+        const response = await fetch('http://localhost:3000/api/data', { //YOUR_SERVER_ENDPOINT에 서버로 POST 요청을 보냅니다. 이 부분은 실제 서버의 엔드포인트 주소로 대체되어야 합니다.
           method: 'POST', // 서버에 데이터를 보내는 형식
           headers: {
             'Content-Type': 'application/json', //HTTP 요청 헤더를 설정합니다. 여기서는 'Content-Type'을 'application/json'으로 설정하여 요청이 JSON 형식의 데이터를 포함한다고 서버에 알려줍니다.
@@ -79,13 +79,13 @@ const SignUp = () => {
     
   };
 
-  console.log('이메일:', email);
-  console.log('이름:', name);
-  console.log('생년월일:', birth);
-  console.log('비밀번호:', password);
-  console.log('비밀번호 확인:', passwordCheck);
-  console.log('성별:', gender);
-  console.log('약관 동의:', agreement);
+  // console.log('이메일:', email);
+  // console.log('이름:', name);
+  // console.log('생년월일:', birth);
+  // console.log('비밀번호:', password);
+  // console.log('비밀번호 확인:', passwordCheck);
+  // console.log('성별:', gender);
+  // console.log('약관 동의:', agreement);
 
   return (
     <>

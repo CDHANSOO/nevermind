@@ -2,15 +2,15 @@ import React from 'react';
 
 const Content: React.FC = () => {
     // 배경 이미지 정의
-    const bgimg: React.CSSProperties = {
-        backgroundImage: "url(\"src/assets/Rectangle.png\")",
-    };
+    // const bgimg: React.CSSProperties = {
+    //     backgroundImage: "url(\"src/assets/Rectangle.png\")",
+    // };
 
     return (
         <div>
             <div className="w-[full] h-screen bg-white">
                 {/* 배경이미지 */}
-                <div className="w-[full] h-full bg-cover bg-no-repeat flex justify-center items-center" style={bgimg}>
+                <div className="w-[full] h-full bg-cover bg-no-repeat flex justify-center items-center bg-[url('/src/assets/loginImg.png')]">
                     {/* GET Trend 영역 */}
                     <div className=" GetTrend text-right mr-12">
                         <div className="text-neutral-100 text-9xl font-bold font-['Pretendard Variable'] leading-10 mb-[100px]">

@@ -22,6 +22,12 @@ const Detail = () => {
     { name: '새로운 상품', storeName: '새로운 상점', price: '19,900 원' },
     { name: '추가 상품', storeName: '추가 상점', price: '15,900 원' },
     { name: '더 많은 상품', storeName: '다른 상점', price: '21,500 원' },
+    { name: '블링 핫 재킷', storeName: '상점 이름', price: '17,900 원' },
+    { name: '블링 핫 재킷', storeName: '상점 이름', price: '17,900 원' },
+    { name: '블링 핫 재킷', storeName: '상점 이름', price: '17,900 원' },
+    { name: '새로운 상품', storeName: '새로운 상점', price: '19,900 원' },
+    { name: '추가 상품', storeName: '추가 상점', price: '15,900 원' },
+    { name: '더 많은 상품', storeName: '다른 상점', price: '21,500 원' },
   ];
 
   return (
@@ -54,9 +60,9 @@ const Detail = () => {
               />
             </div>
           </div>
-          <div className="w-full md:w-[347px] max-h-[400px] overflow-auto">
+          <div id='tpo-cont' className="w-full md:w-[347px] max-h-[400px] h-[400px] pr-[50px] overflow-scroll">
             {products.map((product, index) => (
-              <div key={index} className="flex justify-start w-full h-32 rounded-xl border border-zinc-300 p-4 mb-2">
+              <div key={index} className="flex justify-start w-full h-[128px] rounded-xl border border-zinc-300 p-4 mb-2">
                 <div className="flex items-center">
                   <div className="w-24 h-24 bg-zinc-300 rounded-xl mr-4"></div>
                   <div className="text-left">

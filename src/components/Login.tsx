@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-
-
+import { IoEyeOutline } from "react-icons/io5";
+import { IoEyeOffOutline } from "react-icons/io5";
+import { MdOutlineCancel } from 'react-icons/md';
 
 //이메일 포멧
 // const emailRegEx = /^A-Za-z0-9@A-Za-z0-9.[A-Za-z]{2,3}$/;
@@ -10,6 +11,26 @@ import { Link } from 'react-router-dom';
 // const passwordRegex = /^(?=.[A-Za-z])(?=.\d)(?=.[@!%#?&])[A-Za-z\d@!%*#?&]{8,16}$/;
 
 const Login = () => {
+  const [id, setId] = useState('');
+  const [delId, setDelId] = useState<boolean>(false);
+  const [viewPw, setViewPw] = useState<boolean>(false);
+  const idRef = useRef<HTMLInputElement>(null)
+
+  const viewPwhandle = () => {
+    setViewPw(!viewPw);
+  };
+
+  const delIdhandle = () => {
+    setId('');
+    setDelId(false);
+    if(!idRef.current) return;
+    idRef.current.focus()
+  };
+
+  const handleIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setId(e.target.value);
+    setDelId(!!e.target.value);
+  };
 
   return (
     <>
@@ -25,11 +46,22 @@ const Login = () => {
           </div>
           <form action="" className="flex flex-col items-center ">
             {/* ID */}
-            <input type="text" placeholder="ID" className="w-[230px] h-[32px] m-4 rounded-[5px] border" />
 
+            <div className="relative">
+              <input type="text" placeholder="ID" value={id} ref={idRef} onChange={handleIdChange} className="w-[230px] h-[32px] m-4 rounded-[5px] border p-[5px]" />
+              {delId && (
+                <span className="absolute top-[23px] right-[23px]" onClick={delIdhandle}>
+                  <MdOutlineCancel />
+                </span>
+              )}
+            </div>
             {/* Password */}
-            <input type="password" name="" placeholder="Password" className="w-[230px] h-[32px] rounded-[5px] border" />
-
+            <div className="relative">
+              <input type={viewPw ? 'text' : 'password'} name="" placeholder="Password" className="w-[230px] h-[32px] rounded-[5px] border p-[5px]" />
+              <span className="absolute top-[7px] right-[7px]" onClick={viewPwhandle}>
+                {viewPw === false ? <IoEyeOffOutline /> : <IoEyeOutline />}
+              </span>
+            </div>
             <div className="flex items-left justify-start mr-[140px] mt-2">
               <input type="checkbox" id="check" className="flex" />
               <label htmlFor="check" className="ml-2 text-[13px] ">
@@ -37,9 +69,9 @@ const Login = () => {
               </label>
             </div>
             <button type="submit" className="w-[230px] h-[32px] bg-[#b980ff] rounded-[5px] text-white hover:scale-105 duration-100 mt-6 mb-1">
-              로그인
-            </button>
-          </form>
+          로그인
+        </button>
+      </form>
           <div className="flex justify-center mt-3">
             <span className="m-2 text-[13px] hover:text-sky-600">아이디 찾기</span>
             <span className="m-2 text-[13px] hover:text-sky-600">비밀번호 찾기</span>
@@ -48,21 +80,22 @@ const Login = () => {
             <p className="text-[#949494] text-[13px] mt-6">간편로그인</p>
           </div>
           <div className="flex justify-center">
-            <a href="">
-              <div className="w-[40px] h-[40px] rounded-full m-4 hover:scale-105 duration-100">
+            <div className="w-[40px] h-[40px] rounded-full m-4 hover:scale-105 duration-100">
+              <a href="">
                 <img src="/img/naver.png" alt="" />
-              </div>
-            </a>
-            <a href="">
-              <div className="w-[40px] h-[40px] rounded-full m-4 hover:scale-105 duration-100">
+              </a>
+            </div>
+
+            <div className="w-[40px] h-[40px] rounded-full m-4 hover:scale-105 duration-100">
+              <a href="">
                 <img src="/img/google.webp" alt="" />
-              </div>
-            </a>
-            <a href="">
-              <div className="w-[40px] h-[40px] rounded-full m-4 hover:scale-105 duration-100">
+              </a>
+            </div>
+            <div className="w-[40px] h-[40px] rounded-full m-4 hover:scale-105 duration-100">
+              <a href="">
                 <img src="/img/kakao.png" alt="" />
-              </div>
-            </a>
+              </a>
+            </div>
           </div>
         </div>
       </div>

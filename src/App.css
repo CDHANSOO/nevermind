@@ -22,3 +22,7 @@ body {
   -ms-overflow-style: none; /* 인터넷 익스플로러 */
   scrollbar-width: none; /* 파이어폭스 */
 }
+
+#tpo-cont { overflow-x: hidden; }
+#tpo-cont::-webkit-scrollbar { display: block; width: 10px;}
+#tpo-cont::-webkit-scrollbar-thumb { display: block; border-radius: 5px; background: #a1a2a3; }
