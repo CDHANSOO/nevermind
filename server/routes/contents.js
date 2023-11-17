@@ -40,6 +40,8 @@ async function main() {
     } catch (err) {
         console.error('오류 발생:', err.message);
     }
+
+    
 }
 
 // get / 라우터
