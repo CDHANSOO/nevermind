@@ -1,8 +1,11 @@
 import React from 'react'
+import Detail from '../components/Detail'
 
 const Tpo:React.FC = () => {
   return (
-    <div>Tpo</div>
+    <div>
+      <Detail/>
+    </div>
   )
 }
 
