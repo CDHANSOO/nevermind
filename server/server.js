@@ -75,7 +75,7 @@ app.use(
 
 // cors 에러 처리 미들웨어
 
-const whiteList = ['http://example1.com', 'http://example2.com']; // 허용 url 리스트
+const whiteList = ['http://localhost:5173', 'http://localhost:3000']; // 허용 url 리스트
 const corsOptions = {
   origin: (origin, callback) => {
     if (whiteList.indexOf(origin) !== -1) {
