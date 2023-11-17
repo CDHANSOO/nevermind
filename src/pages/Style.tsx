@@ -5,8 +5,11 @@ import DragCarousel from '../components/stylePage/DragCarousel'
 import InfluencerCarousel from '../components/stylePage/InfluencerCarousel'
 import CodyFleece from '@/assets/style/cody/플리스-cody.jpg'
 import CodyCristmas from '@/assets/style/cody/크리스마스-cody.jpg'
+import InfluencerBannerString from '@components/stylePage/InfluencerBannerString'
+
 
 const Style: React.FC = () => {
+
     return (
         <div className='absolute w-full h-[calc(100vh-70px)] top-[70px] px-20'>
             <div className='relative'>
@@ -16,7 +19,7 @@ const Style: React.FC = () => {
                         <p className='text-gray-600'>트렌드를 따라가는 것, 멋있는 일이지만 동시에 번거로운 일이죠.<br />
                             놀랍도록 간단하게 실시간 인기 있는 패션들을 살펴보세요</p>
                     </div>
-                    <SimpleCarousel></SimpleCarousel>
+                    <SimpleCarousel/>
                 </div>
                 <div className='mt-24'>
                     <h2 className='text-2xl font-extrabold mb-4'>지금 핫한 바로 그 코디</h2>
@@ -37,29 +40,7 @@ const Style: React.FC = () => {
                     </div>
                 </div>
                 <div className='my-24'>
-                    <div>
-                        <h2 className='text-2xl font-extrabold mb-4'>셀럽들의 코디</h2>
-                        <div className='mb-3 w-fit'>
-                            <ul className='inline-flex justify-start items-start gap-3'>
-                                <li className='text-base font-bold'>
-                                    인플루언서
-                                </li>
-                                <li className='text-base font-bold'>
-                                    걸그룹
-                                </li>
-                                <li className='text-base font-bold'>
-                                    보이그룹
-                                </li>
-                                <li className='text-base font-bold'>
-                                    유명인
-                                </li>
-                                <li className='text-base font-bold'>
-                                    연예인
-                                </li>
-                            </ul>
-                            <div className='w-full h-[2px] bg-gray-300'></div>
-                        </div>
-                    </div>
+                    <InfluencerBannerString bannerText='셀럽들의 코디'/>
                     <InfluencerCarousel />
                 </div>
             </div>
