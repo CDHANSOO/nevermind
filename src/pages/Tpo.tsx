@@ -6,7 +6,6 @@ const Tpo = ({ onSearch }) => {
     const [input, setInput] = useState('');
     const [currentSlide, setCurrentSlide] = useState(0);
     const navigate = useNavigate();
-
     const handleKeyEnter = e => {
         if (e.key === 'Enter') {
             if (input.trim() !== '') {
