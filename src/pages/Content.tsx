@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
 
 const Content: React.FC = () => {
-    //배경 이미지 정의
+    // 배경 이미지 정의
     const bgimg: React.CSSProperties = {
-        backgroundImage: "url('src/assets/Rectangle.png')",
+        backgroundImage: "url(\"src/assets/Rectangle.png\")",
     };
     const inputRef = useRef<HTMLInputElement | null>(null);
     // 드래그 앤 드롭 이벤트 처리

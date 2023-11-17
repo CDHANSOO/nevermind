@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Content from './pages/Content';
 import Style from './pages/Style';
 import Tpo from './pages/Tpo';
+import Footer from '@components/footer';
 
 
 const App: React.FC = () => {
@@ -18,6 +19,7 @@ const App: React.FC = () => {
         <Route path='/tpo' element={<Tpo />} />
         <Route path='/style' element={<Style />} />
       </Routes>
+      <Footer/>
     </div>
   )
 }
