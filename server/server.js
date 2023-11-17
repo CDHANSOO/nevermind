@@ -37,6 +37,7 @@ app.use(express.json());
 // form submit할때 parsing해줌
 app.use(express.urlencoded({ extended: true }));
 // session 설정
+
 app.use(
     session({
         resave: false, // 세션에 수정사항이 없어도 저장할거야?
