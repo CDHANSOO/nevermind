@@ -65,4 +65,4 @@ const Style: React.FC = () => {
     )
 }
 
-export default Style
+export default Style;

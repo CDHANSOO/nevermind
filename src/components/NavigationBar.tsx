@@ -15,13 +15,11 @@ const NavigationBar: React.FC = () => {
                     <Link to='/content'>콘텐츠 코디</Link></div>
                 <div className="text-neutral-800 text-base font-normal ">
                     <Link to='/tpo'>TPO 추천</Link></div>
-
                 <div className="text-neutral-800 text-base font-normal ">
                     <Link to='/style'>스타일</Link></div>
             </div>
 
-            <div className="text-neutral-800 text-base font-normal grow text-end basis-0">
-                <Link to={'/contentdetail'}>SIGN IN</Link></div>
+            <div className="text-neutral-800 text-base font-normal grow text-end basis-0">SIGN IN</div>
         </div >
     )
 }
