@@ -10,6 +10,12 @@ const fs = require('fs');
 dotenv.config();
 const indexRouter = require('./routes');
 const userRouter = require('./routes/user');
+const joinRouter = require('./routes/join')
+const loginRouter = require('./routes/login')
+const styleRouter = require('./routes/style')
+const tpoRouter = require('./routes/tpo')
+const contentsRouter = require('./routes/contents')
+
 const app = express();
 
 // 동적요청에 대한 응답을 보낼때 etag 를 생성하지 않도록
@@ -108,6 +114,11 @@ const upload = multer({
 // 인덱스 라우터 처리
 app.use('/', indexRouter);
 app.use('/user', userRouter);
+app.use('/join', joinRouter)
+app.use('/login', loginRouter)
+app.use('/style', styleRouter)
+app.use('/contents', contentsRouter)
+app.use('/tpo', tpoRouter)
 
 // 404 처리 미들 웨어
 app.use((req, res, next) => {
