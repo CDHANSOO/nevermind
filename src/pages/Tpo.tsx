@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../App.css';
 import { useNavigate } from 'react-router-dom';
 
-const TPO = ({ onSearch }) => {
+const Tpo = ({ onSearch }) => {
     const [input, setInput] = useState('');
     const [currentSlide, setCurrentSlide] = useState(0);
     const navigate = useNavigate();
@@ -175,4 +175,4 @@ const TPO = ({ onSearch }) => {
     );
 };
 
-export default TPO;
+export default Tpo;
