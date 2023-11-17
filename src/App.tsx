@@ -8,13 +8,13 @@ import Style from './pages/Style';
 import Tpo from './pages/Tpo';
 import Sign from './pages/Sign';
 import SignUp from './components/SignUp';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 import ContentDetail from 'pages/ContentDetail';
 
 
 const App: React.FC = () => {
   return (
-    <div className='relative'>
+    <div>
       <NavigationBar/>
       <Routes>
         <Route path='/' element={<Home />} />
@@ -25,7 +25,7 @@ const App: React.FC = () => {
         <Route path='/sign' element={<Sign />} />
         <Route path='/signup' element={<SignUp />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }

@@ -5,7 +5,7 @@ const NavigationBar: React.FC = () => {
     return (
         // 231116 정은우
         // 각 페이지별로 전역저장소에 저장된 mode변수 값을 바꾸게 하고 해당 값에 따라, dark/white 모드 변경되도록 수정해야할 듯 
-        <div className="w-full h-[70px] fixed flex justify-items-center items-center px-8 realative z-[100]/">
+        <div className="w-full h-[70px] fixed flex justify-items-center items-center px-8 realative z-[100] top-[70px]/">
             <div className="w-auto h-auto text-neutral-800 text-2xl font-extrabold grow basis-0">
                 <Link to='/'>NEVERMIND</Link>
             </div>

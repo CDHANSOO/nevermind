@@ -25,7 +25,7 @@ const SimpleCarousel: React.FC = () => {
   return (
     // 231116 정
     // 화면 배율을 90% 이하로 줄였을 때, 우측 공간이 남는 문제 발생. 추후 수정 예정
-    <div className='style-slider flex overflow-hidden relative'>
+    <div className='style-slider flex overflow-hidden relative z-10'>
       <div className='flex transition-transform' style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
         {images.map((image, index) => (
           <div
