@@ -6,6 +6,9 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const multer = require('multer');
 const fs = require('fs');
+const cors = require('cors');
+const app = express();
+
 
 dotenv.config();
 const indexRouter = require('./routes');
@@ -16,7 +19,6 @@ const styleRouter = require('./routes/style')
 const tpoRouter = require('./routes/tpo')
 const contentsRouter = require('./routes/contents')
 
-const app = express();
 
 // 동적요청에 대한 응답을 보낼때 etag 를 생성하지 않도록
 app.set('etag', false);
@@ -70,6 +72,22 @@ app.use(
  */
 
 // index.js
+
+// cors 에러 처리 미들웨어
+
+const whiteList = ['http://example1.com', 'http://example2.com']; // 허용 url 리스트
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (whiteList.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not Allowed by CORS')); // 없으면 거부
+    }
+  }
+};
+
+app.use(cors(corsOptions));
+
 
 app.use(
     (req, res, next) => {
