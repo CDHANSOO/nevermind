@@ -7,7 +7,7 @@ import Content from './pages/Content';
 import Style from './pages/Style';
 import Tpo from './pages/Tpo';
 import ContentDetail from 'pages/ContentDetail';
-import Footer from '@components/footer';
+import Footer from '@components/Footer';
 
 
 const App: React.FC = () => {
@@ -21,7 +21,7 @@ const App: React.FC = () => {
         <Route path='/style' element={<Style />} />
         <Route path='/contentdetail' element={<ContentDetail />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   )
 }
