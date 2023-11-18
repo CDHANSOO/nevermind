@@ -70,10 +70,4 @@ router.get('/abc', async (req, res) => {
     // res.writeHead(200 , {}) 응답하고 writeHead 해도 오류!!!
 });
 
-router.get('/', (req, res) => {
-    res.json({ hello: 'Hansu' });
-    // res.json은 return이 아니다 => 아래 콘솔도 실행됨!!
-    console.log('hello hansu');
-});
-
 module.exports = router;

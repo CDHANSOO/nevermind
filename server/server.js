@@ -35,7 +35,7 @@ app.set('port', process.env.PORT || 3000);
 app.use(morgan('dev')); // 개발시엔 dev, 배포시엔 combined
 
 // 정적인 파일들을 제공하는 라우터 (public)folder에 넣고 정적 파일들을 불러오자! 요청경로 ,실제경로
-app.use('/', express.static(path.join(__dirname, 'public'))); // 끝
+app.use('/', express.static(path.join(__dirname, 'public', 'index.html'))); // 끝
 
 
 // cors 에러 처리 미들웨어
