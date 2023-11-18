@@ -8,8 +8,8 @@ const SimpleCarousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   const images: string[] = [
-    StyleTopBannerImg01,
     StyleTopBannerImg02,
+    StyleTopBannerImg01,
     StyleTopBannerImg03,
     StyleTopBannerImg04,
   ];
