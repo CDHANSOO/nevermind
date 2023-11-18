@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ContentBackgoundImg from '@assets/Rectangle.png'
 
 const Content: React.FC = () => {
     const [file, setFile] = useState<File | null>(null);
@@ -8,7 +9,7 @@ const Content: React.FC = () => {
 
     // 배경 이미지 정의
     const bgimg: React.CSSProperties = {
-        backgroundImage: "url(\"src/assets/Rectangle.png\")",
+        backgroundImage: `url(${ContentBackgoundImg})`,
     };
     // 드래그 앤 드롭 이벤트 처리
     const handleDragEnter = (e: React.DragEvent<HTMLFormElement>) => {
@@ -27,7 +28,7 @@ const Content: React.FC = () => {
     const handleDrop = (e: React.DragEvent<HTMLFormElement>) => {
         e.preventDefault();
         const droppedFiles = e.dataTransfer.files;
-    
+
         if (droppedFiles.length > 0) {
             const droppedFile = droppedFiles[0];
             setFile(droppedFile); // File 객체 직접 전달

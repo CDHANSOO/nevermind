@@ -2,11 +2,16 @@ import React, { useState, useEffect } from 'react';
 import '../App.css';
 import { useNavigate } from 'react-router-dom';
 
-const Tpo = ({ onSearch }) => {
+
+interface TpoProps {
+    onSearch: (searchTerm: string) => void; // 검색어를 인자로 받는 함수 타입 지정
+}
+
+const Tpo: React.FC<TpoProps> = ({ onSearch }) => {
     const [input, setInput] = useState('');
     const [currentSlide, setCurrentSlide] = useState(0);
     const navigate = useNavigate();
-    const handleKeyEnter = e => {
+    const handleKeyEnter = (e: React.KeyboardEvent) => {
         if (e.key === 'Enter') {
             if (input.trim() !== '') {
                 console.log('검색어:', input);

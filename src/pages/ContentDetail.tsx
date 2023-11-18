@@ -5,12 +5,9 @@ import SvgSad from '@components/contentPage/SvgSad';
 import SvgRollingEyes from '@components/contentPage/SvgRollingEyes';
 import Product from '@components/contentPage/Product';
 
-interface LocationState {
-    file: File;
-}
 
 const ContentDetail: React.FC = () => {
-    const location = useLocation<LocationState>();
+    const location = useLocation();
     const file = location.state?.file;
     const fileUrl = file ? URL.createObjectURL(file) : '';
 
@@ -35,7 +32,7 @@ const ContentDetail: React.FC = () => {
                                     <p className='text-white text-xl font-normal'>고객이 업로드한 파일 이름</p>
                                 </div>
                                 <div className='mt-14'>
-                                    <Product/>
+                                    <Product />
                                     {/* <div className='w-[150px] h-auto aspect-[5/6] bg-gray-300 rounded-xl'></div> */}
                                 </div>
                             </div>

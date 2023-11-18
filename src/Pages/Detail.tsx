@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 
-const Detail = ({ userInput, setUserInput  }) => {
+interface DetailProps {
+  userInput: string;
+  setUserInput: React.Dispatch<React.SetStateAction<string>>;
+}
+
+
+const Detail:React.FC<DetailProps> = ({ userInput, setUserInput  }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearch = () => {

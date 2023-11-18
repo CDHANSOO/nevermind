@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 
-const Detail = () => {
+// pages에 있는 Detail.tsx와 다른 것이 뭔지 알 수 있을까요?
+
+
+const Detail: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearch = () => {
