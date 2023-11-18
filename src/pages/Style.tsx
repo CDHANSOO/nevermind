@@ -37,6 +37,7 @@ const Style: React.FC = () => {
                             <img src={CodyCristmas} className='w-full h-full object-cover' />
                         </div>
                         <h2 className='text-2xl font-extrabold'>크리스마스에 입기 좋은 코디</h2>
+
                     </div>
                 </div>
                 <div className='my-24'>
