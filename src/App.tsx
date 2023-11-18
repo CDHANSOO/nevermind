@@ -12,7 +12,6 @@ import Sign from './pages/Sign';
 import SignUp from './components/SignUp';
 import ContentDetail from 'pages/ContentDetail';
 
-
 const App: React.FC = () => {
   const [userInput, setUserInput] = useState('');
   return (
