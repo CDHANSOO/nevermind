@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Content: React.FC = () => {
-    const [file, setFile] = useState<File | null>(null);
+
     const inputRef = useRef<HTMLInputElement | null>(null);
     const navigate = useNavigate();
 
@@ -27,21 +27,25 @@ const Content: React.FC = () => {
     const handleDrop = (e: React.DragEvent<HTMLFormElement>) => {
         e.preventDefault();
         const droppedFiles = e.dataTransfer.files;
-    
+
         if (droppedFiles.length > 0) {
-            const droppedFile = droppedFiles[0];
-            setFile(droppedFile); // File 객체 직접 전달
-            navigate('/contentdetail', { state: { file } });
+            const file = droppedFiles[0];
+            handleFileChange(file);
         }
+        // 드래그 영역 스타일 초기화
         e.currentTarget.classList.remove('file-dragging');
     };
+    // 선택된 파일 처리 함수
+    // const handleFileChange = (file: File) => {
+    //     // 파일 처리 로직을 추가해야함
+    //     console.log('Selected file:', file);
+    // };
+
     // 231117 정 : 받은 파일을 ContentDetail에서 보여주기(임시)
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFile = event.target.files?.[0];
         if (selectedFile) {
-            setFile(selectedFile); // File 객체 직접 전달
             navigate('/contentdetail', { state: { file: selectedFile } });
-            console.log(file)
         }
     };
 
