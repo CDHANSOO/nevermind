@@ -47,17 +47,13 @@ async function main() {
 // get / 라우터
 // 라우터들
 // 주의점 : 한 라우터에 res.send or res.json같은게 2번이상 나와선 안된다. 한번씩만!!!
-router.get('/', (req, res) => {
-    // 개인의 저장공간
-    res.json({ hello: 'Hansu' });
-});
 
 // 이미지 업로드 미들웨어
 // upload.single (1개), upload.array(하나의 form에 여러개 파일), upload.fields(업로드하는 곳이 여러개)
 // upload.none(이미지는 없지만 enctype이 multipart/form-data일 때)
 router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../multipart.html'));
-});
+    res.sendFile(path.join(__dirname, '../compiledComponent/Content.js')); // 수정된 부분
+  });
 router.post('/', upload.fields([{ name: 'image1' }, { name: 'image2' }]), (req, res) => {
     console.log(req.files, req.body);
     res.send('ok');
