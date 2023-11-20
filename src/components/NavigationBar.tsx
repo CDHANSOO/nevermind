@@ -27,7 +27,7 @@ const NavigationBar: React.FC = () => {
             backgroundColor: backgroundColor,
             transition: 'background-color 0.3s ease' // 여기에 transition 추가
         }}
-            className="w-full h-[70px] fixed flex justify-items-center items-center px-8 realative z-[100]"
+            className="w-full h-[70px] fixed flex justify-items-center items-center px-8 z-[100]"
         >
             <div className="w-auto h-auto text-neutral-800 text-2xl font-extrabold grow basis-0">
                 <Link to='/'>NEVERMIND</Link>
@@ -37,7 +37,7 @@ const NavigationBar: React.FC = () => {
                 <div className="text-neutral-800 text-base font-normal ">
                     <Link to='/content'>콘텐츠 코디</Link></div>
                 <div className="text-neutral-800 text-base font-normal ">
-                    <Link to='/top'>TPO 추천</Link></div>
+                    <Link to='/tpo'>TPO 추천</Link></div>
                 <div className="text-neutral-800 text-base font-normal ">
                     <Link to='/style'>스타일</Link></div>
             </div>
