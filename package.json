@@ -10,10 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "@svgr/webpack": "^8.1.0",
-=======
->>>>>>> ca1f5cb6638198d4891c0826e190b4e19f2d6de4
     "@types/react-slick": "^0.23.12",
     "g": "^2.0.1",
     "dotenv": "^16.3.1",
