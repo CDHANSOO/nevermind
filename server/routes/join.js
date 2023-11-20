@@ -20,7 +20,7 @@ async function main() {
     // 쿼리 결과 출력
     console.log('쿼리 결과:', result.rows[0]);
 
-    //
+    // 회원가입 로직
 
     // 작업이 끝난 후 연결을 종료
     await connection.close();
