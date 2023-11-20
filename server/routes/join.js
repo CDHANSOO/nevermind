@@ -16,17 +16,20 @@ async function join(req, res) {
     // 데이터베이스 작업 수행...
     // 회원가입 로직...
     // DB에 아이디가 이미 존재하는지 확인
-    const result = await connection.execute(`SELECT count(*) FROM T_USER WHERE USER_ID = :email`, [email]);
+    const result = await connection.execute(`SELECT * FROM T_USER WHERE USER_ID = :email`, [email]);
 
     console.log('쿼리 결과:', result.rows[0]);
     console.log(req.body);
 
     // 회원가입 로직
     if (result.rows.length > 0) {
-      alert('이미 있는 아이디입니다.');
+      console.log('if 문 실행');
+      res.json({ id_duplication: true });
     } else if (password !== passwordCheck) {
-      alert('비밀번호가 동일하지 않습니다.');
+      console.log('else if 문 실행');
+      res.send('비밀번호 달라');
     } else {
+      console.log('else문 실행');
       // 회원가입 로직 (바인드 변수 사용)
       await connection.execute(
         `INSERT INTO T_USER (
