@@ -1,26 +1,14 @@
-import React, { useState, FC } from 'react';
+import React, { useState } from 'react';
+
+// pages에 있는 Detail.tsx와 다른 것이 뭔지 알 수 있을까요?
 
 
-interface Product {
-  name: string;
-  storeName: string;
-  price: string;
-}
-
-interface DetailProps {
-  userInput: string;
-  setUserInput: (input: string) => void;
-}
-
-const Detail: FC<DetailProps> = ({ userInput, setUserInput }) => {
-  const [searchQuery, setSearchQuery] = useState<string>('');
+const Detail: React.FC = () => {
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearch = () => {
-    if (searchQuery.trim() !== '') {
-      console.log('검색어:', searchQuery);
-      setSearchQuery('');
-      setUserInput(searchQuery);
-    }
+    console.log('검색어:', searchQuery);
+    setSearchQuery('');
   };
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -29,7 +17,8 @@ const Detail: FC<DetailProps> = ({ userInput, setUserInput }) => {
     }
   };
 
-  const products: Product[] = [
+  // 상품 데이터
+  const products = [
     { name: '블링 핫 재킷', storeName: '상점 이름', price: '17,900 원' },
     { name: '블링 핫 재킷', storeName: '상점 이름', price: '17,900 원' },
     { name: '블링 핫 재킷', storeName: '상점 이름', price: '17,900 원' },
@@ -39,7 +28,7 @@ const Detail: FC<DetailProps> = ({ userInput, setUserInput }) => {
   ];
 
   return (
-   <div className="h-screen w-full bg-white">
+    <div className="h-screen w-full bg-white">
       <div className="flex items-center justify-center h-full">
         <div className="flex flex-col">
           <div className="flex justify-center mb-3">
@@ -48,13 +37,12 @@ const Detail: FC<DetailProps> = ({ userInput, setUserInput }) => {
             <div className="w-[14.88px] h-[15px] ml-1 bg-yellow-100 rounded-full" />
           </div>
           <div className="flex justify-center relative w-full">
-            <img className="w-[430px] max-w-[496px] max-h-[746px] rounded-xl" src="https://via.placeholder.com/496x746" alt="placeholder" />
-            
+            <img className="w-full max-w-[496px] max-h-[746px] rounded-xl" src="https://via.placeholder.com/496x746" alt="placeholder" />
           </div>
         </div>
         <div className="flex items-left flex-col md:ml-10 mt-6 md:mt-0">
           <div className="mb-1 text-center md:text-left">
-            <div className="text-2xl font-extrabold font-['Pretendard']"> {userInput}</div>
+            <div className="text-2xl font-extrabold font-['Pretendard']">사용자가 입력한 검색어를 여기에</div>
             <div className="text-2xl font-normal font-['Pretendard']">에 대한 코디 추천은 다음과 같습니다.</div>
           </div>
           <div className="mt-2 mb-10 w-full md:w-[348px]">

@@ -1,55 +1,53 @@
-import React, { useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import ContentBackgoundImg from '@assets/Rectangle.png'
-
-const Content: React.FC = () => {
-    const [file, setFile] = useState<File | null>(null);
-    const inputRef = useRef<HTMLInputElement | null>(null);
-    const navigate = useNavigate();
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var react_1 = require("react");
+var react_router_dom_1 = require("react-router-dom");
+var Rectangle_png_1 = require("@assets/Rectangle.png");
+var Content = function () {
+    var _a = (0, react_1.useState)(null), file = _a[0], setFile = _a[1];
+    var inputRef = (0, react_1.useRef)(null);
+    var navigate = (0, react_router_dom_1.useNavigate)();
     // 배경 이미지 정의
-    const bgimg: React.CSSProperties = {
-        backgroundImage: `url(${ContentBackgoundImg})`,
+    var bgimg = {
+        backgroundImage: "url(".concat(Rectangle_png_1.default, ")"),
     };
     // 드래그 앤 드롭 이벤트 처리
-    const handleDragEnter = (e: React.DragEvent<HTMLFormElement>) => {
+    var handleDragEnter = function (e) {
         e.preventDefault();
         e.currentTarget.classList.add('file-dragging');
     };
     // 드래그 앤 드롭 영역을 떠났을 때의 처리 함수
-    const handleDragLeave = (e: React.DragEvent<HTMLFormElement>) => {
+    var handleDragLeave = function (e) {
         e.currentTarget.classList.remove('file-dragging');
     };
     // 드래그 이벤트에 대한 기본 동작을 막기 위한 처리 함수
-    const handleDragOver = (e: React.DragEvent<HTMLFormElement>) => {
+    var handleDragOver = function (e) {
         e.preventDefault();
     };
     // 파일이 드랍되었을때의 처리 함수
-    const handleDrop = (e: React.DragEvent<HTMLFormElement>) => {
+    var handleDrop = function (e) {
         e.preventDefault();
-        const droppedFiles = e.dataTransfer.files;
-
+        var droppedFiles = e.dataTransfer.files;
         if (droppedFiles.length > 0) {
-            const droppedFile = droppedFiles[0];
+            var droppedFile = droppedFiles[0];
             setFile(droppedFile); // File 객체 직접 전달
-            navigate('/contentdetail', { state: { file } });
+            navigate('/contentdetail', { state: { file: file } });
         }
         e.currentTarget.classList.remove('file-dragging');
     };
     // 231117 정 : 받은 파일을 ContentDetail에서 보여주기(임시)
-    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const selectedFile = event.target.files?.[0];
+    var handleFileChange = function (event) {
+        var _a;
+        var selectedFile = (_a = event.target.files) === null || _a === void 0 ? void 0 : _a[0];
         if (selectedFile) {
             setFile(selectedFile); // File 객체 직접 전달
             navigate('/contentdetail', { state: { file: selectedFile } });
-            console.log(file)
+            console.log(file);
         }
     };
-
-    return (
-        <div>
-            {/* 배경이미지는 똑같고, 안에 컴포넌트만 달라지는 거니까, 
-            이 부분은 배경이미지를 새로 불러오는 것 vs 컴포넌트를 새로 불러오는 것 중에 나은 쪽으로 골라서 하면 될 듯 */}
+    return (<div>
+            {/* 배경이미지는 똑같고, 안에 컴포넌트만 달라지는 거니까,
+        이 부분은 배경이미지를 새로 불러오는 것 vs 컴포넌트를 새로 불러오는 것 중에 나은 쪽으로 골라서 하면 될 듯 */}
             <div className="w-full h-[100vh] bg-white">
                 {/* 배경이미지 */}
                 <div className="relative w-full h-full bg-cover bg-no-repeat" style={bgimg}>
@@ -77,11 +75,11 @@ const Content: React.FC = () => {
                                         <form className="w-full h-full bg-purple-400 bg-opacity-10 rounded-[19px] flex flex-col justify-center items-center" id="clothForm" onDragEnter={handleDragEnter} onDragLeave={handleDragLeave} onDragOver={handleDragOver} onDrop={handleDrop}>
                                             <label className="block" htmlFor="clothPhotoInput">
                                                 <span className="sr-only">사진 선택</span>
-                                                <input type="file" className="hidden " id="clothPhotoInput" accept="image/*" onChange={handleFileChange} ref={inputRef} />
+                                                <input type="file" className="hidden " id="clothPhotoInput" accept="image/*" onChange={handleFileChange} ref={inputRef}/>
                                             </label>
 
                                             <div className="w-[72px] h-[72px] mb-3">
-                                                <div className="w-[72px] h-[72px] rounded-full border-2 border-purple-400" />
+                                                <div className="w-[72px] h-[72px] rounded-full border-2 border-purple-400"/>
                                             </div>
                                             <div className="text-center text-black text-base font-semibold font-['Pretendard Variable']">Drag and Drop</div>
                                             <div className="text-center text-zinc-800 text-xs font-normal font-['Pretendard Variable'] leading-[14px]">
@@ -98,8 +96,6 @@ const Content: React.FC = () => {
 
                 </div>
             </div>
-        </div>
-    );
+        </div>);
 };
-
-export default Content;
+exports.default = Content;
