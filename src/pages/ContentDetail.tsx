@@ -24,6 +24,7 @@ const ContentDetail: React.FC = () => {
                             <div className='w-full h-full rounded-xl bg-gray-400'>
                                 {file && <img src={fileUrl} alt="Uploaded" className='w-full h-full' />}
                             </div>
+
                         </div>
                         <div className='h-full flex flex-col justify-between'>
                             <div>
@@ -43,6 +44,7 @@ const ContentDetail: React.FC = () => {
                                     <SvgSad />
                                     <SvgRollingEyes />
                                 </div>
+
                             </div>
                         </div>
                     </div>
