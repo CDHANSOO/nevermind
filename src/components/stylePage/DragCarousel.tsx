@@ -81,7 +81,7 @@ const DragCarousel: React.FC = () => {
         {images.map((image, index) => (
           <div className='flex w-full overflow-auto '>
             <div className='w-full h-auto rounded-xl'>
-              <div className='aspect-[3/3] bg-gray-300 rounded-xl relative overflow-hidden'>
+              <div className='aspect-[4/3] bg-gray-300 rounded-xl relative overflow-hidden'>
                 <img src={image} alt={`Slide ${index}`} className='absolute h-fit object-contain' />
               </div>
             </div>
