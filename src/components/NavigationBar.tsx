@@ -42,7 +42,8 @@ const NavigationBar: React.FC = () => {
                     <Link to='/style'>스타일</Link></div>
             </div>
 
-            <div className="text-neutral-800 text-base font-normal grow text-end basis-0">SIGN IN</div>
+            <div className="text-neutral-800 text-base font-normal grow text-end basis-0">
+                <Link to='/mypage'>SIGN IN</Link></div>
         </div >
     )
 }

@@ -12,6 +12,7 @@ import Detail from './Pages/Detail';
 import Sign from './pages/Sign';
 import SignUp from './components/SignUp';
 import ContentDetail from 'pages/ContentDetail';
+import MyPage from 'pages/MyPage';
 
 const App: React.FC = () => {
     const [userInput, setUserInput] = useState('');
@@ -27,6 +28,7 @@ const App: React.FC = () => {
         <Route path='/style' element={<Style />} />
         <Route path='/sign' element={<Sign />} />
         <Route path='/signup' element={<SignUp />} />
+        <Route path='/mypage' element={<MyPage />} />
       </Routes>
       <Footer/>
     </div>
