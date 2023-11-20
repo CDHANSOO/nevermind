@@ -9,24 +9,44 @@ const path = require('path');
  * querystring = req.query
  */
 
-async function main() {
+async function join(req, res) {
   try {
     const connection = await dbConnector.dbConnect();
+    let { email, password, name, nick, birth, gender, passwordCheck } = req.body;
+    // 데이터베이스 작업 수행...
+    // 회원가입 로직...
+    // DB에 아이디가 이미 존재하는지 확인
+    const result = await connection.execute(`SELECT count(*) FROM T_USER WHERE USER_ID = :email`, [email]);
 
-    // 여기서 데이터베이스 작업 수행
-    // 간단한 SELECT 쿼리 실행
-    const result = await connection.execute('SELECT ID FROM T_USER');
-
-    // 쿼리 결과 출력
     console.log('쿼리 결과:', result.rows[0]);
+    console.log(req.body);
 
     // 회원가입 로직
+    if (result.rows.length > 0) {
+      alert('이미 있는 아이디입니다.');
+    } else if (password !== passwordCheck) {
+      alert('비밀번호가 동일하지 않습니다.');
+    } else {
+      // 회원가입 로직 (바인드 변수 사용)
+      await connection.execute(
+        `INSERT INTO T_USER (
+            USER_ID, USER_PW, USER_SALT, USER_NAME, USER_NICK, USER_GENDER, USER_BIRTH, USER_JOINDATE
+           ) VALUES (
+            :email, :password, :passwordCheck, :name, :nick, :gender, TO_DATE(:birth, 'YYYY-MM-DD'),  SYSDATE
+           ) 
+           `,
+        [email, password, passwordCheck, name, nick, gender, birth],
+        { autoCommit: true },
+      );
+      console.log('회원가입 성공');
+    }
 
     // 작업이 끝난 후 연결을 종료
     await connection.close();
     console.log('DB 연결 종료 성공!');
   } catch (err) {
     console.error('오류 발생:', err.message);
+    res.status(500).send('서버 오류');
   }
 }
 
@@ -38,6 +58,11 @@ router.get('/', (req, res) => {
   res.json({ hello: 'Hansu' });
   // res.json은 return이 아니다 => 아래 콘솔도 실행됨!!
   console.log('hello hansu');
+});
+
+router.post('/', async (req, res) => {
+  console.log(req.body);
+  await join(req, res);
 });
 
 module.exports = router;
