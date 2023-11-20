@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, FC } from 'react';
 import '../App.css';
 import { useNavigate } from 'react-router-dom';
 
-
 interface TpoProps {
-    onSearch: (searchTerm: string) => void; // 검색어를 인자로 받는 함수 타입 지정
+  onSearch: (input: string) => void;
 }
 
-const Tpo: React.FC<TpoProps> = ({ onSearch }) => {
-    const [input, setInput] = useState('');
-    const [currentSlide, setCurrentSlide] = useState(0);
+const Tpo: FC<TpoProps> = ({ onSearch }) => {
+    const [input, setInput] = useState<string>('');
+    const [currentSlide, setCurrentSlide] = useState<number>(0);
     const navigate = useNavigate();
-    const handleKeyEnter = (e: React.KeyboardEvent) => {
+
+    const handleKeyEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
             if (input.trim() !== '') {
                 console.log('검색어:', input);
@@ -25,7 +25,6 @@ const Tpo: React.FC<TpoProps> = ({ onSearch }) => {
     useEffect(() => {
         // 자동으로 슬라이드 변경을 위한 타이머 설정
         const intervalId = setInterval(() => {
-            // 여기서 1은 각 슬라이드의 인덱스
             setCurrentSlide((currentSlide + 1) % 5);
         }, 3000); // 3초마다 슬라이드 변경
 
@@ -33,16 +32,15 @@ const Tpo: React.FC<TpoProps> = ({ onSearch }) => {
         return () => clearInterval(intervalId);
     }, [currentSlide]);
 
-    // Slider items의 내용을 배열로 정의
-    const sliderItems = ['상황', '장소', '시간', '온도', '날씨'];
+    const sliderItems: string[] = ['상황', '장소', '시간', '온도', '날씨'];
 
-    const backimg: React.CSSProperties = {
+   const backimg: React.CSSProperties = {
         backgroundImage: "url('src/assets/img/unsplash_HpEDSZukJqk.png')",
         backgroundSize: 'cover',
     };
 
     return (
-        <div className="h-screen w-full flex items-center justify-center flex-row" style={backimg}>
+         <div className="h-screen w-full flex items-center justify-center flex-row" style={backimg}>
             <div className="flex justify-around flex-col w-1/3 items-center">
                 <div className="flex flex-col">
                     <div className="">
