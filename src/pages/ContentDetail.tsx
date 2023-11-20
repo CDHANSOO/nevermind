@@ -20,8 +20,8 @@ const ContentDetail: React.FC = () => {
                 <div className='relative w-full h-[calc(100vh-70px)] top-[70px] flex items-center'>
                     <div className=''></div>
                     <div className='w-full h-5/6 mx-40 flex '>
-                        <div className='w-1/2 h-full aspect-[3/4] pr-14'>
-                            <div className='w-full h-full rounded-xl bg-gray-400'>
+                        <div className='w-1/2 h-full pr-14'>
+                            <div className='aspect-[5/3] w-full h-full rounded-xl bg-gray-400'>
                                 {file && <img src={fileUrl} alt="Uploaded" className='w-full h-full' />}
                             </div>
 

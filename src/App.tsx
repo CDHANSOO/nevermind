@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React,{useState} from 'react';
 import './App.css'
 import { Route, Routes } from 'react-router-dom';
 import NavigationBar from './components/NavigationBar';
@@ -6,14 +6,16 @@ import Home from './pages/Home';
 import Content from './pages/Content';
 import Style from './pages/Style';
 import Tpo from './pages/Tpo';
-import Footer from './pages/Footer';
+// import Footer from '@components/footer';
 import Detail from './pages/Detail';
 import Sign from './pages/Sign';
 import SignUp from './components/SignUp';
 import ContentDetail from 'pages/ContentDetail';
+import Footer from '@components/footer';
+// import MyPage from './pages/MyPage';
 
 const App: React.FC = () => {
-  const [userInput, setUserInput] = useState('');
+    const [userInput, setUserInput] = useState('');
   return (
     <div>
       <NavigationBar />
@@ -26,8 +28,9 @@ const App: React.FC = () => {
         <Route path='/style' element={<Style />} />
         <Route path='/sign' element={<Sign />} />
         <Route path='/signup' element={<SignUp />} />
+        {/* <Route path='/mypage' element={<MyPage />} /> */}
       </Routes>
-      <Footer />
+      <Footer/>
     </div>
   )
 }
