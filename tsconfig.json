@@ -6,31 +6,23 @@
     "lib": ["ES2021", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-    // 20231111 : 정은우 react+ts 에서 svg component로 가져오기
     "typeRoots": ["node_modules/@types", "types"],
-
-    /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-
-    /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "include" : [    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "next.config.js",
-    "custom.d.ts",
-    "styles",
-    "pages",
-    "public"]
+    "noFallthroughCasesInSwitch": true
   },
-  "include": [ "src", "src/types.d.ts", "custom.d.ts" ],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "next-env.d.ts",
+    "custom.d.ts"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

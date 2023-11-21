@@ -6,6 +6,7 @@ import InfluencerCarousel from '../components/stylePage/InfluencerCarousel'
 import CodyFleece from '@/assets/style/cody/플리스-cody.jpg'
 import CodyCristmas from '@/assets/style/cody/크리스마스-cody.jpg'
 import InfluencerBannerString from '@components/stylePage/InfluencerBannerString'
+import Footer from '@components/footer'
 
 
 const Style: React.FC = () => {
@@ -36,7 +37,8 @@ const Style: React.FC = () => {
                         <div className='bg-gray-300 h-[500px] overflow-hidden'>
                             <img src={CodyCristmas} className='w-full h-full object-cover' />
                         </div>
-                        <h2 className='text-2xl font-extrabold'>크리스마스에 입기 좋은 바로 그 코디</h2>
+                        <h2 className='text-2xl font-extrabold'>크리스마스에 입기 좋은 코디</h2>
+
                     </div>
                 </div>
                 <div className='my-24'>
@@ -44,7 +46,7 @@ const Style: React.FC = () => {
                     <InfluencerCarousel />
                 </div>
             </div>
-
+            <Footer/>
         </div>
     )
 }
