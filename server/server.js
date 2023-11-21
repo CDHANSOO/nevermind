@@ -8,6 +8,7 @@ const multer = require('multer');
 const fs = require('fs');
 const cors = require('cors');
 const app = express();
+const bcrypt = require('bcrypt');
 
 dotenv.config();
 const indexRouter = require('./routes');
