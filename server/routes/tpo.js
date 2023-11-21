@@ -2,13 +2,12 @@ const express = require('express');
 const multer = require('multer');
 const router = express.Router();
 const dbConnector = require('../config/dbConnector');
-const path = require('path')
+const path = require('path');
 /**
  * 라우트 매개변수
  * :id를 넣으면 req.params.id로 받을 수 있음
  * querystring = req.query
  */
-
 
 async function main() {
     try {
@@ -38,5 +37,13 @@ router.get('/', (req, res) => {
     // res.json은 return이 아니다 => 아래 콘솔도 실행됨!!
     console.log('hello hansu');
 });
+
+router.post('/tpo', (req, res) => {
+    // POST 요청 처리 로직
+    res.json({ message: 'POST 요청 처리' });
+});
+
+
+
 
 module.exports = router;
