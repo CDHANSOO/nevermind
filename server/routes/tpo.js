@@ -9,7 +9,7 @@ const path = require('path');
  * querystring = req.query
  */
 
-async function main() {
+async function tpo() {
   try {
     const connection = await dbConnector.dbConnect();
     let { tpo, message } = req.body;
@@ -21,14 +21,17 @@ async function main() {
     // 쿼리 결과 출력
     console.log('쿼리 결과:', result.rows[0]);
 
-    let selectedStyle = result.rows[0];
+    let selectedStyle = result.rows[0][0];
+    console.log(selectedStyle);
 
     let ids = selectedStyle.split(',');
-
+    console.log(ids);
+    selectedItem = [];
     ids.map(item => {
-      let selectedItem = connection.execute();
+      let clotheResult = connection.execute(`SELECT * FROM T_CLOTHE WHERE CLOTHE_ID = :item`, [item]);
+      selectedItem.push(clotheResult.rows[0]);
     });
-
+    res.json({ clotheInfo: selectedItem });
     // 작업이 끝난 후 연결을 종료
     await connection.close();
     console.log('DB 연결 종료 성공!');
