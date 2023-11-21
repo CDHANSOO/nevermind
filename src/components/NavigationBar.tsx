@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+// import { IoPersonSharp } from "react-icons/io5";
 
 const NavigationBar: React.FC = () => {
     const [backgroundColor, setBackgroundColor] = useState<string>('transparent');
@@ -37,12 +38,16 @@ const NavigationBar: React.FC = () => {
                 <div className="text-neutral-800 text-base font-normal ">
                     <Link to='/content'>콘텐츠 코디</Link></div>
                 <div className="text-neutral-800 text-base font-normal ">
-                    <Link to='/top'>TPO 추천</Link></div>
+                    <Link to='/tpo'>TPO 추천</Link></div>
                 <div className="text-neutral-800 text-base font-normal ">
                     <Link to='/style'>스타일</Link></div>
             </div>
 
-            <div className="text-neutral-800 text-base font-normal grow text-end basis-0"><Link to="/sign">SIGN IN</Link    ></div>
+            <div className="text-neutral-800 text-base font-normal grow text-end basis-0"><Link to="/sign">SIGN IN</Link></div>
+            {/* <div className="h-[30px] text-neutral-800 text-base font-normal grow basis-0 flex justify-end =">
+                <div className="mt-[8px] mr-[15px]">로그아웃</div>
+                <div className="mt-[3px]"><IoPersonSharp size="30"/></div>
+            // </div> */}
         </div >
     )
 }

@@ -1,12 +1,19 @@
+import MainCom from '@components/mainPage/MainCom';
+import MainCom2 from '@components/mainPage/MainCom2';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import IMG1 from '@assets/contents.png'
+import IMG2 from '@assets/tpo.png'
+import IMG3 from '@assets/style.png'
+import IMG4 from '@assets/style.png' //이건 이미지 고치기
 
-const Home: React.FC = () => {
+const Home = () => {
+  
   return (
-    <div className="w-full h-[calc(100vh-70px)] relative top-[70px] bg-white">
-      <div className='w-[676px] h-[80%] ml-[200px] mt-[72px] absolute bg-[url("src/assets/main1.png")] bg-cover' />
-      <div className='w-[706px] h-[80%] ml-[950px] mt-[72px] absolute bg-[url("src/assets/main2.png")] bg-cover' />
-      <Link to='/content'><button className="p-[10px] ml-[1270px] mt-[300px] absolute text-white text-[25px] border border-white">시작하기</button></Link>
+    <div className='flex flex-col gap-[50px] '>
+      <MainCom img={IMG1}/>
+      <MainCom2 img={IMG2}/>
+      <MainCom img={IMG3}/>
+      <MainCom2 img={IMG4}/>
     </div>
   );
 };
