@@ -1,6 +1,6 @@
 import React from 'react';
 import Slider, { Settings } from 'react-slick';
-import Item from '@components/myPage/MypageItem';
+import Item from '@components/myPage/MyPageCategory';
 
 interface LikedSectionProps {
   likedOutfits: { category: string; date: string }[];
