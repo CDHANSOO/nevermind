@@ -25,3 +25,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+server/config/oracle.js
+server/config/oracle.js

@@ -14,11 +14,12 @@ import ContentDetail from 'pages/ContentDetail';
 // import Footer from '@components/footer';
 import MyPage from './pages/MyPage';
 
+
 const App: React.FC = () => {
     const [userInput, setUserInput] = useState('');
   return (
     <div>
-      <NavigationBar />
+      <NavigationBar/>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/content' element={<Content />} />
