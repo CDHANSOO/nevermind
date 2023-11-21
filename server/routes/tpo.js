@@ -44,10 +44,10 @@ async function tpo() {
 // 라우터들
 // 주의점 : 한 라우터에 res.send or res.json같은게 2번이상 나와선 안된다. 한번씩만!!!
 
-router.get('/', (req, res) => {
-  res.json({ hello: 'Hansu' });
-  // res.json은 return이 아니다 => 아래 콘솔도 실행됨!!
-  console.log('hello hansu');
+// post 라우터
+router.post('/', async (req, res) => {
+  console.log(req.body);
+  await tpo(req, res);
 });
 
 module.exports = router;
