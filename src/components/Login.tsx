@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
-
 //이메일 포멧
 // const emailRegEx = /^A-Za-z0-9@A-Za-z0-9.[A-Za-z]{2,3}$/;
 
@@ -10,7 +8,6 @@ import { Link } from 'react-router-dom';
 // const passwordRegex = /^(?=.[A-Za-z])(?=.\d)(?=.[@!%#?&])[A-Za-z\d@!%*#?&]{8,16}$/;
 
 const Login = () => {
-
   return (
     <>
       <div className='h-screen w-screen bg-[url("/src/assets/loginImg.png")] bg-cover fixed'></div>
