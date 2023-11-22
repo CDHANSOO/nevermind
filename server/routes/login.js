@@ -25,8 +25,8 @@ async function login(req, res) {
 
     // 회원가입 로직
     if (result.rows.length === 0) {
+      console.log('아이디가 존재하지 않습니다.');
       res.json({ login: false, message: '존재하지 않는 아이디입니다.' }); // 사용자가 존재하지 않음
-      console.log('if 문 실행');
     } else {
       // 사용자가 존재하는 경우 비밀번호 확인
       const hashedPassword = result.rows[0][0];
