@@ -55,13 +55,14 @@ const Tpo: FC<TpoProps> = ({ onSearch }) => {
   return (
     <div className="h-screen w-full flex items-center justify-center flex-row" style={backimg}>
       <div className="flex justify-around flex-col w-1/3 items-center">
-        <div className="flex flex-col relative">
+        <div className="flex flex-col">
           <div className="">
             {/* map 함수를 사용하여 반복 렌더링 */}
+            {/* 이 부분 어떻게 고쳤는지 코드 받기 */}
             {sliderItems.map((item, index) => (
               <div
                 key={index}
-                className={`slider-item ${currentSlide === index ? 'visible' : ''} font flex h-6/7 w-full`}
+                className={`slider-item ${currentSlide === index ? 'visible' : ''} font flex h-6/7`}
                 style={{
                   textAlign: 'center',
                   fontFamily: 'Inter',
@@ -79,7 +80,7 @@ const Tpo: FC<TpoProps> = ({ onSearch }) => {
                 {item}
               </div>
             ))}
-            <div className="mt-8 absolute" style={{ color: 'white', textAlign: 'center', fontSize: '26px', fontWeight: 'bold' }}>
+            <div className="flex flex-col mt-8" style={{ color: 'white', textAlign: 'center', fontSize: '26px', fontWeight: 'bold' }}>
               에 맞는 옷
             </div>
           </div>

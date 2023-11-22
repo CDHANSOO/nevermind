@@ -10,6 +10,9 @@ import StyleInfluencerImage07 from '@/assets/style/cody/KakaoTalk_20231115_14432
 import StyleInfluencerImage08 from '@/assets/style/cody/KakaoTalk_20231115_144323229_07.jpg'
 import StyleInfluencerImage09 from '@/assets/style/cody/KakaoTalk_20231115_144323229_08.jpg'
 
+// 231122 정은우
+// 캐러셀 자체를 컴포넌트화 한 다음에 props로 보내는 이미지 배열만 바꾸어서 재사용성을 늘리는 방안도 좋을 듯.
+// 그러나 지금 당장은 구현을 위해 잠깐 보류 
 const DragCarousel: React.FC = () => {
   const images: string[] = [
     StyleInfluencerImage01,

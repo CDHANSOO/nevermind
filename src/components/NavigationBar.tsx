@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const NavigationBar: React.FC = () => {
+
+    const location = useLocation();
     const [backgroundColor, setBackgroundColor] = useState<string>('transparent');
+
+    const linkClass = (path: string) =>
+        location.pathname === path ? 'font-bold text-neutral-800' : 'text-neutral-800 text-base';
 
     useEffect(() => {
         const handleScroll = () => {
@@ -34,11 +39,11 @@ const NavigationBar: React.FC = () => {
             </div>
             {/* 231113 정 : 간격 맘에 안들어서 나중에 바꿀 예정(evenly -> margin) */}
             <div className='grow-[2] flex justify-evenly basis-0 w-3/6 '>
-                <div className="text-neutral-800 text-base font-normal ">
+                <div className={linkClass('/content')}>
                     <Link to='/content'>콘텐츠 코디</Link></div>
-                <div className="text-neutral-800 text-base font-normal ">
+                <div className={linkClass('/tpo')}>
                     <Link to='/tpo'>TPO 추천</Link></div>
-                <div className="text-neutral-800 text-base font-normal ">
+                <div className={linkClass('/style')}>
                     <Link to='/style'>스타일</Link></div>
             </div>
 

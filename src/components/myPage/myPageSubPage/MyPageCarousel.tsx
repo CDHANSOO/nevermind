@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 import ItemsCarousel from 'react-items-carousel';
-
 import StyleInfluencerImage01 from '@/assets/style/cody/KakaoTalk_20231115_144323229.jpg'
 import StyleInfluencerImage02 from '@/assets/style/cody/KakaoTalk_20231115_144323229_01.jpg'
 import StyleInfluencerImage03 from '@/assets/style/cody/KakaoTalk_20231115_144323229_02.jpg'
@@ -10,17 +9,16 @@ import StyleInfluencerImage06 from '@/assets/style/cody/KakaoTalk_20231115_14432
 import StyleInfluencerImage07 from '@/assets/style/cody/KakaoTalk_20231115_144323229_06.jpg'
 import StyleInfluencerImage08 from '@/assets/style/cody/KakaoTalk_20231115_144323229_07.jpg'
 import StyleInfluencerImage09 from '@/assets/style/cody/KakaoTalk_20231115_144323229_08.jpg'
+import CaretLeft from '@components/CaretLeft';
+import CaretRight from '@components/CaretRight';
+import { MyPageContext } from 'pages/MyPage';
 
-
-interface MyPageCarouselProps {
-  h2Text: string;
-}
 
 // 231122 정은우: 받아오는 이미지 객체의 타입을 정의하는 곳. 그러나 제대로 받아와지지 않아서 주석 처리함. 
 // interface ImageModules {
 //   [key: string]: string;
 // }
-const MyPageCarousel: React.FC<MyPageCarouselProps> = ({ h2Text }) => {
+const MyPageCarousel: React.FC = () => {
   // 231122 정은우: 이미지가 받아와지지 않아서, 일단 주석 
   // 동적으로 이미지를 가져오는 함수
   // const importAll = (
@@ -50,6 +48,7 @@ const MyPageCarousel: React.FC<MyPageCarouselProps> = ({ h2Text }) => {
   // const imagesArray = Object.values(images);
   // // 사용 예시
   // console.log(imagesArray);
+  const context = useContext(MyPageContext);
 
   const images: string[] = [
     StyleInfluencerImage01,
@@ -61,10 +60,10 @@ const MyPageCarousel: React.FC<MyPageCarouselProps> = ({ h2Text }) => {
     StyleInfluencerImage07,
     StyleInfluencerImage08,
     StyleInfluencerImage09,
-];
+  ];
 
   const [activeItemIndex, setActiveItemIndex] = useState<number>(0);
-  const chevronWidth: number = 0;
+  // const chevronWidth: number = 50;
 
   const [numOfCards, setNumOfCards] = useState<number>(4);
   const [gutter, setGutter] = useState<number>(28);
@@ -106,20 +105,21 @@ const MyPageCarousel: React.FC<MyPageCarouselProps> = ({ h2Text }) => {
       window.removeEventListener('resize', resize);
     };
   }, [resize]);
-  console.log(h2Text)
+  console.log(context.DibsH2TextString[0])
+  const TRUE: boolean = true;
 
   return (
-    <div style={{ padding: `0 ${chevronWidth}px` }}>
-      <h2 className='text-2xl font-extrabold mb-4'>{h2Text}</h2>
+    <div style={{ padding: `0 ${context.chevronWidth}px` }}>
+      <h2 className='text-2xl font-extrabold mb-4'>{context.DibsH2TextString[0]}</h2>
       <ItemsCarousel
         requestToChangeActive={setActiveItemIndex}
         activeItemIndex={activeItemIndex}
         numberOfCards={numOfCards}
         gutter={gutter}
-        leftChevron={<button>{'<'}</button>}
-        rightChevron={<button>{'>'}</button>}
-        outsideChevron
-        chevronWidth={chevronWidth}
+        leftChevron={<button>{<CaretLeft />}</button>}
+        rightChevron={<button>{<CaretRight />}</button>}
+        outsideChevron={TRUE}
+        chevronWidth={context.chevronWidth}
       >
         {images.map((image, index) => (
           <div className='flex w-full overflow-auto ' key={index}>
