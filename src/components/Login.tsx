@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { IoEyeOutline } from "react-icons/io5";
 import { IoEyeOffOutline } from "react-icons/io5";
@@ -70,6 +71,64 @@ const Login = () => {
   console.log(password)
 
 
+
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+
+  const [delId, setDelId] = useState<boolean>(false);
+  const [viewPw, setViewPw] = useState<boolean>(false);
+
+  const idRef = useRef<HTMLInputElement>(null);
+
+  // 서버에 넘길때
+  const loginHandle = async () => {
+    try {
+      const response = await axios.post(
+        'http://localhost:3000/login',
+        {
+          email,
+          password,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+
+      const result = response.data;
+      console.log(result);
+
+      if (result.result === true) {
+        console.log('있는 값');
+      }
+    } catch (error) {
+      console.error('에러:', error);
+      // Handle error here
+    }
+  };
+
+  const viewPwhandle = () => {
+    setViewPw(!viewPw);
+  };
+
+  const delIdhandle = () => {
+    setEmail('');
+    setDelId(false);
+    if (!idRef.current) return;
+    idRef.current.focus();
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+
+  console.log(email);
+  console.log(password);
 
   return (
     <>

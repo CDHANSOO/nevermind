@@ -3,21 +3,45 @@ const multer = require('multer');
 const router = express.Router();
 const dbConnector = require('../config/dbConnector');
 const path = require('path');
+const { S3Client } = require('@aws-sdk/client-s3');
+const multerS3 = require('multer-s3');
+require('dotenv').config();
 /**
  * 라우트 매개변수
  * :id를 넣으면 req.params.id로 받을 수 있음
  * querystring = req.query
  */
 
-// 이미지 업로드를 가능하게 해주는 미들웨어
+//이미지 업로드를 가능하게 해주는 미들웨어
 const upload = multer({
   storage: multer.diskStorage({
-    destination(req, file, done) {
-      done(null, 'uploads/');
+    destination(req, file, cb) {
+      cb(null, 'uploads/');
     },
-    filename(req, file, done) {
+    filename(req, file, cb) {
       const ext = path.extname(file.originalname);
-      done(null, path.basename(file.originalname, ext) + Date.now() + ext);
+      cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
+    },
+  }),
+  limits: { fileSize: 5 * 1024 * 1024 },
+});
+
+// AWS S3 세팅
+const s3 = new S3Client({
+  credentials: {
+    accessKeyId: process.env.S3_ACCESS_KEY,
+    secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+  },
+  region: 'ap-northeast-2',
+});
+
+// S3에 이미지 업로드를 가능하게 해주는 미들웨어
+const uploadS3 = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: 'nevermind',
+    key(req, file, cb) {
+      cb(null, `original/${Date.now()}_${file.originalname}`);
     },
   }),
   limits: { fileSize: 5 * 1024 * 1024 },
@@ -42,7 +66,12 @@ async function main() {
   }
 }
 
-// get / 라우터
+// upload한 이미지의 정보를 프론트로 다시 보내주는 함수
+const afterUploadImage = (req, res) => {
+  console.log(req.file);
+  res.json({ url: `img${req.file.filename}` });
+};
+
 // 라우터들
 // 주의점 : 한 라우터에 res.send or res.json같은게 2번이상 나와선 안된다. 한번씩만!!!
 
