@@ -3,6 +3,7 @@ const multer = require('multer');
 const router = express.Router();
 const dbConnector = require('../config/dbConnector');
 const path = require('path');
+const path = require('path');
 /**
  * 라우트 매개변수
  * :id를 넣으면 req.params.id로 받을 수 있음
@@ -20,12 +21,23 @@ async function main() {
         // 쿼리 결과 출력
         console.log('쿼리 결과:', result.rows[0]);
 
-        // 작업이 끝난 후 연결을 종료
-        await connection.close();
-        console.log('DB 연결 종료 성공!');
-    } catch (err) {
-        console.error('오류 발생:', err.message);
-    }
+    let selectedStyle = result.rows[0][0];
+    console.log(selectedStyle);
+
+    let ids = selectedStyle.split(',');
+    console.log(ids);
+    selectedItem = [];
+    ids.map(item => {
+      let clotheResult = connection.execute(`SELECT * FROM T_CLOTHE WHERE CLOTHE_ID = :item`, [item]);
+      selectedItem.push(clotheResult.rows[0]);
+    });
+    res.json({ clotheInfo: selectedItem });
+    // 작업이 끝난 후 연결을 종료
+    await connection.close();
+    console.log('DB 연결 종료 성공!');
+  } catch (err) {
+    console.error('오류 발생:', err.message);
+  }
 }
 
 // get / 라우터
