@@ -5,25 +5,14 @@ import NavigationBar from './components/NavigationBar';
 import Home from './pages/Home';
 import Content from './pages/Content';
 import Style from './pages/Style';
-<<<<<<< HEAD
-
-import Tpo from './pages/Tpo';
-import Footer from '@components/Footer';
-=======
 import Tpo from './pages/Tpo';
 // import Footer from '@components/footer';
->>>>>>> 4cd13806d0221a1b710a3e7518a4ffde1a68b696
 import Detail from './pages/Detail';
 import Sign from './pages/Sign';
 import SignUp from './components/SignUp';
 import ContentDetail from 'pages/ContentDetail';
-<<<<<<< HEAD
-import MyPage from 'pages/MyPage';
-=======
-// import Footer from '@components/footer';
 import MyPage from './pages/MyPage';
 
->>>>>>> 4cd13806d0221a1b710a3e7518a4ffde1a68b696
 
 const App: React.FC = () => {
   const [userInput, setUserInput] = useState('');
@@ -41,11 +30,7 @@ const App: React.FC = () => {
         <Route path='/signup' element={<SignUp />} />
         <Route path='/mypage' element={<MyPage />} />
       </Routes>
-<<<<<<< HEAD
-      <Footer />
-=======
       {/* <Footer/> */}
->>>>>>> 4cd13806d0221a1b710a3e7518a4ffde1a68b696
     </div>
   );
 };

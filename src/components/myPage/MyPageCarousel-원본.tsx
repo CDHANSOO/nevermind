@@ -1,34 +1,31 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import ItemsCarousel from 'react-items-carousel';
+import StyleInfluencerImage01 from '@/assets/style/cody/KakaoTalk_20231115_144323229.jpg'
+import StyleInfluencerImage02 from '@/assets/style/cody/KakaoTalk_20231115_144323229_01.jpg'
+import StyleInfluencerImage03 from '@/assets/style/cody/KakaoTalk_20231115_144323229_02.jpg'
+import StyleInfluencerImage04 from '@/assets/style/cody/KakaoTalk_20231115_144323229_03.jpg'
+import StyleInfluencerImage05 from '@/assets/style/cody/KakaoTalk_20231115_144323229_04.jpg'
+import StyleInfluencerImage06 from '@/assets/style/cody/KakaoTalk_20231115_144323229_05.jpg'
+import StyleInfluencerImage07 from '@/assets/style/cody/KakaoTalk_20231115_144323229_06.jpg'
+import StyleInfluencerImage08 from '@/assets/style/cody/KakaoTalk_20231115_144323229_07.jpg'
+import StyleInfluencerImage09 from '@/assets/style/cody/KakaoTalk_20231115_144323229_08.jpg'
 
 interface MyPageCarouselProps {
   h2Text: string;
 }
-interface ImageModules {
-  [key: string]: {
-    default: string;
-  };
-}
+
 const MyPageCarousel: React.FC<MyPageCarouselProps> = ({ h2Text }) => {
-
-  // 동적으로 이미지를 가져오는 함수
-  const importAll = (importFunction: Record<string, () => Promise<{ default: string }>>) => {
-    const images: ImageModules = {};
-    for (const path in importFunction) {
-      importFunction[path]().then(module => {
-        images[path.replace('./', '')] = module.default;
-      });
-    }
-    return images;
-  };
-
-  // Vite의 import.meta.glob 함수를 사용하여 '/assets' 디렉토리의 모든 이미지를 가져옵니다.
-  const images = importAll(import.meta.glob('../assets/*.{png,jpeg,svg}', { eager: true }));
-
-  // 사용 예시
-  console.log(images);
-
-
+  const images: string[] = [
+    StyleInfluencerImage01,
+    StyleInfluencerImage02,
+    StyleInfluencerImage03,
+    StyleInfluencerImage04,
+    StyleInfluencerImage05,
+    StyleInfluencerImage06,
+    StyleInfluencerImage07,
+    StyleInfluencerImage08,
+    StyleInfluencerImage09,
+  ];
   const [activeItemIndex, setActiveItemIndex] = useState<number>(0);
   const chevronWidth: number = 0;
 
