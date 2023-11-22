@@ -42,7 +42,10 @@ const NavigationBar: React.FC = () => {
                     <Link to='/style'>스타일</Link></div>
             </div>
 
-            <div className="text-neutral-800 text-base font-normal grow text-end basis-0"><Link to="/sign">SIGN IN</Link    ></div>
+            {/* <div className="text-neutral-800 text-base font-normal grow text-end basis-0"><Link to="/sign">SIGN IN</Link    ></div> */}
+            {/* 231121 정은우  */}
+            {/* mypage 확인을 위해 잠시 link 바꿈 */}
+            <div className="text-neutral-800 text-base font-normal grow text-end basis-0"><Link to="/mypage">SIGN IN</Link    ></div>
         </div >
     )
 }

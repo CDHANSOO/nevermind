@@ -10,7 +10,11 @@ import StyleInfluencerImage07 from '@/assets/style/cody/KakaoTalk_20231115_14432
 import StyleInfluencerImage08 from '@/assets/style/cody/KakaoTalk_20231115_144323229_07.jpg'
 import StyleInfluencerImage09 from '@/assets/style/cody/KakaoTalk_20231115_144323229_08.jpg'
 
-const DragCarousel: React.FC = () => {
+interface MyPageCarouselProps {
+  h2Text: string;
+}
+
+const MyPageCarousel: React.FC<MyPageCarouselProps> = ({ h2Text }) => {
   const images: string[] = [
     StyleInfluencerImage01,
     StyleInfluencerImage02,
@@ -65,9 +69,11 @@ const DragCarousel: React.FC = () => {
       window.removeEventListener('resize', resize);
     };
   }, [resize]);
+  console.log(h2Text)
 
   return (
     <div style={{ padding: `0 ${chevronWidth}px` }}>
+      <h2 className='text-2xl font-extrabold mb-4'>{h2Text}</h2>
       <ItemsCarousel
         requestToChangeActive={setActiveItemIndex}
         activeItemIndex={activeItemIndex}
@@ -81,7 +87,7 @@ const DragCarousel: React.FC = () => {
         {images.map((image, index) => (
           <div className='flex w-full overflow-auto ' key={index}>
             <div className='w-full h-auto rounded-xl'>
-              <div className='w-full aspect-[4/3] bg-gray-300 rounded-xl relative overflow-hidden'>
+              <div className='w-full aspect-square bg-gray-300 rounded-xl relative overflow-hidden'>
                 <img src={image} alt={`Slide ${index}`} className='absolute h-fit object-contain' />
               </div>
             </div>
@@ -92,4 +98,4 @@ const DragCarousel: React.FC = () => {
   );
 };
 
-export default DragCarousel;
+export default MyPageCarousel;
