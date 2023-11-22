@@ -10,13 +10,14 @@ const path = require('path');
  * querystring = req.query
  */
 
-async function main() {
-    try {
-        const connection = await dbConnector.dbConnect();
+async function tpo() {
+  try {
+    const connection = await dbConnector.dbConnect();
+    let { tpo, message } = req.body;
+    // 여기서 데이터베이스 작업 수행
 
-        // 여기서 데이터베이스 작업 수행
-        // 간단한 SELECT 쿼리 실행
-        const result = await connection.execute('SELECT * FROM T_CLOTHE');
+    // 유저가 보낸 자연어(message)를 우선 필터링해오는 기능
+    const result = await connection.execute('SELECT STYLE_IDS FROM T_STYLE WHERE STYLE_CMT LIKE %:message% or STYLE_TAG LIKE %:message%', [message, message]);
 
         // 쿼리 결과 출력
         console.log('쿼리 결과:', result.rows[0]);
