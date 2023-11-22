@@ -31,11 +31,19 @@ mz세대는 자신의 취향이 확고하지만 코디 하는것에 어려워하
   - 추가 예정
   
 ## getting start
-- 프로젝트 다운 후 /nevermind/ 경로 안에서 아래 코드를 터미널에 순서대로 입력하기
-- backend stat도 추가 예정
+- 프로젝트 다운 후 아래의 경로에서 각각의 터미널에 순서대로 입력하기
+![image](https://github.com/CDHANSOO/nevermind/assets/136785138/85e2c0db-3b1f-488d-a7ed-20b39c2b04c7)
+### /nevermind
 ```
 npm install
 ```
 ```
 npm run dev
+```
+### /nevermind/server
+```
+npm install
+```
+```
+nodemon server.js
 ```
