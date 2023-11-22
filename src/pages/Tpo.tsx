@@ -12,7 +12,7 @@ const Tpo: FC<TpoProps> = ({ onSearch }) => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const navigate = useNavigate();
 
-  // 검색어를 서버로 전송하는 함수
+   // 검색어를 서버로 전송하는 함수
   const submitSearch = async () => {
     if (input.trim() !== '') {
       console.log('검색어:', input);
