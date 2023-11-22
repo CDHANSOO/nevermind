@@ -1,7 +1,7 @@
 import React, { useState, useEffect, FC } from 'react';
 import '../App.css';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'
+import axios from 'axios';
 
 interface TpoProps {
   onSearch: (input: string) => void;
@@ -17,9 +17,9 @@ const Tpo: FC<TpoProps> = ({ onSearch }) => {
     if (input.trim() !== '') {
       console.log('검색어:', input);
       try {
-        const response = await axios.post('http://localhost:3000/tpo/tpo', { search: input });
+        const response = await axios.post('http://localhost:3000/tpo', { search: input });
         console.log('요청 응답 : ', response.data);
-        navigate('/Detail');
+        navigate('/Detail', { state: { data: response.data } });
         onSearch(input);
       } catch (error) {
         console.error('요청 오류 : ', error);
