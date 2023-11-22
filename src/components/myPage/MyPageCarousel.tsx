@@ -1,33 +1,67 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import ItemsCarousel from 'react-items-carousel';
 
+import StyleInfluencerImage01 from '@/assets/style/cody/KakaoTalk_20231115_144323229.jpg'
+import StyleInfluencerImage02 from '@/assets/style/cody/KakaoTalk_20231115_144323229_01.jpg'
+import StyleInfluencerImage03 from '@/assets/style/cody/KakaoTalk_20231115_144323229_02.jpg'
+import StyleInfluencerImage04 from '@/assets/style/cody/KakaoTalk_20231115_144323229_03.jpg'
+import StyleInfluencerImage05 from '@/assets/style/cody/KakaoTalk_20231115_144323229_04.jpg'
+import StyleInfluencerImage06 from '@/assets/style/cody/KakaoTalk_20231115_144323229_05.jpg'
+import StyleInfluencerImage07 from '@/assets/style/cody/KakaoTalk_20231115_144323229_06.jpg'
+import StyleInfluencerImage08 from '@/assets/style/cody/KakaoTalk_20231115_144323229_07.jpg'
+import StyleInfluencerImage09 from '@/assets/style/cody/KakaoTalk_20231115_144323229_08.jpg'
+
+
 interface MyPageCarouselProps {
   h2Text: string;
 }
-interface ImageModules {
-  [key: string]: {
-    default: string;
-  };
-}
+
+// 231122 정은우: 받아오는 이미지 객체의 타입을 정의하는 곳. 그러나 제대로 받아와지지 않아서 주석 처리함. 
+// interface ImageModules {
+//   [key: string]: string;
+// }
 const MyPageCarousel: React.FC<MyPageCarouselProps> = ({ h2Text }) => {
-
+  // 231122 정은우: 이미지가 받아와지지 않아서, 일단 주석 
   // 동적으로 이미지를 가져오는 함수
-  const importAll = (importFunction: Record<string, () => Promise<{ default: string }>>) => {
-    const images: ImageModules = {};
-    for (const path in importFunction) {
-      importFunction[path]().then(module => {
-        images[path.replace('./', '')] = module.default;
-      });
-    }
-    return images;
-  };
+  // const importAll = (
+  //   importFunction: Record<
+  //     string,
+  //     { default: string; } | (() => Promise<{ default: string; }>)
+  //   >
+  // ) => {
+  //   const images: ImageModules = {};
+  //   for (const path in importFunction) {
+  //     const importResult = importFunction[path];
+  //     if (typeof importResult === 'function') {
+  //       // importResult가 함수인 경우 (프로미스를 반환하는 함수로 처리)
+  //       importResult().then(module => {
+  //         images[path.replace('./', '')] = module.default;
+  //       });
+  //     } else {
+  //       // importResult가 함수가 아닌 경우 (모듈 객체로 처리)
+  //       images[path.replace('./', '')] = importResult.default;
+  //     }
+  //   }
+  //   return images;
+  // };
 
-  // Vite의 import.meta.glob 함수를 사용하여 '/assets' 디렉토리의 모든 이미지를 가져옵니다.
-  const images = importAll(import.meta.glob('../assets/*.{png,jpeg,svg}', { eager: true }));
+  // const images = importAll(import.meta.glob('../assets/*.{png,jpeg,svg}', { eager: true }));
+  // // 객체를 배열로 변환
+  // const imagesArray = Object.values(images);
+  // // 사용 예시
+  // console.log(imagesArray);
 
-  // 사용 예시
-  console.log(images);
-
+  const images: string[] = [
+    StyleInfluencerImage01,
+    StyleInfluencerImage02,
+    StyleInfluencerImage03,
+    StyleInfluencerImage04,
+    StyleInfluencerImage05,
+    StyleInfluencerImage06,
+    StyleInfluencerImage07,
+    StyleInfluencerImage08,
+    StyleInfluencerImage09,
+];
 
   const [activeItemIndex, setActiveItemIndex] = useState<number>(0);
   const chevronWidth: number = 0;
