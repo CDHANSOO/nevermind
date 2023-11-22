@@ -19,8 +19,8 @@ async function tpo() {
     // 유저가 보낸 자연어(message)를 우선 필터링해오는 기능
     const result = await connection.execute('SELECT STYLE_IDS FROM T_STYLE WHERE STYLE_CMT LIKE %:message% or STYLE_TAG LIKE %:message%', [message, message]);
 
-        // 쿼리 결과 출력
-        console.log('쿼리 결과:', result.rows[0]);
+    // 쿼리 결과 출력
+    console.log('쿼리 결과:', result.rows[0]);
 
     let selectedStyle = result.rows[0][0];
     console.log(selectedStyle);
@@ -46,17 +46,14 @@ async function tpo() {
 // 주의점 : 한 라우터에 res.send or res.json같은게 2번이상 나와선 안된다. 한번씩만!!!
 
 router.get('/', (req, res) => {
-    res.json({ hello: 'Hansu' });
-    // res.json은 return이 아니다 => 아래 콘솔도 실행됨!!
-    console.log('hello hansu');
+  res.json({ hello: 'Hansu' });
+  // res.json은 return이 아니다 => 아래 콘솔도 실행됨!!
+  console.log('hello hansu');
 });
 
 router.post('/tpo', (req, res) => {
-    // POST 요청 처리 로직
-    res.json({ message: 'POST 요청 처리' });
+  // POST 요청 처리 로직
+  res.json({ message: 'POST 요청 처리' });
 });
-
-
-
 
 module.exports = router;
