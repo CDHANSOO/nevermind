@@ -32,7 +32,7 @@ mz세대는 자신의 취향이 확고하지만 코디 하는것에 어려워하
   
 ## getting start
 - 프로젝트 다운 후 아래의 경로에서 각각의 터미널에 순서대로 입력하기
-![image](https://github.com/CDHANSOO/nevermind/assets/136785138/85e2c0db-3b1f-488d-a7ed-20b39c2b04c7)
+![화면 캡처 2023-11-22 172955](https://github.com/CDHANSOO/nevermind/assets/136785138/b1f7743e-5bd9-4ec8-8aad-67eb60692f7b)
 ### /nevermind
 ```
 npm install
