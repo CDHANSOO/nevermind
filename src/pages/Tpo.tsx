@@ -1,7 +1,6 @@
 import React, { useState, useEffect, FC } from 'react';
 import '../App.css';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 interface TpoProps {
   onSearch: (input: string) => void;
@@ -12,26 +11,14 @@ const Tpo: FC<TpoProps> = ({ onSearch }) => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const navigate = useNavigate();
 
-  // 검색어를 서버로 전송하는 함수
-  const submitSearch = async () => {
-    if (input.trim() !== '') {
-      console.log('검색어:', input);
-      try {
-        const response = await axios.post('http://localhost:3000/tpo', { search: input });
-        console.log('요청 응답 : ', response.data);
-        navigate('/Detail', { state: { data: response.data } });
-        onSearch(input);
-      } catch (error) {
-        console.error('요청 오류 : ', error);
-      }
-      setInput('');
-    }
-  };
-
-  // Enter 키 핸들러
   const handleKeyEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      submitSearch();
+      if (input.trim() !== '') {
+        console.log('검색어:', input);
+        setInput('');
+        navigate('/Detail');
+        onSearch(input);
+      }
     }
   };
 
@@ -56,31 +43,32 @@ const Tpo: FC<TpoProps> = ({ onSearch }) => {
     <div className="h-screen w-full flex items-center justify-center flex-row" style={backimg}>
       <div className="flex justify-around flex-col w-1/3 items-center">
         <div className="flex flex-col">
-          <div className="">
-            {/* map 함수를 사용하여 반복 렌더링 */}
-            {/* 이 부분 어떻게 고쳤는지 코드 받기 */}
-            {sliderItems.map((item, index) => (
-              <div
-                key={index}
-                className={`slider-item ${currentSlide === index ? 'visible' : ''} font flex h-6/7`}
-                style={{
-                  textAlign: 'center',
-                  fontFamily: 'Inter',
-                  fontWeight: 'bold',
-                  fontSize: '30px',
-                  color: 'rgb(129, 227, 227)',
-                  opacity: currentSlide === index ? 1 : 0,
-                  transition: 'opacity 1s ease',
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                }}
-              >
-                {item}
-              </div>
-            ))}
-            <div className="flex flex-col mt-8" style={{ color: 'white', textAlign: 'center', fontSize: '26px', fontWeight: 'bold' }}>
+          <div className="flex">
+            <div className='flex relative'>
+              {/* map 함수를 사용하여 반복 렌더링 */}
+              {sliderItems.map((item, index) => (
+                <div
+                  key={index}
+                  className={`slider-item ${currentSlide === index ? 'visible' : ''} font flex`}
+                  style={{
+                    width: '100px',
+                    textAlign: 'center',
+                    fontFamily: 'Inter',
+                    fontWeight: 'bold',
+                    fontSize: '30px',
+                    color: 'rgb(129, 227, 227)',
+                    opacity: currentSlide === index ? 1 : 0,
+                    transition: 'opacity 1s ease',
+                    position: 'absolute',
+                    left: 0,
+                    bottom: 0
+                  }}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col mt-8 ml-[65px]" style={{ color: 'white', textAlign: 'center', fontSize: '26px', fontWeight: 'bold' }}>
               에 맞는 옷
             </div>
           </div>
