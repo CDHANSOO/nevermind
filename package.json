@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@types/react-slick": "^0.23.12",
+    "axios": "^1.6.2",
     "dotenv": "^16.3.1",
 
     "echarts": "^5.4.3",
