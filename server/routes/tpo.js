@@ -50,4 +50,12 @@ router.post('/', async (req, res) => {
   await tpo(req, res);
 });
 
+router.post('/tpo', (req, res) => {
+    // POST 요청 처리 로직
+    res.json({ message: 'POST 요청 처리' });
+});
+
+
+
+
 module.exports = router;

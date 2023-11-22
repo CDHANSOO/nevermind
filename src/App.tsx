@@ -25,7 +25,7 @@ const App: React.FC = () => {
         <Route path='/content' element={<Content />} />
         <Route path='/contentdetail' element={<ContentDetail />} />
         <Route path='/tpo' element={<Tpo onSearch={setUserInput} />} />
-        <Route path='/tpodtail' element={<Detail userInput={userInput} setUserInput={setUserInput} />} />
+        <Route path='/Detail' element={<Detail userInput={userInput} setUserInput={setUserInput} />} />
         <Route path='/style' element={<Style />} />
         <Route path='/sign' element={<Sign />} />
         <Route path='/signup' element={<SignUp />} />
