@@ -56,19 +56,16 @@ const SignUp = () => {
   
   const duflChk = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/user', {
-        email,
-      }, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      const response = await axios.post('http://localhost:3000/login', {email}, {headers: {'Content-Type': 'application/json'}});
   
       const result = response.data;
       console.log(result);
   
       if (result.result === true) {
-        console.log('있는 값');
+        alert('이미 사용중인 이메일입니다.');
+      }
+      else{
+        alert('사용가능한 이메일입니다.')
       }
     } catch (error) {
       console.error('에러:', error);
