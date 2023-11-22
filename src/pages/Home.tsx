@@ -1,5 +1,7 @@
 import MainCom from '@components/mainPage/MainCom';
 import MainCom2 from '@components/mainPage/MainCom2';
+import MainCom from '@components/mainPage/MainCom';
+import MainCom2 from '@components/mainPage/MainCom2';
 import React from 'react';
 import IMG1 from '@assets/contents.png'
 import IMG2 from '@assets/tpo.png'
