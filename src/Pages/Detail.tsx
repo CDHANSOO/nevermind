@@ -1,5 +1,5 @@
 import React, { useState, FC } from 'react';
-
+import axios from 'axios'
 
 interface Product {
   name: string;
@@ -13,13 +13,22 @@ interface DetailProps {
 }
 
 const Detail: FC<DetailProps> = ({ userInput, setUserInput }) => {
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [search, setSearch] = useState<string>('');
 
-  const handleSearch = () => {
-    if (searchQuery.trim() !== '') {
-      console.log('검색어:', searchQuery);
-      setSearchQuery('');
-      setUserInput(searchQuery);
+  // 검색어를 서버로 전송하는 함수
+  const handleSearch = async () => {
+    if (search.trim() !== '') {
+      console.log('검색어:', search);
+
+      try {
+        const response = await axios.post('http://localhost:3000/tpo/tpo', { search: search });
+        console.log('요청 응답 : ',response.data);
+      } catch (error) {
+        console.error('요청 오류 : ', error);
+      }
+
+      setSearch('');
+      setUserInput(search);
     }
   };
 
@@ -39,17 +48,16 @@ const Detail: FC<DetailProps> = ({ userInput, setUserInput }) => {
   ];
 
   return (
-   <div className="h-screen w-full bg-white">
+    <div className="h-screen w-full bg-white">
       <div className="flex items-center justify-center h-full">
         <div className="flex flex-col">
           <div className="flex justify-center mb-3">
-            <div className="w-[14.88px] h-[15px] bg-yellow-400 rounded-full"/>
+            <div className="w-[14.88px] h-[15px] bg-yellow-400 rounded-full" />
             <div className="w-[14.88px] h-[15px] ml-1 bg-amber-200 rounded-full" />
             <div className="w-[14.88px] h-[15px] ml-1 bg-yellow-100 rounded-full" />
           </div>
           <div className="flex justify-center relative w-full">
             <img className="w-[430px] max-w-[496px] max-h-[746px] rounded-xl" src="https://via.placeholder.com/496x746" alt="placeholder" />
-            
           </div>
         </div>
         <div className="flex items-left flex-col md:ml-10 mt-6 md:mt-0">
@@ -61,8 +69,8 @@ const Detail: FC<DetailProps> = ({ userInput, setUserInput }) => {
             <div className="relative h-10">
               <input
                 type="text"
-                value={searchQuery}
-                onChange={e => setSearchQuery(e.target.value)}
+                value={search}
+                onChange={e => setSearch(e.target.value)}
                 onKeyPress={e => handleKeyPress(e)}
                 className="w-full h-full bg-zinc-100 rounded-[29px] border border-stone-300 pl-4 text-base font-extralight font-['Inter']"
                 placeholder="다시 검색하기"
