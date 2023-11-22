@@ -9,29 +9,32 @@ const path = require('path');
  * querystring = req.query
  */
 
-async function tpo() {
+async function tpo(req, res) {
   try {
     const connection = await dbConnector.dbConnect();
-    let { tpo, message } = req.body;
+    let { search } = req.body;
     // 여기서 데이터베이스 작업 수행
 
     // 유저가 보낸 자연어(message)를 우선 필터링해오는 기능
-    const result = await connection.execute('SELECT STYLE_IDS FROM T_STYLE WHERE STYLE_CMT LIKE %:message% or STYLE_TAG LIKE %:message%', [message, message]);
-
+    const result = await connection.execute('SELECT STYLE_IDS FROM T_STYLE WHERE STYLE_CMT LIKE :search OR STYLE_TAG LIKE :search', { search: '%' + search + '%' }, [search, search]);
+    const style_result = await connection.execute('SELECT STYLE_URL FROM T_STYLE WHERE STYLE_CMT LIKE :search OR STYLE_TAG LIKE :search', { search: '%' + search + '%' }, [search, search]);
     // 쿼리 결과 출력
     console.log('쿼리 결과:', result.rows[0]);
 
     let selectedStyle = result.rows[0][0];
     console.log(selectedStyle);
+    let selectedStyleUrl = style_result.rows[0][0];
 
     let ids = selectedStyle.split(',');
     console.log(ids);
     selectedItem = [];
-    ids.map(item => {
-      let clotheResult = connection.execute(`SELECT * FROM T_CLOTHE WHERE CLOTHE_ID = :item`, [item]);
+    // 각 ID에 대해 옷 정보 검색
+    for (let item of ids) {
+      let clotheResult = await connection.execute('SELECT * FROM T_CLOTHE WHERE CLOTHE_ID = :item', [item]);
       selectedItem.push(clotheResult.rows[0]);
-    });
-    res.json({ clotheInfo: selectedItem });
+    }
+    res.json({ clotheInfo: selectedItem, styleInfo: selectedStyleUrl });
+    console.log('옷 정보들', selectedItem);
     // 작업이 끝난 후 연결을 종료
     await connection.close();
     console.log('DB 연결 종료 성공!');
@@ -50,12 +53,9 @@ router.post('/', async (req, res) => {
   await tpo(req, res);
 });
 
-router.post('/tpo', (req, res) => {
-    // POST 요청 처리 로직
-    res.json({ message: 'POST 요청 처리' });
-});
-
-
-
+// router.post('/tpo', (req, res) => {
+//   // POST 요청 처리 로직
+//   res.json({ message: 'POST 요청 처리' });
+// });
 
 module.exports = router;
