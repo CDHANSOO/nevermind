@@ -5,9 +5,30 @@ const NavigationBar: React.FC = () => {
 
     const location = useLocation();
     const [backgroundColor, setBackgroundColor] = useState<string>('transparent');
+    const [darkMode, setDarkMode] = useState<boolean>(false); // darkMode 상태 추가
 
-    const linkClass = (path: string) =>
-        location.pathname === path ? 'font-bold text-neutral-800' : 'text-neutral-800 text-base';
+
+  useEffect(() => {
+    // 경로에 따라 다크 모드 상태 설정
+    if (location.pathname === '/content' || location.pathname === '/tpo') {
+      setDarkMode(true);
+    } else {
+      setDarkMode(false);
+    }
+    const handleScroll = () => {
+      // 스크롤 위치에 따라 배경색 설정
+      const newBackgroundColor = window.scrollY > 0 ? 'white' : 'transparent';
+      setBackgroundColor(newBackgroundColor);
+    };
+    // 스크롤 이벤트 리스너 추가
+    window.addEventListener('scroll', handleScroll);
+
+    // 컴포넌트 언마운트 시 이벤트 리스너 제거
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [location.pathname, setDarkMode]);
+  console.log(darkMode);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -50,7 +71,7 @@ const NavigationBar: React.FC = () => {
             {/* <div className="text-neutral-800 text-base font-normal grow text-end basis-0"><Link to="/sign">SIGN IN</Link    ></div> */}
             {/* 231121 정은우  */}
             {/* mypage 확인을 위해 잠시 link 바꿈 */}
-            <div className="text-neutral-800 text-base font-normal grow text-end basis-0"><Link to="/mypage">SIGN IN</Link    ></div>
+            <div className="text-base font-normal grow text-end basis-0"><Link to="/mypage">SIGN IN</Link></div>
         </div >
     )
 }
