@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const dbConnector = require('../config/dbConnector');
 
 // Get/ user 라우터
 // /user
@@ -7,5 +8,6 @@ const router = express.Router();
 router.get('/', (req, res) => {
     res.send('Hello , User');
 });
+
 
 module.exports = router;
