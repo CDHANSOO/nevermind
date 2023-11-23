@@ -41,7 +41,8 @@ const uploadS3 = multer({
     s3: s3,
     bucket: 'nevermind',
     key(req, file, cb) {
-      cb(null, `original/${Date.now()}_${file.originalname}`);
+      const ext = path.extname(file.originalname);
+      cb(null, `original/${Date.now()}_${ext}`);
     },
   }),
   limits: { fileSize: 5 * 1024 * 1024 },
@@ -78,19 +79,20 @@ const afterUploadImage = (req, res) => {
 // 이미지 업로드 미들웨어
 // upload.single (1개), upload.array(하나의 form에 여러개 파일), upload.fields(업로드하는 곳이 여러개)
 // upload.none(이미지는 없지만 enctype이 multipart/form-data일 때)
-router.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../compiledComponent/Content.js')); // 수정된 부분
-});
-router.post('/', upload.fields([{ name: 'image1' }, { name: 'image2' }]), (req, res) => {
-  console.log(req.files, req.body);
-  res.send(alert('사진을 올리는데 성공하셨습니다!'));
-});
 
-router.get('/abc', async (req, res) => {
-  const test = await main();
-  res.send('db test');
+// router.post('/', upload.fields([{ name: 'image1' }, { name: 'image2' }]), (req, res) => {
+//   console.log(req.files, req.body);
+//   res.send(alert('사진을 올리는데 성공하셨습니다!'));
+// });
 
-  // res.writeHead(200 , {}) 응답하고 writeHead 해도 오류!!!
+router.post('/', uploadS3.single('image'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).send('파일이 업로드되지 않았습니다.');
+  }
+
+  // 파일이 S3에 업로드되었으므로 URL이나 다른 정보를 돌려보낼 수 있습니다
+  res.json({ message: '파일이 성공적으로 업로드되었습니다.', url: req.file.location });
+  console.log('S3 upload 성공');
 });
 
 module.exports = router;
