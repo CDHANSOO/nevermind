@@ -1,6 +1,8 @@
-import React,{useState} from 'react';
-import './App.css'
+import React, { useState } from 'react';
+import { RecoilRoot } from 'recoil';
+import './App.css';
 import { Route, Routes } from 'react-router-dom';
+
 import NavigationBar from './components/NavigationBar';
 import Home from './pages/Home';
 import Content from './pages/Content';
@@ -18,8 +20,8 @@ import MyPage from './pages/MyPage';
 const App: React.FC = () => {
     const [userInput, setUserInput] = useState('');
   return (
-    <div>
-      <NavigationBar/>
+    <RecoilRoot>
+      <NavigationBar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/content' element={<Content />} />
@@ -32,8 +34,8 @@ const App: React.FC = () => {
         <Route path='/mypage' element={<MyPage />} />
       </Routes>
       {/* <Footer/> */}
-    </div>
-  )
-}
+    </RecoilRoot>
+  );
+};
 
 export default App;
