@@ -1,5 +1,5 @@
 import React, { useState, FC } from 'react';
-import axios from 'axios'
+import axios from 'axios';
 
 interface Product {
   name: string;
@@ -21,8 +21,8 @@ const Detail: FC<DetailProps> = ({ userInput, setUserInput }) => {
       console.log('검색어:', search);
 
       try {
-        const response = await axios.post('http://localhost:3000/tpo/tpo', { search: search });
-        console.log('요청 응답 : ',response.data);
+        const response = await axios.post('http://localhost:3000/tpo', { search: search });
+        console.log('요청 응답 : ', response.data);
       } catch (error) {
         console.error('요청 오류 : ', error);
       }

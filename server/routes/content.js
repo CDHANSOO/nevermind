@@ -40,6 +40,7 @@ const uploadS3 = multer({
   storage: multerS3({
     s3: s3,
     bucket: 'nevermind',
+    contentType: multerS3.AUTO_CONTENT_TYPE,
     key(req, file, cb) {
       const ext = path.extname(file.originalname);
       cb(null, `original/${Date.now()}_${ext}`);
