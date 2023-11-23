@@ -32,22 +32,8 @@ const Content: React.FC = () => {
 
     if (droppedFiles.length > 0) {
       const droppedFile = droppedFiles[0];
-      const formData = new FormData();
-      formData.append('image', droppedFiles[0]);
       setFile(droppedFile); // File 객체 직접 전달
       navigate('/contentdetail', { state: { file } });
-
-      // 파일을 백엔드로 보내기
-      try {
-        const response = await axios.post('http://localhost:3000/content', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        });
-        console.log(response.data);
-      } catch (error) {
-        console.error('파일 업로드 오류 :', error);
-      }
     }
     e.currentTarget.classList.remove('file-dragging');
   };

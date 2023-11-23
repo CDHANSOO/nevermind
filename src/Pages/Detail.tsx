@@ -1,19 +1,25 @@
 import React, { useState, FC } from 'react';
 import axios from 'axios';
 
-interface Product {
-  name: string;
-  storeName: string;
-  price: string;
-}
+// interface Product {
+//   name: string;
+//   storeName: string;
+//   price: string;
+// }
 
 interface DetailProps {
   userInput: string;
   setUserInput: (input: string) => void;
 }
 
+interface ServerResponse {
+  clotheInfo: Array<string[]>;
+  styleInfo: string;
+}
+
 const Detail: FC<DetailProps> = ({ userInput, setUserInput }) => {
   const [search, setSearch] = useState<string>('');
+  const [responseData, setResponseData] = useState<ServerResponse | null>(null);
 
   // 검색어를 서버로 전송하는 함수
   const handleSearch = async () => {
@@ -21,12 +27,14 @@ const Detail: FC<DetailProps> = ({ userInput, setUserInput }) => {
       console.log('검색어:', search);
 
       try {
-        const response = await axios.post('http://localhost:3000/tpo', { search: search });
-        console.log('요청 응답 : ', response.data);
+        const response = await axios.post<ServerResponse>('http://localhost:3000/tpo', { search: search });
+        const result = response.data;
+        console.log('요청 응답 : ', result);
+
+        setResponseData(result); // 상태를 업데이트
       } catch (error) {
         console.error('요청 오류 : ', error);
       }
-
       setSearch('');
       setUserInput(search);
     }
@@ -38,14 +46,14 @@ const Detail: FC<DetailProps> = ({ userInput, setUserInput }) => {
     }
   };
 
-  const products: Product[] = [
-    { name: '블링 핫 재킷', storeName: '상점 이름', price: '17,900 원' },
-    { name: '블링 핫 재킷', storeName: '상점 이름', price: '17,900 원' },
-    { name: '블링 핫 재킷', storeName: '상점 이름', price: '17,900 원' },
-    { name: '새로운 상품', storeName: '새로운 상점', price: '19,900 원' },
-    { name: '추가 상품', storeName: '추가 상점', price: '15,900 원' },
-    { name: '더 많은 상품', storeName: '다른 상점', price: '21,500 원' },
-  ];
+  // const products: Product[] = [
+  //   { name: '블링 핫 재킷', storeName: '상점 이름', price: '17,900 원' },
+  //   { name: '블링 핫 재킷', storeName: '상점 이름', price: '17,900 원' },
+  //   { name: '블링 핫 재킷', storeName: '상점 이름', price: '17,900 원' },
+  //   { name: '새로운 상품', storeName: '새로운 상점', price: '19,900 원' },
+  //   { name: '추가 상품', storeName: '추가 상점', price: '15,900 원' },
+  //   { name: '더 많은 상품', storeName: '다른 상점', price: '21,500 원' },
+  // ];
 
   return (
     <div className="h-screen w-full bg-white">
@@ -57,7 +65,7 @@ const Detail: FC<DetailProps> = ({ userInput, setUserInput }) => {
             <div className="w-[14.88px] h-[15px] ml-1 bg-yellow-100 rounded-full" />
           </div>
           <div className="flex justify-center relative w-full">
-            <img className="w-[430px] max-w-[496px] max-h-[746px] rounded-xl" src="https://via.placeholder.com/496x746" alt="placeholder" />
+            <img className="w-[430px] max-w-[496px] max-h-[746px] rounded-xl" src={responseData?.styleInfo || 'https://via.placeholder.com/496x746'} alt="placeholder" />
           </div>
         </div>
         <div className="flex items-left flex-col md:ml-10 mt-6 md:mt-0">
@@ -78,14 +86,16 @@ const Detail: FC<DetailProps> = ({ userInput, setUserInput }) => {
             </div>
           </div>
           <div className="w-full md:w-[347px] max-h-[400px] overflow-auto">
-            {products.map((product, index) => (
+            {responseData?.clotheInfo?.map((clothe, index) => (
               <div key={index} className="flex justify-start w-full h-32 rounded-xl border border-zinc-300 p-4 mb-2">
                 <div className="flex items-center">
-                  <div className="w-24 h-24 bg-zinc-300 rounded-xl mr-4"></div>
+                  <div className="w-24 h-24 bg-zinc-300 rounded-xl mr-4">
+                    <img src={clothe[1]} alt={clothe[2]} className="w-full h-full object-cover rounded-xl" />
+                  </div>
                   <div className="text-left">
-                    <div className="text-black text-xl font-bold font-Pretendard">{product.name}</div>
-                    <div className="text-black text-base font-normal font-Pretendard">{product.storeName}</div>
-                    <div className="text-black text-base font-bold font-Pretendard">{product.price}</div>
+                    <div className="text-black text-xl font-bold font-Pretendard">{clothe[2]}</div>
+                    <div className="text-black text-base font-normal font-Pretendard">{clothe[3]}</div>
+                    <div className="text-black text-base font-bold font-Pretendard">{clothe[4]}</div>
                   </div>
                 </div>
               </div>
