@@ -47,6 +47,7 @@ async function tpo(req, res) {
       console.log('옷 정보들', selectedItem);
     } else {
       console.log('검색 결과가 없습니다.');
+      res.json({ message: '현재 코디의 모든 상품이 품절입니다!' });
     }
     // 작업이 끝난 후 연결을 종료
     await connection.close();
