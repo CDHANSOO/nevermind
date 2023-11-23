@@ -1,9 +1,11 @@
 import React, { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import { IoEyeOutline } from 'react-icons/io5';
 import { IoEyeOffOutline } from 'react-icons/io5';
 import { MdOutlineCancel } from 'react-icons/md';
 import axios from 'axios';
+import {useSetRecoilState} from "recoil";
+import { loginState } from 'atom/atom';
 
 //이메일 포멧
 // const emailRegEx = /^A-Za-z0-9@A-Za-z0-9.[A-Za-z]{2,3}$/;
@@ -12,6 +14,8 @@ import axios from 'axios';
 // const passwordRegex = /^(?=.[A-Za-z])(?=.\d)(?=.[@!%#?&])[A-Za-z\d@!%*#?&]{8,16}$/;
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
@@ -20,31 +24,34 @@ const Login = () => {
 
   const idRef = useRef<HTMLInputElement>(null);
 
+  const setIsLogin = useSetRecoilState(loginState);
+
   // 서버에 넘길때
-  const loginHandle = async () => {
+  const loginHandle = async (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault()
     try {
-      const response = await axios.post(
-        'http://localhost:3000/login',
-        {
-          email,
-          password,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        },
-      );
+      const response = await axios.post('http://localhost:3000/login',{email,password,},{headers: {'Content-Type': 'application/json'}});
 
       const result = response.data;
-      console.log(result);
-
-      if (result.result === true) {
-        console.log('있는 값');
+      console.log('받아온 값 :', result);
+      if(result.login===true){
+        navigate('/')
+        setIsLogin(true)
+        alert('로그인 완료')
       }
+      else if(result.login===false){
+        setEmail('');
+        setPassword('');
+        alert('로그인 실패')
+        if (idRef.current) {
+          idRef.current.focus();
+        }
+      }
+
     } catch (error) {
       console.error('에러:', error);
-      // Handle error here
+      // 에러 처리
+      
     }
   };
 
@@ -66,9 +73,9 @@ const Login = () => {
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
-
-  console.log(email);
-  console.log(password);
+  
+  console.log(email)
+  console.log(password)
 
   return (
     <>
@@ -95,7 +102,7 @@ const Login = () => {
             </div>
             {/* Password */}
             <div className="relative">
-              <input type={viewPw ? 'text' : 'password'} placeholder="Password" value={password} onChange={handlePasswordChange} className="w-[230px] h-[32px] rounded-[5px] border p-[5px]" />
+              <input type={viewPw ? 'text' : 'password'} placeholder="Password" value={password} onChange={handlePasswordChange} className="w-[230px] h-[32px] rounded-[5px] border p-[5px]"/>
               <span className="absolute top-[7px] right-[7px]" onClick={viewPwhandle}>
                 {viewPw === false ? <IoEyeOffOutline /> : <IoEyeOutline />}
               </span>
@@ -106,7 +113,7 @@ const Login = () => {
                 ID 저장하기
               </label>
             </div>
-            <button type="submit" onClick={loginHandle} className="w-[230px] h-[32px] bg-[#b980ff] rounded-[5px] text-white hover:scale-105 duration-100 mt-6 mb-1">
+            <button type="submit" onClick={(e) => loginHandle(e)} className="w-[230px] h-[32px] bg-[#b980ff] rounded-[5px] text-white hover:scale-105 duration-100 mt-6 mb-1">
               로그인
             </button>
           </form>
