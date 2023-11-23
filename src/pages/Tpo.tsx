@@ -16,7 +16,7 @@ const Tpo: FC<TpoProps> = ({ onSearch }) => {
             if (input.trim() !== '') {
                 console.log('검색어:', input);
                 setInput('');
-                navigate('/tpodtail');
+                navigate('/detail');
                 onSearch(input);
             }
         }
