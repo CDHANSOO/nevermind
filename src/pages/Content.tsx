@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ContentBackgoundImg from '@assets/Rectangle.png'
+import axios from 'axios';
 
 const Content: React.FC = () => {
     const [file, setFile] = useState<File | null>(null);
@@ -25,26 +26,44 @@ const Content: React.FC = () => {
         e.preventDefault();
     };
     // 파일이 드랍되었을때의 처리 함수
-    const handleDrop = (e: React.DragEvent<HTMLFormElement>) => {
+    const handleDrop = async(e: React.DragEvent<HTMLFormElement>) => {
         e.preventDefault();
         const droppedFiles = e.dataTransfer.files;
 
         if (droppedFiles.length > 0) {
             const droppedFile = droppedFiles[0];
+            console.log('흐어어어어어엉흐어어어어',droppedFile)
             setFile(droppedFile); // File 객체 직접 전달
+            console.log('흐어어어어어엉흐어어어어2',file)
             navigate('/contentdetail', { state: { file } });
         }
         e.currentTarget.classList.remove('file-dragging');
+
+        try {
+            const response = await axios.post('http://localhost:3000/content',{droppedFiles},{headers: {'Content-Type': 'multipart/form-data'}});
+            const result = response.data;
+            console.log('받아온 값 :', result);
+            if(result.login===true){
+              alert('로그인 완료')
+            }
+            else if(result.login===false){
+              alert('로그인 실패')
+            }
+          } catch (error) {
+            console.error('에러:', error);
+            // 에러 처리
+          }
     };
     // 231117 정 : 받은 파일을 ContentDetail에서 보여주기(임시)
-    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const selectedFile = event.target.files?.[0];
-        if (selectedFile) {
-            setFile(selectedFile); // File 객체 직접 전달
-            navigate('/contentdetail', { state: { file: selectedFile } });
-            console.log(file)
-        }
-    };
+    // const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    //     const selectedFile = event.target.files?.[0];
+    //     if (selectedFile) {
+    //         setFile(selectedFile); // File 객체 직접 전달
+    //         navigate('/contentdetail', { state: { file: selectedFile } });
+    //         console.log(file)
+    //     }
+    // };
+    
 
     return (
         <div>
@@ -77,7 +96,7 @@ const Content: React.FC = () => {
                                         <form className="w-full h-full bg-purple-400 bg-opacity-10 rounded-[19px] flex flex-col justify-center items-center" id="clothForm" onDragEnter={handleDragEnter} onDragLeave={handleDragLeave} onDragOver={handleDragOver} onDrop={handleDrop}>
                                             <label className="block" htmlFor="clothPhotoInput">
                                                 <span className="sr-only">사진 선택</span>
-                                                <input type="file" className="hidden " id="clothPhotoInput" accept="image/*" onChange={handleFileChange} ref={inputRef} />
+                                                <input type="file" className="hidden " id="clothPhotoInput" accept="image/*" ref={inputRef} />
                                             </label>
 
                                             <div className="w-[72px] h-[72px] mb-3">
