@@ -29,7 +29,7 @@ const Detail: FC<DetailProps> = ({ userInput, setUserInput }) => {
       try {
         const response = await axios.post<ServerResponse>('http://localhost:3000/tpo', { search: search });
         const result = response.data
-        console.log('요청 응답 : ',result);
+        console.log('요청 응답 : ', result);
 
         setResponseData(result); // 상태를 업데이트
 
