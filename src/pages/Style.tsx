@@ -6,7 +6,7 @@ import InfluencerCarousel from '../components/stylePage/InfluencerCarousel'
 import CodyFleece from '@/assets/style/cody/플리스-cody.jpg'
 import CodyCristmas from '@/assets/style/cody/크리스마스-cody.jpg'
 import InfluencerBannerString from '@components/stylePage/InfluencerBannerString'
-import Footer from '@components/footer'
+import Footer from '@components/Footer'
 
 
 const Style: React.FC = () => {
