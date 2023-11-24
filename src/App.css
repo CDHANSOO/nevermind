@@ -31,10 +31,16 @@
 /* 스크롤바 안보이게 하는 코드 */
 /* ( 크롬, 사파리, 오페라, 엣지 ) 동작 */
 *::-webkit-scrollbar {
-  display: none;
+  width: 8px; /* 스크롤바의 너비 */
 }
 
-* {
-  -ms-overflow-style: none; /* 인터넷 익스플로러 */
-  scrollbar-width: none; /* 파이어폭스 */
+*::-webkit-scrollbar-thumb {
+  height: 30%; /* 스크롤바의 길이 */
+  background: #959595; /* 스크롤바의 색상 */
+
+  border-radius: 0.75rem;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent; /*스크롤바 뒷 배경 색상*/
 }

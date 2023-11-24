@@ -12,7 +12,7 @@ import Tpo from './pages/Tpo';
 import Detail from './pages/Detail';
 import Sign from './pages/Sign';
 import SignUp from './components/SignUp';
-import ContentDetail from 'pages/ContentDetail';
+import ContentDetail from './pages/ContentDetail';
 import MyPage from './pages/MyPage';
 
 const App: React.FC = () => {
