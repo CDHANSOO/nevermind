@@ -14,7 +14,7 @@ async function findStylesAndClothes(search) {
         clothes.push(clotheInfo[0]);
       }
     }
-
+    console.log(clothes);
     return { clothes, styleUrl: selectedStyle[1] };
   } else {
     return null;
