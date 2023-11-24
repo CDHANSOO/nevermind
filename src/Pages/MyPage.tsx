@@ -1,5 +1,5 @@
 import MyPageCarousel from '@components/myPage/MyPageCarousel'
-import MyPageTop from '@components/myPage/mypageTop'
+import MyPageTop from '@components/myPage/MyPageTop'
 import React from 'react'
 
 
