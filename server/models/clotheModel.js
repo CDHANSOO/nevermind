@@ -1,5 +1,6 @@
 const dbConnector = require('../config/dbConnector');
 
+// style 찾는 코드 {작성자 : '이한수'}
 async function getStylesBySearch(search) {
   const connection = await dbConnector.dbConnect();
   try {
