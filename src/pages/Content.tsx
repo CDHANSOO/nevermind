@@ -32,29 +32,26 @@ const Content: React.FC = () => {
 
     if (droppedFiles.length > 0) {
       const droppedFile = droppedFiles[0];
-      console.log('흐어어어어어엉흐어어어어', droppedFile)
+      const formData = new FormData();
+      formData.append('image', droppedFiles[0]);
       setFile(droppedFile); // File 객체 직접 전달
-      console.log('흐어어어어어엉흐어어어어2', file)
       navigate('/contentdetail', { state: { file } });
-    }
-    e.currentTarget.classList.remove('file-dragging');
 
-    try {
-      const response = await axios.post('http://localhost:3000/content', { droppedFiles }, { headers: { 'Content-Type': 'multipart/form-data' } });
-      const result = response.data;
-      console.log('받아온 값 :', result);
-      if (result.login === true) {
-        alert('로그인 완료')
+      // 파일을 백엔드로 보내기
+      try {
+        const response = await axios.post('http://localhost:3000/content', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+        console.log(response.data);
+      } catch (error) {
+        console.error('파일 업로드 오류 :', error);
       }
-      else if (result.login === false) {
-        alert('로그인 실패')
-      }
-    } catch (error) {
-      console.error('에러:', error);
-      // 에러 처리
     }
     e.currentTarget.classList.remove('file-dragging');
   };
+  // 231117 정 : 받은 파일을 ContentDetail에서 보여주기(임시)
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files?.[0];
     if (selectedFile) {
@@ -72,7 +69,7 @@ const Content: React.FC = () => {
         {/* 배경이미지 */}
         <div className="relative w-full h-full bg-cover bg-no-repeat" style={bgimg}>
           {/* GET Trend 영역 */}
-          <div className='absolute w-full h-[calc(100vh-70px)] top-[70px] flex justify-center items-center'>
+          <div className="absolute w-full h-[calc(100vh-70px)] top-[70px] flex justify-center items-center">
             <div className=" GetTrend text-right mr-12">
               <div className="text-neutral-100 text-9xl font-bold font-['Pretendard Variable'] leading-10 mb-[100px]">
                 GET
@@ -92,10 +89,17 @@ const Content: React.FC = () => {
                 <div className="w-full h-full">
                   <div className="w-full h-full bg-purple-400 bg-opacity-10 rounded-[19px] flex flex-col justify-center items-center">
                     {/* 드래그 앤 드롭을 위한 폼 */}
-                    <form className="w-full h-full bg-purple-400 bg-opacity-10 rounded-[19px] flex flex-col justify-center items-center" id="clothForm" onDragEnter={handleDragEnter} onDragLeave={handleDragLeave} onDragOver={handleDragOver} onDrop={handleDrop}>
+                    <form
+                      className="w-full h-full bg-purple-400 bg-opacity-10 rounded-[19px] flex flex-col justify-center items-center"
+                      id="clothForm"
+                      onDragEnter={handleDragEnter}
+                      onDragLeave={handleDragLeave}
+                      onDragOver={handleDragOver}
+                      onDrop={handleDrop}
+                    >
                       <label className="block" htmlFor="clothPhotoInput">
                         <span className="sr-only">사진 선택</span>
-                        <input type="file" className="hidden " id="clothPhotoInput" accept="image/*" ref={inputRef} />
+                        <input type="file" className="hidden " id="clothPhotoInput" accept="image/*" onChange={handleFileChange} ref={inputRef} />
                       </label>
 
                       <div className="w-[72px] h-[72px] mb-3">
@@ -111,40 +115,6 @@ const Content: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-      {/* 드래그 앤 드롭 영역 */}
-      <div className=" w-[600px] h-[600px]">
-        <div className="w-[600px] h-[600px] left-0 top-0  bg-zinc-100 rounded-[19px] border border-stone-300 p-8">
-          <div className="w-full h-full">
-            <div className="w-full h-full bg-purple-400 bg-opacity-10 rounded-[19px] flex flex-col justify-center items-center">
-              {/* 드래그 앤 드롭을 위한 폼 */}
-              <form
-                className="w-full h-full bg-purple-400 bg-opacity-10 rounded-[19px] flex flex-col justify-center items-center"
-                id="clothForm"
-                onDragEnter={handleDragEnter}
-                onDragLeave={handleDragLeave}
-                onDragOver={handleDragOver}
-                onDrop={handleDrop}
-              >
-                <label className="block" htmlFor="clothPhotoInput">
-                  <span className="sr-only">사진 선택</span>
-                  <input type="file" className="hidden " id="clothPhotoInput" accept="image/*" onChange={handleFileChange} ref={inputRef} />
-                </label>
-
-                <div className="w-[72px] h-[72px] mb-3">
-                  <div className="w-[72px] h-[72px] rounded-full border-2 border-purple-400" />
-                </div>
-                <div className="text-center text-black text-base font-semibold font-['Pretendard Variable']">Drag and Drop</div>
-                <div className="text-center text-zinc-800 text-xs font-normal font-['Pretendard Variable'] leading-[14px]">
-                  인플루언서의 사진을
-                  <br />
-                  넣으면 옷에 대한 정보를 찾아드립니다.
-                </div>
-              </form>
             </div>
           </div>
         </div>
