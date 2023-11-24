@@ -27,3 +27,4 @@ dist-ssr
 *.sw?
 server/config/oracle.js
 
+/src/*
