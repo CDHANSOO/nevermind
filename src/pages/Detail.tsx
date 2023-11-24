@@ -1,5 +1,5 @@
-import React, { useState, FC } from 'react';
-import axios from 'axios'
+import React, { useState, useEffect, FC } from 'react';
+import axios from 'axios';
 
 // interface Product {
 //   name: string;
@@ -22,17 +22,16 @@ const Detail: FC<DetailProps> = ({ userInput, setUserInput }) => {
   const [responseData, setResponseData] = useState<ServerResponse | null>(null);
 
   // 검색어를 서버로 전송하는 함수
-  const handleSearch = async () => {
+  const handleSearch = async (search: string) => {
     if (search.trim() !== '') {
       console.log('검색어:', search);
 
       try {
         const response = await axios.post<ServerResponse>('http://localhost:3000/tpo', { search: search });
-        const result = response.data
-        console.log('요청 응답 : ',result);
+        const result = response.data;
+        console.log('요청 응답 : ', result);
 
         setResponseData(result); // 상태를 업데이트
-
       } catch (error) {
         console.error('요청 오류 : ', error);
       }
@@ -41,10 +40,23 @@ const Detail: FC<DetailProps> = ({ userInput, setUserInput }) => {
     }
   };
 
+  // const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  //   if (event.key === 'Enter') {
+  //     handleSearch();
+  //   }
+  // };
+
+  // 초기 검색 수행
+  useEffect(() => {
+    if (userInput) {
+      handleSearch(userInput);
+    }
+  }, [userInput]);
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      handleSearch();
+      handleSearch(search);
+      setSearch('');
     }
   };
 
