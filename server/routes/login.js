@@ -6,7 +6,7 @@ const loginService = require('../services/loginService');
 // 주의점 : 한 라우터에 res.send or res.json같은게 2번이상 나와선 안된다. 한번씩만!!!
 
 // post 라우터
-router.post('/login', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const { email, password } = req.body;
     const result = await loginService.loginUser(email, password);
