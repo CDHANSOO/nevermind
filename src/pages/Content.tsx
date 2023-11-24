@@ -38,6 +38,7 @@ const Content: React.FC = () => {
       navigate('/contentdetail', { state: { file } });
     }
     e.currentTarget.classList.remove('file-dragging');
+<<<<<<< HEAD
 
     try {
       const response = await axios.post('http://localhost:3000/content', { droppedFiles }, { headers: { 'Content-Type': 'multipart/form-data' } });
@@ -89,6 +90,33 @@ const Content: React.FC = () => {
   //   e.currentTarget.classList.remove('file-dragging');
   // };
 
+=======
+
+    try {
+      const response = await axios.post('http://localhost:3000/content', { droppedFiles }, { headers: { 'Content-Type': 'multipart/form-data' } });
+      const result = response.data;
+      console.log('받아온 값 :', result);
+      if (result.login === true) {
+        alert('로그인 완료')
+      }
+      else if (result.login === false) {
+        alert('로그인 실패')
+      }
+    } catch (error) {
+      console.error('에러:', error);
+      // 에러 처리
+    }
+    e.currentTarget.classList.remove('file-dragging');
+  };
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = event.target.files?.[0];
+    if (selectedFile) {
+      setFile(selectedFile); // File 객체 직접 전달
+      navigate('/contentdetail', { state: { file: selectedFile } });
+      console.log(file);
+    }
+  };
+>>>>>>> ae173bf5594af0ae726217a98928bfdaa2863204
 
   return (
     <div>
