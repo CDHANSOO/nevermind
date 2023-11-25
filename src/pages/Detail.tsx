@@ -48,7 +48,8 @@ const Detail: FC<DetailProps> = ({ userInput, setUserInput }) => {
 
   // 초기 검색 수행
   useEffect(() => {
-    if (userInput) {
+    if (userInput && !responseData) {
+      // responseData가 null일 때만 handleSearch 호출
       handleSearch(userInput);
     }
   }, [userInput]);
