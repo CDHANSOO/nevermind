@@ -10,7 +10,7 @@ async function findStylesAndClothes(search) {
     const selectedStyle = styles[randomIndex];
     const clotheIds = selectedStyle[0].split(',');
     const clothes = [];
-
+    // 코디 ids에 있는 상품들 불러오기
     for (let itemId of clotheIds) {
       const clotheInfo = await clotheModel.getClotheById(itemId);
       if (clotheInfo.length > 0) {
