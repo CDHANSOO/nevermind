@@ -16,6 +16,7 @@ const MainCom = ({ img, link }: Props) => {
   });
 
   const animationClass = inView ? 'animate-fadeIn' : '';
+  const animationClass2 = inView ? 'animate-fadeIn2' : '';
 
   return (
     <div className={`relative w-full h-[clac(100vh-70px)] top-[70px] ${animationClass}`} ref={ref}>
@@ -39,8 +40,8 @@ const MainCom = ({ img, link }: Props) => {
             </div>
           </Link>
         </div>
-        <div className={`w-[720px] h-[720px] ml-[25px] ${animationClass}`}>
-          <img src={img} className={`w-full h-full rounded-[20px] ${animationClass}`} />
+        <div className={`w-[720px] h-[720px] ml-[25px] ${animationClass2}`}>
+          <img src={img} className={`w-full h-full rounded-[20px] ${animationClass2}`} />
         </div>
       </div>
     </div>

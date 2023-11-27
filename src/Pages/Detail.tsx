@@ -1,5 +1,6 @@
 import React, { useState, useEffect, FC } from 'react';
 import axios from 'axios';
+import Loading from '@components/Loading';
 
 interface DetailProps {
   userInput: string;
@@ -17,6 +18,7 @@ const Detail: FC<DetailProps> = ({ userInput, setUserInput }) => {
   const [selectedClotheIndex, setSelectedClotheIndex] = useState<number>(0);
   const [selectedStyleIndex, setSelectedStyleIndex] = useState<number>(0);
   const [responseData, setResponseData] = useState<ServerResponse | null>(null);
+  const [loading, setLoading] = useState(true);
 
   // 검색어를 서버로 전송하는 함수
   const handleSearch = async (search: string) => {
@@ -24,11 +26,13 @@ const Detail: FC<DetailProps> = ({ userInput, setUserInput }) => {
       console.log('검색어:', search);
 
       try {
+        setLoading(true);
         const response = await axios.post<ServerResponse>('http://localhost:3000/tpo', { search: search });
         const result = response.data;
         console.log('요청 응답 : ', result);
 
         setResponseData(result); // 상태를 업데이트
+        setLoading(false);
       } catch (error) {
         console.error('요청 오류 : ', error);
       }
@@ -54,10 +58,14 @@ const Detail: FC<DetailProps> = ({ userInput, setUserInput }) => {
   const handleClick = (index: number) => {
     setSelectedTabIndex(index);
     setSelectedClotheIndex(index); // 선택한 스타일에 해당하는 옷 인덱스로 업데이트
-    setSelectedStyleIndex(index)
+    setSelectedStyleIndex(index);
   };
 
-  return (
+  return loading ? (
+    <div className='flex justify-center items-center h-screen'>
+      <Loading />
+    </div>
+  ) : (
     <div className="h-screen w-full bg-white">
       <div className="flex items-center justify-center h-full">
         <div className="flex flex-col">
@@ -71,13 +79,22 @@ const Detail: FC<DetailProps> = ({ userInput, setUserInput }) => {
             ))}
           </div>
           <div className="flex justify-center relative w-full">
-            <img className="w-[430px] max-w-[496px] max-h-[746px] rounded-xl" src={responseData?.styleInfo[selectedStyleIndex] || 'https://via.placeholder.com/496x746'} alt="placeholder" />
+            <img
+              className="w-[430px] max-w-[496px] max-h-[746px] rounded-xl"
+              src={responseData?.styleInfo?.[selectedStyleIndex] || 'https://www.kstarfashion.com/news/photo/202110/208229_111458_48.gif'}
+              alt="placeholder"
+            />
           </div>
         </div>
         <div className="flex items-left flex-col md:ml-10 mt-6 md:mt-0">
           <div className="mb-1 text-center md:text-left">
-            <div className="text-2xl font-extrabold font-['Pretendard']"> {userInput}</div>
-            <div className="text-2xl font-normal font-['Pretendard']">에 대한 코디 추천은 다음과 같습니다.</div>
+            {/* <div className="text-2xl font-extrabold font-['Pretendard']"> {userInput}</div> */}
+
+            {responseData ? (
+              <div className="text-2xl font-normal font-['Pretendard']"><strong>{userInput}</strong>에 대한 코디 추천은<br /> 다음과 같습니다.</div>
+            ) : (
+              <div className="text-2xl font-normal font-['Pretendard']"><strong>{userInput}</strong>에 대한 <br />정보는 찾지 못했습니다.</div>
+            )}
           </div>
           <div className="mt-2 mb-10 w-full md:w-[348px]">
             <div className="relative h-10">

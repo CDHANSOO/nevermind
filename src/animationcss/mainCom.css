@@ -9,7 +9,20 @@
   }
 }
 
-/* animate-fadeIn 클래스를 추가하여 애니메이션을 적용합니다. */
+@keyframes fadeIn2 {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX();
+  }
+}
+
 .animate-fadeIn {
   animation: fadeIn 1.3s ease-out; /* 1초 동안 페이드인 애니메이션을 적용합니다. */
+}
+.animate-fadeIn2 {
+  animation: fadeIn2 1.3s ease-out; /* 1초 동안 페이드인 애니메이션을 적용합니다. */
 }

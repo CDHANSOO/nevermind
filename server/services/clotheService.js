@@ -14,7 +14,7 @@ async function findStylesAndClothes(search) {
       
       const clothes = [];
       for (let itemId of clotheIds) {
-        const clotheInfo = await clotheModel.getClotheById(itemId); // T_CLOTHE 테이블에서 작은 사이즈 정보들 가져오기
+        const clotheInfo = await clotheModel.getClotheById(itemId); // T_CLOTHE 테이블에서 작은 사이즈 정보들(코디에 대한 각각의 옷정보) 가져오기
         if (clotheInfo.length > 0) {
           clothes.push(clotheInfo[0]);
         }
