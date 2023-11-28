@@ -9,4 +9,6 @@ require('dotenv').config();
 
 router.post('/', uploadS3.single('image'), afterUploadImage);
 
+
+
 module.exports = router;
