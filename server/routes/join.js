@@ -6,7 +6,7 @@ const joinService = require('../services/joinService');
 // 라우터들
 // 주의점 : 한 라우터에 res.send or res.json같은게 2번이상 나와선 안된다. 한번씩만!!!
 
-router.post('/join', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const result = await joinService.registerUser(req.body);
     if (result.checkPassword === false) {
