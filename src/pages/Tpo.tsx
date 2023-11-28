@@ -22,16 +22,14 @@ const Tpo: FC<TpoProps> = ({ onSearch }) => {
           const response = await axios.post('http://localhost:3000/tpo', { search: input });
           console.log('백엔드 응답:', response.data);
           // 필요한 경우, 여기에서 response.data를 처리하세요.
-
+          setInput('');
           // Detail 페이지로 네비게이션
           navigate('/detail', { state: { searchInput: input, searchData: response.data } });
+          onSearch(input);
         } catch (error) {
           console.error('검색 요청 오류:', error);
         }
 
-        setInput('');
-
-        onSearch(input);
       }
     }
   };

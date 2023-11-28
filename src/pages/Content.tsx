@@ -60,7 +60,6 @@ const Content: React.FC = () => {
       console.log(file);
     }
   };
-
   return (
     <div>
       {/* 배경이미지는 똑같고, 안에 컴포넌트만 달라지는 거니까, 
