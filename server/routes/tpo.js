@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
     if (result) {
       res.json({ clotheInfo: result.clothes, styleInfo: result.styleUrl });
     } else {
-      res.json({ message: '현재 코디의 모든 상품이 품절입니다!' });
+      res.json(null);
     }
   } catch (err) {
     console.error('오류 발생:', err.message);
@@ -25,3 +25,5 @@ router.post('/', async (req, res) => {
 });
 
 module.exports = router;
+
+
