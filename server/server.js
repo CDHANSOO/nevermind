@@ -38,8 +38,7 @@ app.use('/', express.static(path.join(__dirname, 'dist'))); // 끝
 //app.use('/', express.static(path.join(__dirname, 'compiledComponent')));
 
 // cors 에러 처리 미들웨어
-
-const whiteList = ['http://localhost:5173', 'http://localhost:3000']; // 허용 url 리스트
+const whiteList = ['http://localhost:5173', 'http://localhost:3000', 'http://localhost:5000', 'http://127.0.0.1:5000']; // 허용 url 리스트
 const corsOptions = {
   origin: (origin, callback) => {
     if (!origin || whiteList.indexOf(origin) !== -1) {

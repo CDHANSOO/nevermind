@@ -1,8 +1,8 @@
 const clotheModel = require('../models/clotheModel');
 
 async function findStylesAndClothes(search) {
-  const styles = await clotheModel.getStylesBySearch(search); // styles = result.rows
-
+  // styles => search를 해온 값
+  const styles = await clotheModel.getStylesBySearch(search);
   if (styles.length > 0) {
     const styleUrlList = [];
     const clothesList = [];
