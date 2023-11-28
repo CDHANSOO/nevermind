@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 import ItemsCarousel from 'react-items-carousel';
 import StyleInfluencerImage01 from '@/assets/style/cody/KakaoTalk_20231115_144323229.jpg'
 import StyleInfluencerImage02 from '@/assets/style/cody/KakaoTalk_20231115_144323229_01.jpg'
@@ -9,11 +9,47 @@ import StyleInfluencerImage06 from '@/assets/style/cody/KakaoTalk_20231115_14432
 import StyleInfluencerImage07 from '@/assets/style/cody/KakaoTalk_20231115_144323229_06.jpg'
 import StyleInfluencerImage08 from '@/assets/style/cody/KakaoTalk_20231115_144323229_07.jpg'
 import StyleInfluencerImage09 from '@/assets/style/cody/KakaoTalk_20231115_144323229_08.jpg'
+import CaretLeft from '@components/CaretLeft';
+import CaretRight from '@components/CaretRight';
+import { MyPageContext } from 'pages/MyPage';
 
-// 231122 정은우
-// 캐러셀 자체를 컴포넌트화 한 다음에 props로 보내는 이미지 배열만 바꾸어서 재사용성을 늘리는 방안도 좋을 듯.
-// 그러나 지금 당장은 구현을 위해 잠깐 보류 
-const DragCarousel: React.FC = () => {
+
+// 231122 정은우: 받아오는 이미지 객체의 타입을 정의하는 곳. 그러나 제대로 받아와지지 않아서 주석 처리함. 
+// interface ImageModules {
+//   [key: string]: string;
+// }
+const MyPageCarousel: React.FC = () => {
+  // 231122 정은우: 이미지가 받아와지지 않아서, 일단 주석 
+  // 동적으로 이미지를 가져오는 함수
+  // const importAll = (
+  //   importFunction: Record<
+  //     string,
+  //     { default: string; } | (() => Promise<{ default: string; }>)
+  //   >
+  // ) => {
+  //   const images: ImageModules = {};
+  //   for (const path in importFunction) {
+  //     const importResult = importFunction[path];
+  //     if (typeof importResult === 'function') {
+  //       // importResult가 함수인 경우 (프로미스를 반환하는 함수로 처리)
+  //       importResult().then(module => {
+  //         images[path.replace('./', '')] = module.default;
+  //       });
+  //     } else {
+  //       // importResult가 함수가 아닌 경우 (모듈 객체로 처리)
+  //       images[path.replace('./', '')] = importResult.default;
+  //     }
+  //   }
+  //   return images;
+  // };
+
+  // const images = importAll(import.meta.glob('../assets/*.{png,jpeg,svg}', { eager: true }));
+  // // 객체를 배열로 변환
+  // const imagesArray = Object.values(images);
+  // // 사용 예시
+  // console.log(imagesArray);
+  const context = useContext(MyPageContext);
+
   const images: string[] = [
     StyleInfluencerImage01,
     StyleInfluencerImage02,
@@ -25,8 +61,9 @@ const DragCarousel: React.FC = () => {
     StyleInfluencerImage08,
     StyleInfluencerImage09,
   ];
+
   const [activeItemIndex, setActiveItemIndex] = useState<number>(0);
-  const chevronWidth: number = 0;
+  // const chevronWidth: number = 50;
 
   const [numOfCards, setNumOfCards] = useState<number>(4);
   const [gutter, setGutter] = useState<number>(28);
@@ -68,23 +105,26 @@ const DragCarousel: React.FC = () => {
       window.removeEventListener('resize', resize);
     };
   }, [resize]);
+  console.log(context.DibsH2TextString[0])
+  const TRUE: boolean = true;
 
   return (
-    <div style={{ padding: `0 ${chevronWidth}px` }}>
+    <div style={{ padding: `0 ${context.chevronWidth}px` }}>
+      <h2 className='text-2xl font-extrabold mb-4'>{context.DibsH2TextString[0]}</h2>
       <ItemsCarousel
         requestToChangeActive={setActiveItemIndex}
         activeItemIndex={activeItemIndex}
         numberOfCards={numOfCards}
         gutter={gutter}
-        leftChevron={<button>{'<'}</button>}
-        rightChevron={<button>{'>'}</button>}
-        outsideChevron
-        chevronWidth={chevronWidth}
+        leftChevron={<button>{<CaretLeft />}</button>}
+        rightChevron={<button>{<CaretRight />}</button>}
+        outsideChevron={TRUE}
+        chevronWidth={context.chevronWidth}
       >
         {images.map((image, index) => (
           <div className='flex w-full overflow-auto ' key={index}>
             <div className='w-full h-auto rounded-xl'>
-              <div className='w-full aspect-[4/3] bg-gray-300 rounded-xl relative overflow-hidden'>
+              <div className='w-full aspect-square bg-gray-300 rounded-xl relative overflow-hidden'>
                 <img src={image} alt={`Slide ${index}`} className='absolute h-fit object-contain' />
               </div>
             </div>
@@ -95,4 +135,4 @@ const DragCarousel: React.FC = () => {
   );
 };
 
-export default DragCarousel;
+export default MyPageCarousel;
