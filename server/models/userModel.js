@@ -6,6 +6,8 @@ async function findUserByEmail(email) {
   try {
     const result = await connection.execute('SELECT * FROM T_USER WHERE USER_ID = :email', [email]);
     return result.rows;
+  } catch (error) {
+    console.error('id check query error !! ', error.message);
   } finally {
     await connection.close();
   }

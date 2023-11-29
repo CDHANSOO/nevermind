@@ -12,8 +12,8 @@
   "dependencies": {
     "@types/react-slick": "^0.23.12",
     "axios": "^1.6.2",
-    "bootstrap": "^5.3.2",
     "bcrypt": "^5.1.1",
+    "bootstrap": "^5.3.2",
     "dotenv": "^16.3.1",
     "echarts": "^5.4.3",
     "echarts-for-react": "^3.0.2",
