@@ -4,8 +4,11 @@ const dbConnector = require('../config/dbConnector');
 async function getStylesBySearch(search) {
   const connection = await dbConnector.dbConnect();
   try {
+    // 띄어쓰기를 제거
+    const modifiedSearch = search.replace(/\s+/g, '');
+
     const query = 'SELECT STYLE_IDS, STYLE_URL FROM T_STYLE WHERE STYLE_CMT LIKE :search OR STYLE_TAG LIKE :search';
-    const result = await connection.execute(query, { search: '%' + search + '%' }, [search, search]);
+    const result = await connection.execute(query, { search: '%' + modifiedSearch + '%' }, [modifiedSearch, modifiedSearch]);
     return result.rows;
   } finally {
     await connection.close();

@@ -2,6 +2,7 @@ import React, { useState, useEffect, FC } from 'react';
 import '../App.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import TpoButton from '@components/TpoButton';
 
 interface TpoProps {
   onSearch: (input: string) => void;
@@ -10,6 +11,7 @@ interface TpoProps {
 const Tpo: FC<TpoProps> = ({ onSearch }) => {
   const [input, setInput] = useState<string>('');
   const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const sliderItems: string[] = ['상황', '장소', '시간', '온도', '날씨'];
   const navigate = useNavigate();
 
   const handleKeyEnter = async (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -29,7 +31,6 @@ const Tpo: FC<TpoProps> = ({ onSearch }) => {
         } catch (error) {
           console.error('검색 요청 오류:', error);
         }
-
       }
     }
   };
@@ -38,17 +39,24 @@ const Tpo: FC<TpoProps> = ({ onSearch }) => {
     // 자동으로 슬라이드 변경을 위한 타이머 설정
     const intervalId = setInterval(() => {
       setCurrentSlide((currentSlide + 1) % 5);
-    }, 3000); // 3초마다 슬라이드 변경
+    }, 2500); // 2초마다 슬라이드 변경
 
     // 컴포넌트가 언마운트되면 타이머를 정리
     return () => clearInterval(intervalId);
   }, [currentSlide]);
 
-  const sliderItems: string[] = ['상황', '장소', '시간', '온도', '날씨'];
-
   const backimg: React.CSSProperties = {
-    backgroundImage: "url('src/assets/img/unsplash_HpEDSZukJqk.png')",
+    backgroundImage: "url('https://nevermind.s3.ap-northeast-2.amazonaws.com/unsplash_HpEDSZukJqk.png')",
     backgroundSize: 'cover',
+  };
+
+  const handleCategoryClick = (category: string) => {
+    // 카테고리 클릭 시 여기에서 필요한 처리를 수행하고, 필요하면 화면에 보여줌
+    console.log('선택된 카테고리:', category);
+
+    // 선택된 카테고리를 Detail 컴포넌트로 전달
+    navigate('/detail', { state: { searchInput: category } }); // detail page로 이동하면서 searchInput에다가 category를 넣어서 보낸다
+    onSearch(category);
   };
 
   return (
@@ -68,7 +76,7 @@ const Tpo: FC<TpoProps> = ({ onSearch }) => {
                     fontFamily: 'Inter',
                     fontWeight: 'bold',
                     fontSize: '30px',
-                    color: 'rgb(129, 227, 227)',
+                    color: 'rgb(184, 128, 255)',
                     opacity: currentSlide === index ? 1 : 0,
                     transition: 'opacity 1s ease',
                     position: 'absolute',
@@ -109,81 +117,11 @@ const Tpo: FC<TpoProps> = ({ onSearch }) => {
         </div>
         <div className="flex space-x-1 mt-2">
           <div className="flex space-x-1 mt-1">
-            <button
-              className="w-20 h-[30px] rounded-xl flex items-center justify-center transition duration-300 ease-in-out transform hover:opacity-50"
-              style={{
-                cursor: 'pointer',
-                fontSize: '12px',
-                background: 'linear-gradient(to bottom, #dcdcdc, #a9a9a9)',
-                border: 'none',
-                color: 'white',
-                borderRadius: '8px',
-                padding: '5px 10px',
-              }}
-              onClick={() => (window.location.href = '/')}
-            >
-              #Random
-            </button>
-            <button
-              className="w-20 h-[30px] rounded-xl flex items-center justify-center transition duration-300 ease-in-out transform hover:opacity-50"
-              style={{
-                cursor: 'pointer',
-                fontSize: '12px',
-                background: 'linear-gradient(to bottom, #dcdcdc, #a9a9a9)',
-                border: 'none',
-                color: 'white',
-                borderRadius: '8px',
-                padding: '5px 10px',
-              }}
-              onClick={() => (window.location.href = '/')}
-            >
-              #Random
-            </button>
-            <button
-              className=" w-20 h-[30px] rounded-xl flex items-center justify-center transition duration-300 ease-in-out transform hover:opacity-50"
-              style={{
-                cursor: 'pointer',
-                fontSize: '12px',
-                background: 'linear-gradient(to bottom, #dcdcdc, #a9a9a9)',
-                border: 'none',
-                color: 'white',
-                borderRadius: '8px',
-                padding: '5px 10px',
-              }}
-              onClick={() => (window.location.href = '/')}
-            >
-              #Random
-            </button>
-            <button
-              className=" w-20 h-[30px] rounded-xl flex items-center justify-center transition duration-300 ease-in-out transform hover:opacity-50"
-              style={{
-                cursor: 'pointer',
-                fontSize: '12px',
-                background: 'linear-gradient(to bottom, #dcdcdc, #a9a9a9)',
-                border: 'none',
-                color: 'white',
-                borderRadius: '8px',
-                padding: '5px 10px',
-              }}
-              onClick={() => (window.location.href = '/')}
-            >
-              #Random
-            </button>
-            <button
-              className=" w-20 h-[30px] rounded-xl flex items-center justify-center transition duration-300 ease-in-out transform hover:opacity-50"
-              style={{
-                cursor: 'pointer',
-                fontSize: '12px',
-                background: 'linear-gradient(to bottom, #dcdcdc, #a9a9a9)',
-                border: 'none',
-                color: 'white',
-                borderRadius: '8px',
-                padding: '5px 10px',
-              }}
-              onClick={() => (window.location.href = '/')}
-            >
-              #Random
-            </button>
+            <TpoButton category="여성" onCategoryClick={category => handleCategoryClick(category)} />
+            <TpoButton category="남성" onCategoryClick={category => handleCategoryClick(category)} />
+            <TpoButton category="캐주얼" onCategoryClick={category => handleCategoryClick(category)} />
+            <TpoButton category="비즈니스" onCategoryClick={category => handleCategoryClick(category)} />
+            <TpoButton category="데이트" onCategoryClick={category => handleCategoryClick(category)} />
           </div>
         </div>
       </div>
