@@ -46,7 +46,7 @@ const Tpo: FC<TpoProps> = ({ onSearch }) => {
   }, [currentSlide]);
 
   const backimg: React.CSSProperties = {
-    backgroundImage: "url('/assets/unsplash_HpEDSZukJqk.png')",
+    backgroundImage: "url('https://nevermind.s3.ap-northeast-2.amazonaws.com/unsplash_HpEDSZukJqk.png')",
     backgroundSize: 'cover',
   };
 
