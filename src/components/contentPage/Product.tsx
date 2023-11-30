@@ -1,8 +1,7 @@
 import React from 'react'
 
-/***
- * 
- */
+
+
 const Product: React.FC = () => {
     return (
         <div className="w-[150px] h-[180px] left-0 top-0  bg-zinc-100 rounded-xl" >

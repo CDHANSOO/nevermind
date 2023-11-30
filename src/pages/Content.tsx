@@ -2,11 +2,15 @@ import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ContentBackgoundImg from '@assets/Rectangle.png';
 import axios from 'axios';
+import Loading2 from '@components/Loading2';
 
 const Content: React.FC = () => {
-  const [file, setFile] = useState<File | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState(null);
   const navigate = useNavigate();
+  console.log(result)
+  
 
   // 배경 이미지 정의
   const bgimg: React.CSSProperties = {
@@ -28,14 +32,14 @@ const Content: React.FC = () => {
   // 파일이 드랍되었을때의 처리 함수
   const handleDrop = async (e: React.DragEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
     const droppedFiles = e.dataTransfer.files;
-
+    
     if (droppedFiles.length > 0) {
-      const droppedFile = droppedFiles[0];
+      setLoading(true);
       const formData = new FormData();
       formData.append('image', droppedFiles[0]);
-      setFile(droppedFile); // File 객체 직접 전달
-      navigate('/contentdetail', { state: { file } });
+
 
       // 파일을 백엔드로 보내기
       try {
@@ -44,26 +48,37 @@ const Content: React.FC = () => {
             'Content-Type': 'multipart/form-data',
           },
         });
-        console.log(response.data);
+        const result = response.data
+
+        console.log('서버에서 넘겨준 데이터:',result.fastApiResponse); // 이건 서버에서 받아온 5개
+
+        setResult(result);
+
+        setLoading(false);
+        navigate('/contentdetail', { state: { result } });
+        
       } catch (error) {
         console.error('파일 업로드 오류 :', error);
+      } finally {
+        // 로딩 상태 완료
       }
     }
     e.currentTarget.classList.remove('file-dragging');
   };
   // 231117 정 : 받은 파일을 ContentDetail에서 보여주기(임시)
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = event.target.files?.[0];
-    if (selectedFile) {
-      setFile(selectedFile); // File 객체 직접 전달
-      navigate('/contentdetail', { state: { file: selectedFile } });
-      console.log(file);
-    }
-  };
+  // const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   const selectedFile = event.target.files?.[0];
+  //   if (selectedFile) {
+  //     setFile(selectedFile); // File 객체 직접 전달
+  //     navigate('/contentdetail', { state: { file: selectedFile } });
+  //     console.log(file);
+  //   }
+  // };
   return (
-    <div>
-      {/* 배경이미지는 똑같고, 안에 컴포넌트만 달라지는 거니까, 
-            이 부분은 배경이미지를 새로 불러오는 것 vs 컴포넌트를 새로 불러오는 것 중에 나은 쪽으로 골라서 하면 될 듯 */}
+    <div className='relatvie'>
+      {
+        loading && <Loading2/>
+      }
       <div className="w-full h-[100vh] bg-white">
         {/* 배경이미지 */}
         <div className="relative w-full h-full bg-cover bg-no-repeat" style={bgimg}>
@@ -98,7 +113,7 @@ const Content: React.FC = () => {
                     >
                       <label className="block" htmlFor="clothPhotoInput">
                         <span className="sr-only">사진 선택</span>
-                        <input type="file" className="hidden " id="clothPhotoInput" accept="image/*" onChange={handleFileChange} ref={inputRef} />
+                        <input type="file" className="hidden " id="clothPhotoInput" accept="image/*" ref={inputRef} />
                       </label>
 
                       <div className="w-[72px] h-[72px] mb-3">

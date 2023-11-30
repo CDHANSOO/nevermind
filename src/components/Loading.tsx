@@ -1,5 +1,6 @@
 import React from 'react'
 
+// 이거는 디테일 로딩 
 const Loading = () => {
   return (
     <div>
