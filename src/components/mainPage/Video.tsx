@@ -21,11 +21,9 @@ const Video = () => {
 
   return (
     <div className="relative">
-      <video src="/src/assets/pexels-ron-lach-8308005 (2160p).mp4" autoPlay muted loop className="w-full h-auto" />
+      <video src="https://nevermind.s3.ap-northeast-2.amazonaws.com/pexels-ron-lach-8308005+(2160p).mp4" autoPlay muted loop className="w-full h-auto" />
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 p-4">
-        <div className="bg-white-800 bg-opacity-50 backdrop-filter text-white text-6xl font-black py-2 px-4 rounded-md">
-          {text}
-        </div>
+        <div className="bg-white-800 bg-opacity-50 backdrop-filter text-white text-6xl font-black py-2 px-4 rounded-md">{text}</div>
       </div>
     </div>
   );

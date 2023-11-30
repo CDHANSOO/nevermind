@@ -32,7 +32,14 @@ const afterUploadImage = async (req, res) => {
         const results = [];
 
         for (const style of stylesInfo) {
-          clotheList = [];
+          let clotheList = [];
+
+          // 빈 배열이거나 style[0]이 존재하지 않는 경우를 검사합니다.
+          if (!style.length || !style[0]) {
+            console.log('빈 스타일 또는 유효하지 않은 데이터:', style);
+            continue; // 빈 배열이거나 유효하지 않은 데이터는 건너뜁니다.
+          }
+
           console.log('처리중인 style:', style);
           const styleData = style[0];
           const styleIds = styleData[0].split(','); // 스타일 ID들을 배열로 분리

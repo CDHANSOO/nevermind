@@ -21,7 +21,7 @@ const NavigationBar: React.FC = () => {
   
   useEffect(() => {
     // 경로에 따라 다크 모드 상태 설정
-    if (location.pathname === '/content' || location.pathname === '/tpo') {
+    if (location.pathname === '/content' || location.pathname === '/tpo' || location.pathname ==='/contentdetail') {
       setDarkMode(true);
     } else {
       setDarkMode(false);

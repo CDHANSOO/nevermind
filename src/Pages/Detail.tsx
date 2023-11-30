@@ -74,7 +74,7 @@ const Detail: FC<DetailProps> = ({ userInput, setUserInput }) => {
             {[0, 1, 2].map(index => (
               <div
                 key={index}
-                className={`w-[14.88px] h-[15px] ml-${index === 0 ? '0' : '1'} ${index === selectedTabIndex ? 'bg-yellow-400' : index === 1 ? 'bg-amber-200' : 'bg-yellow-100'} rounded-full`}
+                className={`w-[14.88px] h-[15px] ml-${index === 0 ? '0' : '3'} ${index === selectedTabIndex ? 'bg-yellow-400' : index === 1 ? 'bg-amber-200' : 'bg-yellow-100'} rounded-full`}
                 onClick={() => handleClick(index)}
               />
             ))}
