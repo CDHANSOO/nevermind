@@ -2,10 +2,10 @@ import React from 'react';
 import '../styles/Style.css';
 import SimpleCarousel from '../components/stylePage/SimpleCarousel';
 import DragCarousel from '../components/stylePage/DragCarousel';
-import InfluencerCarousel from '../components/stylePage/InfluencerCarousel';
 import CodyFleece from '@/assets/style/cody/플리스-cody.jpg';
 import CodyCristmas from '@/assets/style/cody/크리스마스-cody.jpg';
 import InfluencerBannerString from '@components/stylePage/InfluencerBannerString';
+import TalantList from '@components/stylePage/TalantList';
 import Footer from '@components/Footer';
 
 const Style: React.FC = () => {
@@ -42,8 +42,10 @@ const Style: React.FC = () => {
           </div>
         </div>
         <div className="my-24">
-          <InfluencerBannerString bannerText="셀럽들의 코디" />
-          <InfluencerCarousel />
+          <InfluencerBannerString bannerText="최신 유행 스타일" />
+        </div>
+        <div>
+          <TalantList bannerText="연예인 스타일"/>
         </div>
       </div>
       <Footer />

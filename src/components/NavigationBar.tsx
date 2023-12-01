@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { loginState } from 'atom/atom';
 import { IoPersonSharp } from 'react-icons/io5';
@@ -8,10 +8,13 @@ import { darkModeState } from '../states/darkModeState';
 const NavigationBar: React.FC = () => {
   const [backgroundColor, setBackgroundColor] = useState<string>('transparent');
   const [isLogin, setIsLogin] = useRecoilState(loginState);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     alert('로그아웃 완료');
     setIsLogin(false);
+    navigate('/');
+
   };
   // 231123 정은우
   // darkmode 추가 코드

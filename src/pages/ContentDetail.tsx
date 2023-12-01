@@ -74,8 +74,8 @@ const ContentDetail: React.FC<ContentDetailProps> = () => {
           </button>
             {r3.map((response, index: number) => (
               <div key={index} className={`w-1/3 h-full ${index === currentIndex ? 'block' : 'hidden'}`}>
-                <div className="aspect-[1/1] w-full h-full rounded-xl bg-gray-400">
-                  <img src={response.styleUrl} alt={`Uploaded ${index}`} className="w-full h-full" />
+                <div className="aspect-[3/4] w-full h-full rounded-xl bg-gray-400 overflow-hidden">
+                  <img src={response.styleUrl} alt={`Uploaded ${index}`} className="w-full h-full object-cover mr-4 shrink-0 basis-24" />
                 </div>
               </div>
             ))}
@@ -92,16 +92,19 @@ const ContentDetail: React.FC<ContentDetailProps> = () => {
                   {r3[currentIndex].clothes.map((clothing, index: number) => (
                     !clothing ? <></> : 
                     <div key={index} className="w-[150px] h-[180px] left-0 top-0  bg-zinc-100 rounded-xl ml-[14px]">
-                      <div className="aspect-[2/4] rounded-xl overflow-hidden bg-gray-300">
-                        <div className="h-3/5 w-full bg-gray-100">
-                          <img src={clothing[1]} alt="의류정보이미지" />
+                      <div className="aspect-[2/4] rounded-xl overflow-hidden bg-gray-200 flex flex-col ">
+                        <div className="grow-[3] shrink basis-0 w-full bg-gray-100 overflow-hidden ">
+                          <img src={clothing[1]} alt="의류정보이미지" className='h-full w-full object-cover'/>
                         </div>
-                        <div className="p-2 ">
+                        {/* <div className="h-3/5 w-full bg-gray-100 overflow-hidden ">
+                          <img src={clothing[1]} alt="의류정보이미지" />
+                        </div> */}
+                        <div className="grow-[2] shrink basis-0 p-2 h-full flex flex-col justify-around text-left grow-1">
                           <div className="text-neutral-700 text-[14px] text-bold font-['Pretendard']">{clothing[2]}</div>
-                          <div className="pl-px pr-[3px] pt-0.5 pb-px justify-center items-center inline-flex">
-                            <div className="text-neutral-800 text-xs font-semibold font-['Pretendard']">{clothing[3]}</div>
+                          <div className="pl-px pr-[3px] pt-0.5 pb-px justify-start items-center inline-flex">
+                            <div className="text-neutral-800 text-xs font-semibold font-['Pretendard'] mb-5">{clothing[3]}</div>
                           </div>
-                          <div className="text-neutral-800 text-xs font-semibold font-['Pretendard']">{clothing[4]}</div>
+                          <div className="text-neutral-800 text-xs font-semibold font-['Pretendard'] mb-5">{clothing[4]}</div>
                         </div>
                       </div>
                     </div>

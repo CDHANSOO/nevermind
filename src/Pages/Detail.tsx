@@ -113,12 +113,12 @@ const Detail: FC<DetailProps> = ({ userInput, setUserInput }) => {
             {responseData?.clotheInfo[selectedClotheIndex]?.map((clothe, index) => (
               <div key={index} className="flex justify-start w-full h-32 rounded-xl border border-zinc-300 p-4 mb-2">
                 <div className="flex items-center">
-                  <div className="w-24 h-24 bg-zinc-300 rounded-xl mr-4">
+                  <div className="w-24 h-24 bg-zinc-300 rounded-xl mr-4 shrink-0 basis-24">
                     <img src={clothe[1]} alt={clothe[2]} className="w-full h-full object-cover rounded-xl" />
                   </div>
-                  <div className="text-left">
-                    <div className="text-black text-xl font-bold font-Pretendard">{clothe[2]}</div>
-                    <div className="text-black text-base font-normal font-Pretendard">{clothe[3]}</div>
+                  <div className="text-left overflow-hidden">
+                    <div className="text-black text-xl font-bold font-Pretendard overflow-hidden ">{clothe[2]}</div>
+                    <div className="text-black text-base font-normal font-Pretendard overflow-hidden">{clothe[3]}</div>
                     <div className="text-black text-base font-bold font-Pretendard">{clothe[4]}</div>
                   </div>
                 </div>

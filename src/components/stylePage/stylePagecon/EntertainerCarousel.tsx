@@ -1,26 +1,20 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import ItemsCarousel from 'react-items-carousel';
-import StyleInfluencerImage01 from '@/assets/style/cody/KakaoTalk_20231115_144323229.jpg'
-import StyleInfluencerImage02 from '@/assets/style/cody/KakaoTalk_20231115_144323229_01.jpg'
-import StyleInfluencerImage03 from '@/assets/style/cody/KakaoTalk_20231115_144323229_02.jpg'
-import StyleInfluencerImage04 from '@/assets/style/cody/KakaoTalk_20231115_144323229_03.jpg'
-import StyleInfluencerImage05 from '@/assets/style/cody/KakaoTalk_20231115_144323229_04.jpg'
-import StyleInfluencerImage06 from '@/assets/style/cody/KakaoTalk_20231115_144323229_05.jpg'
-import StyleInfluencerImage07 from '@/assets/style/cody/KakaoTalk_20231115_144323229_06.jpg'
-import StyleInfluencerImage08 from '@/assets/style/cody/KakaoTalk_20231115_144323229_07.jpg'
-import StyleInfluencerImage09 from '@/assets/style/cody/KakaoTalk_20231115_144323229_08.jpg'
+import entertainer1 from '@assets/style/cody/entertainer/2cheonga.jpg'
+import entertainer2 from '@assets/style/cody/entertainer/2donghwi.jpg'
+import entertainer3 from '@assets/style/cody/entertainer/hoyeon.jpg'
+import entertainer4 from '@assets/style/cody/entertainer/pky.jpg'
+import entertainer5 from '@assets/style/cody/entertainer/rjy.jpg'
 
-const InfluencerCarousel: React.FC = () => {
+
+
+const EntertainerCarousel: React.FC = () => {
     const images: string[] = [
-        StyleInfluencerImage01,
-        StyleInfluencerImage02,
-        StyleInfluencerImage03,
-        StyleInfluencerImage04,
-        StyleInfluencerImage05,
-        StyleInfluencerImage06,
-        StyleInfluencerImage07,
-        StyleInfluencerImage08,
-        StyleInfluencerImage09,
+      entertainer1,
+      entertainer2,
+      entertainer3,
+      entertainer4,
+      entertainer5,
     ];
 
     const [activeItemIndex, setActiveItemIndex] = useState<number>(0);
@@ -93,4 +87,4 @@ const InfluencerCarousel: React.FC = () => {
     );
 };
 
-export default InfluencerCarousel;
+export default EntertainerCarousel;

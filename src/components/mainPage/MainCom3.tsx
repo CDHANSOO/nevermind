@@ -23,17 +23,17 @@ const MainCom = ({ img, link }: Props) => {
       <div className="flex justify-center">
         <div className={`pl-[100px] w-[720px] h-[720px] bg-[white] flex flex-col justify-center item-center rounded-[10px] mr-[25px] ${animationClass}`}>
           <div className={`animate-box ${animationClass}`}>
-            <span className="p-[10px] bg-[#edeafd] text-[#7453ea] rounded-[10px]">비슷한 코디 추천</span>
+            <span className="p-[10px] bg-[#9fedf7] text-[#4d9acf] rounded-[10px]">다양한 스타일 추천</span>
           </div>
           <h2 className='text-5xl font-extrabold mt-[20px]'>코디를 추천해주는<br />플랫폼이 필요하신가요?</h2>
           <p className={`mt-[10px] ${animationClass}`}>
-            코디 정보가 궁금했던 사진을 넣어보세요.  <br />
-            사진과 가장 비슷한 코디와 코디 속 상품 추천 서비스를 제공합니다.
+            현재 계절에 어울리는 코디 , 셀럽들이 입은 코디 , 현재 유행하는 스타일 등 <br />
+            다양한 스타일 정보를 제공합니다.
           </p>
           <Link to={link}>
             <div className={`w-[500px] h-[96px] flex items-center bg-[#fafafa] rounded-[10px] ${animationClass}`}>
               <div className={`text-3xl font-black ml-[10px] ${animationClass}`}>NEVERMIND</div>
-              <div className={`ml-[20px] mt-[3px] bg-[#edeafd] p-[8px] rounded-[10px] hover:scale-110 ${animationClass}`}>시작하기</div>
+              <div className={`ml-[20px] mt-[3px] bg-[#9fedf7] p-[8px] rounded-[10px] hover:scale-110 ${animationClass}`}>시작하기</div>
               <div className={`ml-[200px] ${animationClass}`}>
                 <IoIosArrowForward />
               </div>
